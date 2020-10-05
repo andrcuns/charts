@@ -1,6 +1,6 @@
 apiVersion: v2
 name: buildkit
-description: Buildkit deployment chart
+description: Helm chart for buildkit service deployment
 
 type: application
 
