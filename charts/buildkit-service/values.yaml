@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: buildkit
+  repository: moby/buildkit
   pullPolicy: IfNotPresent
   tag: ""
 
