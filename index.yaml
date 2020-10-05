@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  buildkit-service:
+  - apiVersion: v2
+    appVersion: 0.7.2
+    created: "2020-10-05T11:57:26.913186009Z"
+    description: Helm chart for buildkit service deployment
+    digest: aba2b845c4d3bab320e3b405c4288a22d066bf5122e8bf19029bcd0f76f9e7b0
+    icon: https://raw.githubusercontent.com/andrcuns/buildkit-chart/master/icon.png
+    name: buildkit-service
+    type: application
+    urls:
+    - https://github.com/andrcuns/buildkit-charts/releases/download/buildkit-service-0.0.1/buildkit-service-0.0.1.tgz
+    version: 0.0.1
+generated: "2020-10-05T11:57:26.80477345Z"
