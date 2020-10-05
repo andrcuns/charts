@@ -1,5 +1,5 @@
 apiVersion: v2
-name: buildkit
+name: buildkit-service
 description: Helm chart for buildkit service deployment
 
 type: application
