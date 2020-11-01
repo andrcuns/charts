@@ -4,9 +4,6 @@ set -euo pipefail
 
 source "$(dirname "$0")/utils.sh"
 
-log "Fetch master"
-git fetch origin master
-
 charts=($(changed-charts))
 
 if [ ${#charts[@]} -eq 0 ]; then
@@ -21,6 +18,6 @@ for chart_dir in "${charts[@]}"; do
   values_opt=$([ -f "$values_yaml" ] && echo "-f $values_yaml" || echo "")
 
   log "Validating $chart_dir"
-  helm dependency build $chart_dir
+  helm dependency update $chart_dir
   helm template $chart_dir $values_opt
 done
