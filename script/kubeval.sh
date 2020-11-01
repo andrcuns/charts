@@ -9,11 +9,9 @@ CT_SOURCE="https://github.com/helm/chart-testing/releases/download/v${CT_VERSION
 KUBEVAL_SOURCE="https://github.com/instrumenta/kubeval/releases/download/${KUBEVAL_VERSION}/kubeval-linux-amd64.tar.gz"
 
 # install ct
-log "Download ct"
 curl --silent --show-error --fail --location --output /tmp/ct.tar.gz "${CT_SOURCE}" && tar -xf /tmp/ct.tar.gz ct
 
 # install kubeval
-log "Download kubeval"
 curl --silent --show-error --fail --location --output /tmp/kubeval.tar.gz  "${KUBEVAL_SOURCE}" && tar -xf /tmp/kubeval.tar.gz kubeval
 
 # validate charts
