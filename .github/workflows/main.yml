@@ -7,14 +7,13 @@ on:
     paths:
       - charts/**/*
       - script/**/*
-      - .helmignore
+      - .github/**/*
   push:
     branches:
       - master
     paths:
       - charts/**/*
       - script/**/*
-      - .helmignore
 
 env:
   CT_VERSION: "3.2.0"
@@ -62,11 +61,18 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Check changes
+        id: changes
+        uses: helm/chart-testing-action@v1.1.0
+        with:
+          command: list-changed
       - name: Create kind ${{ matrix.k8s }} cluster
+        if: steps.changes.outputs.changed == 'true'
         uses: helm/kind-action@v1.0.0
         with:
           node_image: kindest/node:${{ matrix.k8s }}
       - name: Install
+        if: steps.changes.outputs.changed == 'true'
         uses: helm/chart-testing-action@v1.1.0
         with:
           command: install
