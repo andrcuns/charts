@@ -24,13 +24,13 @@ jobs:
           config: .github/ct.yaml
 
       - name: Configure Git
-        if: github.event == 'push' && github.ref == 'refs/heads/master'
+        if: github.event_name == 'push'
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Run chart-releaser
-        if: github.event == 'push' && github.ref == 'refs/heads/master'
+        if: github.event_name == 'push'
         uses: helm/chart-releaser-action@v1.0.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
