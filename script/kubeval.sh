@@ -23,8 +23,15 @@ if [ ! -d "$KUBEVAL_DIR" ]; then
   mv ct kubeval $KUBEVAL_DIR/
 fi
 
+CHARTS=$(./$CT list-changed)
+
+if [ -z "$CHARTS" ]; then
+  log "No changes detected in charts"
+  exit
+fi
+
 # validate charts
-for CHART_DIR in $(./$CT list-changed); do
+for CHART_DIR in "$CHARTS"; do
   log "Validating $CHART_DIR"
   helm template "${CHART_DIR}" | ./$KUBEVAL --strict
 done
