@@ -8,6 +8,10 @@ on:
     branches:
       - master
 
+env:
+  CT_VERSION: "3.2.0"
+  KUBEVAL_VERSION: "0.15.0"
+
 jobs:
   lint:
     runs-on: ubuntu-latest
