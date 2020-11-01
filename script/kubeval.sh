@@ -17,5 +17,5 @@ curl --silent --show-error --fail --location --output /tmp/kubeval.tar.gz  "${KU
 # validate charts
 for CHART_DIR in $(./ct list-changed); do
   log "Validating $CHART_DIR"
-  helm template "${CHART_DIR}" | ./kubeval --strict --kubernetes-version "${KUBERNETES_VERSION}"
+  helm template "${CHART_DIR}" | ./kubeval --strict
 done
