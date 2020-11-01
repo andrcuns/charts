@@ -14,10 +14,10 @@ KUBEVAL_SOURCE="https://github.com/instrumenta/kubeval/releases/download/${KUBEV
 if [ ! -d "$KUBEVAL_DIR" ]; then
   mkdir -p "$KUBEVAL_DIR"
 
-  # install ct
+  log "Downloading chart-testing v${CT_VERSION}"
   curl --silent --show-error --fail --location --output /tmp/ct.tar.gz "${CT_SOURCE}" && tar -xf /tmp/ct.tar.gz ct
 
-  # install kubeval
+  log "Downloading kubeval v${KUBEVAL_VERSION}"
   curl --silent --show-error --fail --location --output /tmp/kubeval.tar.gz "${KUBEVAL_SOURCE}" && tar -xf /tmp/kubeval.tar.gz kubeval
 
   mv ct kubeval $KUBEVAL_DIR/
