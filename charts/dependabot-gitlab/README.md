@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.10](https://img.shields.io/badge/Version-0.0.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.8](https://img.shields.io/badge/AppVersion-0.0.8-informational?style=flat-square)
+![Version: 0.0.11](https://img.shields.io/badge/Version-0.0.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.8](https://img.shields.io/badge/AppVersion-0.0.8-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -8,10 +8,10 @@
 
 This chart bootstraps dependabot-gitlab deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
-## Configure dependabot-gitlab Helm repo
+## Add Helm repo
 
 ```bash
-helm repo add dependabot https://dependabot-gitlab.gitlab.io/chart
+helm repo add andrcuns https://andrcuns.github.io/charts
 ```
 
 ## Installing the Chart
@@ -19,7 +19,7 @@ helm repo add dependabot https://dependabot-gitlab.gitlab.io/chart
 Install this chart using:
 
 ```bash
-helm install dependabot dependabot/dependabot-gitlab --values dependabot-values.yaml
+helm install dependabot andrcuns/dependabot-gitlab --values values.yaml
 ```
 
 The command deploys dependabot-gitlab on the Kubernetes cluster in the default configuration. The [values](#values) section lists the parameters that can be configured during installation.
