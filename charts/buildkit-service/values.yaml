@@ -1,16 +1,25 @@
 replicaCount: 1
 
 image:
+  # -- Image name
   repository: moby/buildkit
+  # -- Pull policy
   pullPolicy: IfNotPresent
+  # -- Image tag
   tag: ""
 
+# -- Pod annotations
 podAnnotations: {}
 
 service:
+  # -- Service type
   type: ClusterIP
+  # -- Service port
   port: 1234
+  # -- Service annotations
+  annotations: {}
 
+# -- Resource definitions
 resources: {}
   # limits:
   #   cpu: 100m
@@ -19,8 +28,11 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
+# -- Node selector
 nodeSelector: {}
 
+# -- Tolerations
 tolerations: []
 
+# -- Affinity
 affinity: {}
