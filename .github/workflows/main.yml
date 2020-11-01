@@ -17,6 +17,7 @@ on:
 
 env:
   KUBEVAL_VERSION: "0.15.0"
+  HELMDOCS_VERSION: "1.4.0"
 
 jobs:
   lint:
@@ -30,7 +31,9 @@ jobs:
         uses: helm/chart-testing-action@v1.1.0
         with:
           command: lint
-          config: .github/ct.yaml
+          config: .github/ct-lint.yaml
+      - name: Lint docs
+        run: .github/script/helm-docs.sh
 
   kubeval:
     runs-on: ubuntu-latest
@@ -41,13 +44,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Cache kubeval
-        uses: actions/cache@v2
-        with:
-          path: kubeval
-          key: ${{ runner.os }}-kubeval-${{ env.KUBEVAL_VERSION }}
       - name: Run kubeval
-        run: script/kubeval.sh
+        run: .github/script/kubeval.sh
 
   install:
     runs-on: ubuntu-latest
@@ -80,7 +78,7 @@ jobs:
         uses: helm/chart-testing-action@v1.1.0
         with:
           command: install
-          config: .github/ct.yaml
+          config: .github/ct-install.yaml
 
   release:
     if: github.event_name == 'push'

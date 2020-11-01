@@ -1,0 +1,4 @@
+helm-extra-args: "--values .github/ci-values.yaml"
+debug: true
+chart-repos:
+  - redis=https://charts.bitnami.com/bitnami
