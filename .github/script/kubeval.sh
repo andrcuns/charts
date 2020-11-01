@@ -14,5 +14,5 @@ for chart_dir in "${charts[@]}"; do
 
   log "Validating $chart_dir"
   helm dependency update $chart_dir
-  helm template $chart_dir $values_opt
+  helm template $chart_dir $values_opt | kubeval --strict
 done
