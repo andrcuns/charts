@@ -13,8 +13,6 @@ curl --silent --show-error --fail --location --output /tmp/ct.tar.gz "${CT_SOURC
 echo "Download kubeval"
 curl --silent --show-error --fail --location --output /tmp/kubeval.tar.gz  "${KUBEVAL_SOURCE}" && tar -xf /tmp/kubeval.tar.gz kubeval
 
-./ct version
-
 # validate charts
 for CHART_DIR in $(./ct list-changed); do
   helm template "${CHART_DIR}" | ./kubeval --strict --ignore-missing-schemas --kubernetes-version "${KUBERNETES_VERSION}" --schema-location "${SCHEMA_LOCATION}"
