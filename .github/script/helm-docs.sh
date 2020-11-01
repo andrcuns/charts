@@ -4,9 +4,9 @@ set -euo pipefail
 
 source "$(dirname "$0")/utils.sh"
 
-CHARTS=$(changed-charts)
+charts=($(changed-charts))
 
-if [ -z "$CHARTS" ]; then
+if [ ${#charts[@]} -eq 0 ]; then
   log "No chart changes detected."
   exit
 fi
