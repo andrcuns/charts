@@ -1,0 +1,95 @@
+replicaCount: 1
+
+image:
+  # -- Image to use for deploying
+  repository: docker.io/andrcuns/dependabot-gitlab
+  # -- Image pull policy
+  pullPolicy: IfNotPresent
+  # -- Image tag
+  tag: ""
+
+# -- Override chart name
+nameOverride: ""
+# -- Override fully qualified app name
+fullnameOverride: ""
+
+serviceAccount:
+  # -- Create service account
+  create: false
+  # -- Service account annotations
+  annotations: {}
+  # -- Service account name
+  name: ""
+
+service:
+  # -- Service type
+  type: ClusterIP
+  # -- Service pot
+  port: 3000
+  # -- Service annotations
+  annotations: {}
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+
+# -- Pod annotations
+podAnnotations: {}
+
+# -- Node selectors
+nodeSelector: {}
+
+# -- Tolerations
+tolerations: []
+
+# -- Affinity
+affinity: {}
+
+web:
+  # -- Web container resource definitions
+  resources: {}
+
+worker:
+  # -- Worker container resource definitions
+  resources: {}
+
+env:
+  # -- Redis URL
+  redisUrl: ""
+  # -- Gitlab instance URL
+  gitlabUrl: https://gitlab.com
+  # -- Optional sentry dsn for error reporting
+  sentryDsn: ""
+
+credentials:
+  # -- Gitlab access token, required
+  gitlab_access_token: ""
+  # -- Github access token
+  github_access_token: ""
+  # -- Gitlab auth token for webhook authentication
+  gitlab_auth_token: ""
+  # -- Private maven repository credentials
+  maven: {}
+  # -- Private npm package registry cretentials
+  npm: {}
+  # -- Private docker registry credentials
+  docker: {}
+
+redis:
+  # -- Enable redis installation
+  enabled: true
+  cluster:
+    # -- Enable redis cluster
+    enabled: false
+    # -- Slave count
+    slaveCount: 2
+
+  # -- Use redis password
+  usePassword: true
+
+  # -- Override redis name
+  fullnameOverride: redis
