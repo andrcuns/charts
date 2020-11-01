@@ -34,7 +34,7 @@ jobs:
       fail-fast: false
       matrix:
         k8s:
-          - 1.16.8
+          - 1.16.4
           - 1.17.4
           - 1.18.1
     steps:
