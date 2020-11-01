@@ -26,7 +26,7 @@ fi
 CHARTS=$(./$CT list-changed)
 
 if [ -z "$CHARTS" ]; then
-  log "No changes detected in charts"
+  log "No chart changes detected."
   exit
 fi
 
