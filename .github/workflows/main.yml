@@ -43,6 +43,9 @@ jobs:
   release:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    needs:
+      - lint
+      - kubeval
     steps:
       - name: Checkout
         uses: actions/checkout@v2
