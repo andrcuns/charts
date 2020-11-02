@@ -3,6 +3,20 @@ entries:
   buildkit-service:
   - apiVersion: v2
     appVersion: v0.7.2
+    created: "2020-11-02T10:03:23.620225954Z"
+    description: Helm chart for buildkit service deployment
+    digest: efea9155c05a5edd815be7502b4190b0c425aff5fd35c4933a05816839af6499
+    icon: https://raw.githubusercontent.com/andrcuns/buildkit-chart/master/charts/buildkit-service/icon.png
+    maintainers:
+    - email: andrejs.cunskis@gmail.com
+      name: Andrejs Cunskis
+    name: buildkit-service
+    type: application
+    urls:
+    - https://github.com/andrcuns/charts/releases/download/buildkit-service-0.0.6/buildkit-service-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
+    appVersion: v0.7.2
     created: "2020-11-01T22:07:45.474184688Z"
     description: Helm chart for buildkit service deployment
     digest: c29b49307875971d7cc8b1a127028811777141765c411a85038cbf8870095b9b
@@ -66,6 +80,25 @@ entries:
     - https://github.com/andrcuns/buildkit-charts/releases/download/buildkit-service-0.0.1/buildkit-service-0.0.1.tgz
     version: 0.0.1
   dependabot-gitlab:
+  - apiVersion: v2
+    appVersion: 0.0.8
+    created: "2020-11-02T10:03:23.72190188Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: ~11.2.1
+    description: Deployment chart for dependabot-gitlab app
+    digest: ecc2564535845ff89e3405a4b4de33d265b65ecbfce2249fc6065ba14e43ef7e
+    icon: https://gitlab.com/dependabot-gitlab/dependabot/-/raw/master/logo.png
+    maintainers:
+    - email: andrejs.cunskis@gmail.com
+      name: Andrejs Cunskis
+    name: dependabot-gitlab
+    type: application
+    urls:
+    - https://github.com/andrcuns/charts/releases/download/dependabot-gitlab-0.0.12/dependabot-gitlab-0.0.12.tgz
+    version: 0.0.12
   - apiVersion: v2
     appVersion: 0.0.8
     created: "2020-11-01T22:07:45.589346757Z"
