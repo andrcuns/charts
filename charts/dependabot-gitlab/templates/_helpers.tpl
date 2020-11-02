@@ -57,7 +57,7 @@ Pod annotations
 checksum/secrets: {{ include (print $.Template.BasePath "/secrets.yaml") . | sha256sum }}
 {{- /* reset checksum since redis generates new random password on each deploy */ -}}
 {{- if and .Values.redis.usePassword (not .Values.redis.existingSecret) }}
-checksum/redis-password: {{ randAlphaNum 10 | sha256sum }}
+checksum/redis-password: {{ default (randAlphaNum 10) .Values.redis.password | sha256sum }}
 {{- end }}
 {{- with .Values.podAnnotations }}
 {{ toYaml . }}
