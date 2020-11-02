@@ -60,12 +60,6 @@ jobs:
     needs:
       - lint
       - kubeval
-    strategy:
-      matrix:
-        k8s:
-          - v1.16.15
-          - v1.17.11
-          - v1.18.8
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -76,11 +70,9 @@ jobs:
         uses: helm/chart-testing-action@v1.1.0
         with:
           command: list-changed
-      - name: Create kind ${{ matrix.k8s }} cluster
+      - name: Create kind cluster
         if: steps.changes.outputs.changed == 'true'
         uses: helm/kind-action@v1.0.0
-        with:
-          node_image: kindest/node:${{ matrix.k8s }}
       - name: Install
         if: steps.changes.outputs.changed == 'true'
         uses: helm/chart-testing-action@v1.1.0
