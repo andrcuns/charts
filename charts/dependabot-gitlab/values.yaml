@@ -87,9 +87,7 @@ redis:
     enabled: false
     # -- Slave count
     slaveCount: 2
-
   # -- Use redis password
   usePassword: true
-
   # -- Override redis name
   fullnameOverride: redis

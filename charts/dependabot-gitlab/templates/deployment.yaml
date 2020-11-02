@@ -11,12 +11,10 @@ spec:
       {{- include "dependabot-gitlab.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-    {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
       labels:
         {{- include "dependabot-gitlab.selectorLabels" . | nindent 8 }}
+      annotations:
+        {{- include "dependabot-gitlab.podAnnotations" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "dependabot-gitlab.serviceAccountName" . }}
       securityContext:
