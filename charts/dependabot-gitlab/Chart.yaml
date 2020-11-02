@@ -6,7 +6,7 @@ version: 0.0.12
 appVersion: 0.0.8
 icon: https://gitlab.com/dependabot-gitlab/dependabot/-/raw/master/logo.png
 maintainers:
-  - name: andrcuns
+  - name: Andrejs Cunskis
     email: andrejs.cunskis@gmail.com
 dependencies:
 - name: redis
