@@ -51,6 +51,20 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
+Pod annotations
+*/}}
+{{- define "dependabot-gitlab.podAnnotations" -}}
+checksum/secrets: {{ include (print $.Template.BasePath "/secrets.yaml") . | sha256sum }}
+{{- /* reset checksum since redis generates new random password on each deploy */ -}}
+{{- if and .Values.redis.usePassword (not .Values.redis.existingSecret) }}
+checksum/redis-password: {{ randAlphaNum 10 | sha256sum }}
+{{- end }}
+{{- with .Values.podAnnotations }}
+{{ toYaml . }}
+{{- end }}
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "dependabot-gitlab.serviceAccountName" -}}
