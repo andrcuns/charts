@@ -24,6 +24,13 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 
 {{/*
+Image tag
+*/}}
+{{- define "buildkit.imageTag" -}}
+{{- default (.Values.rootless | ternary (printf "%s-rootless" .Chart.AppVersion) .Chart.AppVersion) .Values.image.tag }}
+{{- end }}
+
+{{/*
 Create chart name and version as used by the chart label.
 */}}
 {{- define "buildkit.chart" -}}
