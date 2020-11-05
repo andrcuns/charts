@@ -8,6 +8,9 @@ image:
   # -- Image tag
   tag: ""
 
+# -- Run rootless mode, https://github.com/moby/buildkit/blob/master/docs/rootless.md
+rootless: false
+
 # -- Pod annotations
 podAnnotations: {}
 

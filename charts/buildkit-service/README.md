@@ -1,6 +1,6 @@
 # buildkit-service
 
-![Version: 0.0.6](https://img.shields.io/badge/Version-0.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.7.2](https://img.shields.io/badge/AppVersion-v0.7.2-informational?style=flat-square)
+![Version: 0.0.7](https://img.shields.io/badge/Version-0.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.7.2](https://img.shields.io/badge/AppVersion-v0.7.2-informational?style=flat-square)
 
 [buildkit](https://github.com/moby/buildkit) is a toolkit for converting source code to build artifacts in an efficient, expressive and repeatable manner.
 
@@ -38,6 +38,7 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | podAnnotations | object | `{}` | Pod annotations |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` | Resource definitions |
+| rootless | bool | `false` | Run rootless mode, https://github.com/moby/buildkit/blob/master/docs/rootless.md |
 | service.annotations | object | `{}` | Service annotations |
 | service.port | int | `1234` | Service port |
 | service.type | string | `"ClusterIP"` | Service type |
