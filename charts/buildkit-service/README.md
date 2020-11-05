@@ -38,6 +38,7 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | podAnnotations | object | `{}` | Pod annotations |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` | Resource definitions |
+| rootless | bool | `false` | Run rootless mode |
 | service.annotations | object | `{}` | Service annotations |
 | service.port | int | `1234` | Service port |
 | service.type | string | `"ClusterIP"` | Service type |
