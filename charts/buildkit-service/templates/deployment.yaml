@@ -28,6 +28,12 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ include "buildkit.imageTag" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.tls.enabled }}
+          volumeMounts:
+            - name: certs
+              readOnly: true
+              mountPath: /certs
+          {{- end }}
           args:
             - --addr
             - unix:///run/{{ .Values.rootless | ternary "user/1000" ""}}/buildkit/buildkitd.sock
@@ -35,6 +41,14 @@ spec:
             - tcp://0.0.0.0:1234
           {{- if .Values.rootless }}
             - --oci-worker-no-process-sandbox
+          {{- end }}
+          {{- if .Values.tls.enabled }}
+            - --tlscacert
+            - /certs/ca.pem
+            - --tlscert
+            - /certs/cert.pem
+            - --tlskey
+            - /certs/key.pem
           {{- end }}
           ports:
             - name: tcp
@@ -65,6 +79,12 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      {{- if .Values.tls.enabled }}
+      volumes:
+      - name: certs
+        secret:
+          secretName: {{ include "buildkit.fullname" . }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

@@ -1,6 +1,6 @@
 # buildkit-service
 
-![Version: 0.0.8](https://img.shields.io/badge/Version-0.0.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.7.2](https://img.shields.io/badge/AppVersion-v0.7.2-informational?style=flat-square)
+![Version: 0.0.9](https://img.shields.io/badge/Version-0.0.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.7.2](https://img.shields.io/badge/AppVersion-v0.7.2-informational?style=flat-square)
 
 [buildkit](https://github.com/moby/buildkit) is a toolkit for converting source code to build artifacts in an efficient, expressive and repeatable manner.
 
@@ -42,4 +42,8 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | service.annotations | object | `{}` | Service annotations |
 | service.port | int | `1234` | Service port |
 | service.type | string | `"ClusterIP"` | Service type |
+| tls.cert | string | `nil` | Base64 encoded cert.pem |
+| tls.certCA | string | `nil` | Base64 encoded ca.pem |
+| tls.certKey | string | `nil` | Base64 encoded key.pem |
+| tls.enabled | bool | `false` | Enable mTLS, refer to https://github.com/moby/buildkit/tree/master/examples/kubernetes#deployment--service |
 | tolerations | list | `[]` | Tolerations |
