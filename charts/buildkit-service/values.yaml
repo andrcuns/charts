@@ -44,7 +44,7 @@ tls:
   # -- Enable mTLS, refer to https://github.com/moby/buildkit/tree/master/examples/kubernetes#deployment--service
   enabled: false
   # -- Base64 encoded cert.pem
-  cert: 
+  cert:
   # -- Base64 encoded key.pem
   certKey:
   # -- Base64 encoded ca.pem
