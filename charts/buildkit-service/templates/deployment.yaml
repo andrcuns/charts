@@ -29,10 +29,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ include "buildkit.imageTag" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.tls.enabled }}
-          volumes:
-          - name: certs
-            secret:
-              secretName: {{ include "buildkit.fullname" . }}
+          volumeMounts:
+            - name: certs
+              readOnly: true
+              mountPath: /certs
           {{- end }}
           args:
             - --addr
@@ -79,12 +79,12 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if .Values.tls.enabled }}
-          volumeMounts:
-            - name: certs
-              readOnly: true
-              mountPath: /certs
-          {{- end }}
+      {{- if .Values.tls.enabled }}
+      volumes:
+      - name: certs
+        secret:
+          secretName: {{ include "buildkit.fullname" . }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
