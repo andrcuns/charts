@@ -1,0 +1,7 @@
+rootless: true
+
+tls:
+  enabled: true
+  cert: dGVzdAo=
+  certKey: dGVzdAo=
+  certCA: dGVzdAo=

@@ -42,4 +42,8 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | service.annotations | object | `{}` | Service annotations |
 | service.port | int | `1234` | Service port |
 | service.type | string | `"ClusterIP"` | Service type |
+| tls.cert | string | `nil` | Base64 encoded cert.pem |
+| tls.certCA | string | `nil` | Base64 encoded ca.pem |
+| tls.certKey | string | `nil` | Base64 encoded key.pem |
+| tls.enabled | bool | `false` | Enable mTLS, refer to https://github.com/moby/buildkit/tree/master/examples/kubernetes#deployment--service |
 | tolerations | list | `[]` | Tolerations |
