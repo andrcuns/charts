@@ -3,3 +3,10 @@ repos:
     rev: v1.4.0
     hooks:
       - id: helm-docs
+  - repo: local
+    hooks:
+      - id: helm-lint
+        name: Helm lint
+        entry: hooks/helmlint.sh
+        language: script
+        files: \.((ya?ml)|(tpl))$
