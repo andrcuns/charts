@@ -2,6 +2,9 @@
 
 set -e
 
+# Source
+# https://github.com/gruntwork-io/pre-commit/blob/master/hooks/helmlint.sh
+
 # Take the current working directory to know when to stop walking up the tree
 readonly cwd_abspath="$(realpath "$PWD")"
 
@@ -83,7 +86,9 @@ for file in "$@"; do
     if contains_element "$file_chart_path" "${seen_chart_paths[@]}"; then
       debug "Already linted $file_chart_path"
     else
-      for yaml in $chart_dir/ci/ci-*.yaml; do
+      # Run against all combinations of ci-values.yaml files
+      for yaml in $file_chart_path/ci/ci-*.yaml; do
+        echo "Validating $file_chart_path with values from $yaml"
         helm lint -f "$yaml" "$file_chart_path"
       done
       seen_chart_paths+=("$file_chart_path")
