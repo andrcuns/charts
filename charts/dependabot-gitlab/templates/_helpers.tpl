@@ -115,13 +115,13 @@ Environment config
   {{- end }}
 {{- if .Values.mongodb.auth.enabled }}
 - name: DB_NAME
-  value: {{ .Values.mongodb.database }}
+  value: {{ .Values.mongodb.auth.database }}
 - name: DB_USER
   value: {{ .Values.mongodb.auth.username }}
 - name: DB_PASSWORD
   valueFrom:
     secretKeyRef:
-      name: {{ .Values.redis.fullnameOverride }}
+      name: {{ .Values.mongodb.fullnameOverride }}
       key: mongodb-password
 {{- end }}
 {{- end }}
