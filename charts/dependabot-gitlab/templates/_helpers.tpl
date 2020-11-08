@@ -76,15 +76,27 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
-Redis config
+Environment config
 */}}
-{{- define "dependabot-gitlab.redisConfig" -}}
-- name: REDIS_URL
-{{- if .Values.redis.enabled }}
-  value: redis://{{ .Values.redis.fullnameOverride }}-master.{{ .Release.Namespace }}.svc.{{ .Values.redis.clusterDomain }}
-{{- else }}
-  value: {{ required "redisUrl must be provided" .Values.env.redisUrl | quote }}
+{{- define "dependabot-gitlab.environment" -}}
+- name: RAILS_ENV
+  value: production
+- name: RAILS_SERVE_STATIC_FILES
+  value: "true"
+- name: SECRET_KEY_BASE
+  value: key
+- name: SETTINGS__GITLAB_URL
+  value: {{ .Values.env.gitlabUrl | quote }}
+{{- if .Values.env.sentryDsn }}
+- name: SENTRY_DSN
+  value: {{ .Values.env.sentryDsn }}
 {{- end }}
+- name: REDIS_URL
+  {{- if .Values.redis.enabled }}
+  value: redis://{{ .Values.redis.fullnameOverride }}-master.{{ .Release.Namespace }}.svc.{{ .Values.redis.clusterDomain }}
+  {{- else }}
+  value: {{ required "redisUrl must be provided" .Values.env.redisUrl | quote }}
+  {{- end }}
 {{- if .Values.redis.usePassword }}
 - name: REDIS_PASSWORD
   valueFrom:
@@ -92,18 +104,12 @@ Redis config
       name: {{ .Values.redis.fullnameOverride }}
       key: {{ .Values.redis.fullnameOverride }}-password
 {{- end }}
-{{- end }}
-
-{{/*
-Mongodb config
-*/}}
-{{- define "dependabot-gitlab.mongodbConfig" -}}
 - name: MONGODB_URL
-{{- if .Values.mongodb.enabled }}
+  {{- if .Values.mongodb.enabled }}
   value: {{ .Values.mongodb.fullnameOverride }}.{{ .Release.Namespace }}.svc.{{ .Values.mongodb.clusterDomain }}:{{ .Values.mongodb.service.port }}
-{{- else }}
+  {{- else }}
   value: {{ required "mongodbUrl must be provided" .Values.env.mongodbUrl | quote }}
-{{- end }}
+  {{- end }}
 {{- end }}
 
 {{/*
