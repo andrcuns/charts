@@ -114,7 +114,7 @@ Environment config
   value: {{ required "mongodbUrl must be provided" .Values.env.mongodbUrl | quote }}
   {{- end }}
 {{- if .Values.mongodb.auth.enabled }}
-- name: MONGDODB_DBNAME
+- name: MONGDODB_DATABASE
   value: {{ .Values.mongodb.auth.database }}
 - name: MONGODB_USER
   value: {{ .Values.mongodb.auth.username }}
