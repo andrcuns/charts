@@ -1,3 +1,6 @@
 # required value for dependabot-gitlab deployment
 credentials:
   gitlab_access_token: token
+
+mongodb:
+  enabled: true

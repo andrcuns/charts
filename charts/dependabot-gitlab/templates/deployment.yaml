@@ -47,6 +47,7 @@ spec:
               value: {{ .Values.env.sentryDsn }}
             {{- end }}
             {{- include "dependabot-gitlab.redisConfig" . | nindent 12 }}
+            {{- include "dependabot-gitlab.mongodbConfig" . | nindent 12 }}
           ports:
             - name: http
               containerPort: 3000
@@ -86,6 +87,7 @@ spec:
               value: {{ .Values.env.sentryDsn }}
             {{- end }}
             {{- include "dependabot-gitlab.redisConfig" . | nindent 12 }}
+            {{- include "dependabot-gitlab.mongodbConfig" . | nindent 12 }}
           resources:
             {{- toYaml .Values.worker.resources | nindent 12 }}
       volumes:

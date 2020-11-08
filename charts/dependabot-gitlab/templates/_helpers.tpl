@@ -81,7 +81,7 @@ Redis config
 {{- define "dependabot-gitlab.redisConfig" -}}
 - name: REDIS_URL
 {{- if .Values.redis.enabled }}
-  value: redis://{{ .Values.redis.fullnameOverride }}-master.{{ .Release.Namespace }}.svc.cluster.local
+  value: redis://{{ .Values.redis.fullnameOverride }}-master.{{ .Release.Namespace }}.svc.{{ .Values.redis.clusterDomain }}
 {{- else }}
   value: {{ required "redisUrl must be provided" .Values.env.redisUrl | quote }}
 {{- end }}
@@ -91,6 +91,18 @@ Redis config
     secretKeyRef:
       name: {{ .Values.redis.fullnameOverride }}
       key: {{ .Values.redis.fullnameOverride }}-password
+{{- end }}
+{{- end }}
+
+{{/*
+Mongodb config
+*/}}
+{{- define "dependabot-gitlab.mongodbConfig" -}}
+- name: MONGODB_URL
+{{- if .Values.mongodb.enabled }}
+  value: {{ .Values.mongodb.fullnameOverride }}-master.{{ .Release.Namespace }}.svc.{{ .Values.mongodb.clusterDomain }}:{{ .Values.mongodb.service.port }}
+{{- else }}
+  value: {{ required "mongodbUrl must be provided" .Values.env.mongodbUrl | quote }}
 {{- end }}
 {{- end }}
 
