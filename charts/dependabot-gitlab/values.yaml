@@ -59,11 +59,13 @@ worker:
 
 env:
   # -- Redis URL
-  redisUrl: ""
+  redisUrl:
+  # -- MongoDB URL
+  mongoDbUrl:
   # -- Gitlab instance URL
   gitlabUrl: https://gitlab.com
   # -- Optional sentry dsn for error reporting
-  sentryDsn: ""
+  sentryDsn:
 
 credentials:
   # -- Gitlab access token, required
@@ -91,3 +93,16 @@ redis:
   usePassword: true
   # -- Override redis name
   fullnameOverride: redis
+  # -- Kubernetes Cluster Domain
+  clusterDomain: cluster.local
+
+mongodb:
+  # -- Enable mongodb installation
+  enabled: false
+  # -- String to fully override mongodb.fullname template
+  fullnameOverride: mongodb
+  # -- Kubernetes Cluster Domain
+  clusterDomain: cluster.local
+  service:
+    # -- Mongodb service port
+    port: 27017

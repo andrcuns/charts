@@ -1,3 +1,10 @@
 # required value for dependabot-gitlab deployment
 credentials:
   gitlab_access_token: token
+
+mongodb:
+  enabled: true
+
+image:
+  repository: registry.gitlab.com/dependabot-gitlab/dependabot
+  tag: master-latest

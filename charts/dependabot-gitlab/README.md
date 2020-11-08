@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.13](https://img.shields.io/badge/Version-0.0.13-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.8](https://img.shields.io/badge/AppVersion-0.0.8-informational?style=flat-square)
+![Version: 0.0.14](https://img.shields.io/badge/Version-0.0.14-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.8](https://img.shields.io/badge/AppVersion-0.0.8-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -30,6 +30,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 
 | Repository | Name | Version |
 |------------|------|---------|
+| https://charts.bitnami.com/bitnami | mongodb | ~9.3.1 |
 | https://charts.bitnami.com/bitnami | redis | ~11.2.1 |
 
 ## Values
@@ -44,8 +45,9 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | credentials.maven | object | `{}` | Private maven repository credentials |
 | credentials.npm | object | `{}` | Private npm package registry cretentials |
 | env.gitlabUrl | string | `"https://gitlab.com"` | Gitlab instance URL |
-| env.redisUrl | string | `""` | Redis URL |
-| env.sentryDsn | string | `""` | Optional sentry dsn for error reporting |
+| env.mongoDbUrl | string | `nil` | MongoDB URL |
+| env.redisUrl | string | `nil` | Redis URL |
+| env.sentryDsn | string | `nil` | Optional sentry dsn for error reporting |
 | fullnameOverride | string | `""` | Override fully qualified app name |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"docker.io/andrcuns/dependabot-gitlab"` | Image to use for deploying |
@@ -55,11 +57,16 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
+| mongodb.clusterDomain | string | `"cluster.local"` | Kubernetes Cluster Domain |
+| mongodb.enabled | bool | `false` | Enable mongodb installation |
+| mongodb.fullnameOverride | string | `"mongodb"` | String to fully override mongodb.fullname template |
+| mongodb.service.port | int | `27017` | Mongodb service port |
 | nameOverride | string | `""` | Override chart name |
 | nodeSelector | object | `{}` | Node selectors |
 | podAnnotations | object | `{}` | Pod annotations |
 | redis.cluster.enabled | bool | `false` | Enable redis cluster |
 | redis.cluster.slaveCount | int | `2` | Slave count |
+| redis.clusterDomain | string | `"cluster.local"` | Kubernetes Cluster Domain |
 | redis.enabled | bool | `true` | Enable redis installation |
 | redis.fullnameOverride | string | `"redis"` | Override redis name |
 | redis.usePassword | bool | `true` | Use redis password |
