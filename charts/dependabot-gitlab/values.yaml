@@ -103,6 +103,17 @@ mongodb:
   fullnameOverride: mongodb
   # -- Kubernetes Cluster Domain
   clusterDomain: cluster.local
+  auth:
+  # -- Enable authentication
+    enabled: true
+    # -- MongoDB root password
+    rootPassword: ""
+    # -- MongoDB custom user username
+    username: ""
+    # -- MongoDB custom user password
+    password: ""
+    # -- MongoDB custom database
+    database: dependabot_gitab
   service:
     # -- Mongodb service port
     port: 27017

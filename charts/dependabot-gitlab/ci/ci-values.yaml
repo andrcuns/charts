@@ -4,6 +4,10 @@ credentials:
 
 mongodb:
   enabled: true
+  auth:
+    enabled: true
+    username: username
+    password: password
 
 image:
   repository: registry.gitlab.com/dependabot-gitlab/dependabot
