@@ -57,6 +57,11 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
+| mongodb.auth.database | string | `"dependabot_gitab"` | MongoDB custom database |
+| mongodb.auth.enabled | bool | `true` | Enable authentication |
+| mongodb.auth.password | string | `""` | MongoDB custom user password |
+| mongodb.auth.rootPassword | string | `""` | MongoDB root password |
+| mongodb.auth.username | string | `""` | MongoDB custom user username |
 | mongodb.clusterDomain | string | `"cluster.local"` | Kubernetes Cluster Domain |
 | mongodb.enabled | bool | `false` | Enable mongodb installation |
 | mongodb.fullnameOverride | string | `"mongodb"` | String to fully override mongodb.fullname template |

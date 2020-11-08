@@ -55,9 +55,12 @@ Pod annotations
 */}}
 {{- define "dependabot-gitlab.podAnnotations" -}}
 checksum/secrets: {{ include (print $.Template.BasePath "/secrets.yaml") . | sha256sum }}
-{{- /* reset checksum since redis generates new random password on each deploy */ -}}
+{{- /* reset checksum since redis and mongodb generates new random password on each deploy if not provided*/ -}}
 {{- if and .Values.redis.usePassword (not .Values.redis.existingSecret) }}
 checksum/redis-password: {{ default (randAlphaNum 10) .Values.redis.password | sha256sum }}
+{{- end }}
+{{- if .Values.mongodb.auth.enabled }}
+checksum/mongodb-password: {{ default (randAlphaNum 10) .Values.mongodb.auth.password | sha256sum }}
 {{- end }}
 {{- with .Values.podAnnotations }}
 {{ toYaml . }}
@@ -110,6 +113,17 @@ Environment config
   {{- else }}
   value: {{ required "mongodbUrl must be provided" .Values.env.mongodbUrl | quote }}
   {{- end }}
+{{- if .Values.mongodb.auth.enabled }}
+- name: DB_NAME
+  value: {{ .Values.mongodb.database }}
+- name: DB_USER
+  value: {{ .Values.mongodb.auth.username }}
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.redis.fullnameOverride }}
+      key: mongodb-password
+{{- end }}
 {{- end }}
 
 {{/*
