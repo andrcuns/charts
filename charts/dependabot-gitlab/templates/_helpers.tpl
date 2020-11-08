@@ -139,7 +139,7 @@ startupProbe:
   httpGet:
     path: /
     port: http
-  initialDelaySeconds: 10
+  initialDelaySeconds: 20
   failureThreshold: 20
   periodSeconds: 5
 {{- end }}
