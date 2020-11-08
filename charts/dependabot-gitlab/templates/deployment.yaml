@@ -56,10 +56,19 @@ spec:
             httpGet:
               path: /
               port: http
+            periodSeconds: 120
           readinessProbe:
             httpGet:
               path: /
               port: http
+            periodSeconds: 120
+          startupProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 30
+            failureThreshold: 20
+            periodSeconds: 10
           resources:
             {{- toYaml .Values.web.resources | nindent 12 }}
         - name: {{ .Chart.Name }}-worker
