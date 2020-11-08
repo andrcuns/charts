@@ -100,7 +100,7 @@ Mongodb config
 {{- define "dependabot-gitlab.mongodbConfig" -}}
 - name: MONGODB_URL
 {{- if .Values.mongodb.enabled }}
-  value: {{ .Values.mongodb.fullnameOverride }}-master.{{ .Release.Namespace }}.svc.{{ .Values.mongodb.clusterDomain }}:{{ .Values.mongodb.service.port }}
+  value: {{ .Values.mongodb.fullnameOverride }}.{{ .Release.Namespace }}.svc.{{ .Values.mongodb.clusterDomain }}:{{ .Values.mongodb.service.port }}
 {{- else }}
   value: {{ required "mongodbUrl must be provided" .Values.env.mongodbUrl | quote }}
 {{- end }}
