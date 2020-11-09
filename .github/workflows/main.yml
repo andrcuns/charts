@@ -29,7 +29,7 @@ jobs:
           fetch-depth: 0
       - name: Lint
         id: lint
-        uses: helm/chart-testing-action@v1.1.0
+        uses: helm/chart-testing-action@v2.0.0
         with:
           command: lint
           config: .github/ct-lint.yaml
@@ -48,7 +48,7 @@ jobs:
           fetch-depth: 0
       - name: Check changes
         id: changes
-        uses: helm/chart-testing-action@v1.1.0
+        uses: helm/chart-testing-action@v2.0.0
         with:
           command: list-changed
       - name: Run kubeval
@@ -67,7 +67,7 @@ jobs:
           fetch-depth: 0
       - name: Check changes
         id: changes
-        uses: helm/chart-testing-action@v1.1.0
+        uses: helm/chart-testing-action@v2.0.0
         with:
           command: list-changed
       - name: Create kind cluster
@@ -75,7 +75,7 @@ jobs:
         uses: helm/kind-action@v1.0.0
       - name: Install
         if: steps.changes.outputs.changed == 'true'
-        uses: helm/chart-testing-action@v1.1.0
+        uses: helm/chart-testing-action@v2.0.0
         with:
           command: install
           config: .github/ct-install.yaml
