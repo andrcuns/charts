@@ -23,8 +23,6 @@ spec:
         fsGroup: 1000
       containers:
         - name: {{ .Chart.Name }}-web
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args: ["rails", "server"]
@@ -39,17 +37,24 @@ spec:
             - name: http
               containerPort: 3000
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            {{- toYaml .Values.web.probes.livenessProbe | nindent 12 }}
+          startupProbe:
+            httpGet:
+              path: /
+              port: http
+            {{- toYaml .Values.web.probes.startupProbe | nindent 12 }}
           readinessProbe:
             httpGet:
               path: /
               port: http
-            periodSeconds: 120
-          {{- include "dependabot-gitlab.probes" . | nindent 10 }}
+            {{- toYaml .Values.web.probes.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.web.resources | nindent 12 }}
         - name: {{ .Chart.Name }}-worker
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args: ["sidekiq"]
@@ -64,7 +69,16 @@ spec:
             - name: http
               containerPort: 7433
               protocol: TCP
-          {{- include "dependabot-gitlab.probes" . | nindent 10 }}
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            {{- toYaml .Values.worker.probes.livenessProbe | nindent 12 }}
+          startupProbe:
+            httpGet:
+              path: /
+              port: http
+            {{- toYaml .Values.worker.probes.startupProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.worker.resources | nindent 12 }}
       volumes:

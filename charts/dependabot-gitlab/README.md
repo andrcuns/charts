@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.16](https://img.shields.io/badge/Version-0.0.16-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.0.17](https://img.shields.io/badge/Version-0.0.17-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.1](https://img.shields.io/badge/AppVersion-0.1.1-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -83,5 +83,10 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | serviceAccount.create | bool | `false` | Create service account |
 | serviceAccount.name | string | `""` | Service account name |
 | tolerations | list | `[]` | Tolerations |
+| web.probes.livenessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":5}` | Liveness probe settings |
+| web.probes.readinessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":5}` | Readiness probe settings |
+| web.probes.startupProbe | object | `{"failureThreshold":20,"initialDelaySeconds":20,"periodSeconds":5}` | Start probe settings |
 | web.resources | object | `{}` | Web container resource definitions |
+| worker.probes.livenessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":5}` | Liveness probe settings |
+| worker.probes.startupProbe | object | `{"failureThreshold":20,"initialDelaySeconds":20,"periodSeconds":5,"timeoutSecond":5}` | Start probe settings |
 | worker.resources | object | `{}` | Worker container resource definitions |
