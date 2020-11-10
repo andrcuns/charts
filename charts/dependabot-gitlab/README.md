@@ -88,5 +88,5 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | web.probes.startupProbe | object | `{"failureThreshold":20,"initialDelaySeconds":20,"periodSeconds":5}` | Start probe settings |
 | web.resources | object | `{}` | Web container resource definitions |
 | worker.probes.livenessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":5}` | Liveness probe settings |
-| worker.probes.startupProbe | object | `{"failureThreshold":20,"initialDelaySeconds":20,"periodSeconds":5,"timeoutSecond":5}` | Start probe settings |
+| worker.probes.startupProbe | object | `{"failureThreshold":20,"initialDelaySeconds":20,"periodSeconds":5,"timeoutSeconds":5}` | Start probe settings |
 | worker.resources | object | `{}` | Worker container resource definitions |
