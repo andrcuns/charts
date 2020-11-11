@@ -68,6 +68,7 @@ web:
       initialDelaySeconds: 20
       failureThreshold: 20
       periodSeconds: 5
+      timeoutSeconds: 5
 
 worker:
   # -- Worker container resource definitions
