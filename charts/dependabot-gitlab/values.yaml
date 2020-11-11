@@ -52,10 +52,39 @@ affinity: {}
 web:
   # -- Web container resource definitions
   resources: {}
+  probes:
+    # -- Liveness probe settings
+    livenessProbe:
+      initialDelaySeconds: 10
+      failureThreshold: 20
+      periodSeconds: 5
+    # -- Readiness probe settings
+    readinessProbe:
+      initialDelaySeconds: 10
+      failureThreshold: 20
+      periodSeconds: 5
+    # -- Start probe settings
+    startupProbe:
+      initialDelaySeconds: 20
+      failureThreshold: 20
+      periodSeconds: 5
+      timeoutSeconds: 5
 
 worker:
   # -- Worker container resource definitions
   resources: {}
+  probes:
+    # -- Liveness probe settings
+    livenessProbe:
+      initialDelaySeconds: 10
+      failureThreshold: 20
+      periodSeconds: 5
+    # -- Start probe settings
+    startupProbe:
+      initialDelaySeconds: 20
+      failureThreshold: 20
+      periodSeconds: 5
+      timeoutSeconds: 5
 
 env:
   # -- Redis URL

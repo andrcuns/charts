@@ -2,8 +2,8 @@ apiVersion: v2
 name: dependabot-gitlab
 description: Deployment chart for dependabot-gitlab app
 type: application
-version: 0.0.16
-appVersion: 0.1.0
+version: 0.0.17
+appVersion: 0.1.1
 icon: https://gitlab.com/dependabot-gitlab/dependabot/-/raw/master/logo.png
 maintainers:
   - name: Andrejs Cunskis
