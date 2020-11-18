@@ -17,10 +17,6 @@ spec:
         {{- include "dependabot-gitlab.podAnnotations" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "dependabot-gitlab.serviceAccountName" . }}
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
       containers:
         - name: {{ .Chart.Name }}-web
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
