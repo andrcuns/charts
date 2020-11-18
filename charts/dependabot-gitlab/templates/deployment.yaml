@@ -64,6 +64,8 @@ spec:
             - name: tmp
               mountPath: /home/dependabot/tmp
           env:
+            - name: SIDEKIQ_ALIVE_SERVER
+              value: {{ .Values.worker.probes.probeServer }}
             {{- include "dependabot-gitlab.environment" . | nindent 12 }}
           ports:
             - name: http

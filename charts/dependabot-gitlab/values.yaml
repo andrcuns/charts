@@ -85,6 +85,8 @@ worker:
       failureThreshold: 20
       periodSeconds: 5
       timeoutSeconds: 5
+    # -- Probe web server type
+    probeServer: puma
 
 env:
   # -- Redis URL
