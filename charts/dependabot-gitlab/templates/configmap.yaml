@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "dependabot-gitlab.fullname" . }}
+data:
+  RAILS_ENV: production
+  RAILS_SERVE_STATIC_FILES: "true"
+  SECRET_KEY_BASE: key
+  SETTINGS__GITLAB_URL: {{ .Values.env.gitlabUrl | quote }}
+  SENTRY_DSN: {{ .Values.env.sentryDsn }}
+  MONGODB_DATABASE: {{ .Values.mongodb.auth.database }}
+  MONGODB_USER: {{ .Values.mongodb.auth.username }}
+  {{- if .Values.redis.enabled }}
+  REDIS_URL: redis://{{ .Values.redis.fullnameOverride }}-master.{{ .Release.Namespace }}.svc.{{ .Values.redis.clusterDomain }}
+  {{- else }}
+  REDIS_URL: {{ required "redisUrl must be provided" .Values.env.redisUrl | quote }}
+  {{- end }}
+  {{- if .Values.mongodb.enabled }}
+  MONGODB_URL: {{ .Values.mongodb.fullnameOverride }}.{{ .Release.Namespace }}.svc.{{ .Values.mongodb.clusterDomain }}:{{ .Values.mongodb.service.port }}
+  {{- else }}
+  MONGODB_URL: {{ required "mongodbUrl must be provided" .Values.env.mongodbUrl | quote }}
+  {{- end }}

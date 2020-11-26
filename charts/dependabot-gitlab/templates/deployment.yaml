@@ -28,7 +28,10 @@ spec:
             - name: tmp
               mountPath: /home/dependabot/tmp
           env:
-            {{- include "dependabot-gitlab.environment" . | nindent 12 }}
+            {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
+          envFrom:
+            - configMapRef:
+              name: {{ include "dependabot-gitlab.fullname" . }}
           ports:
             - name: http
               containerPort: 3000
@@ -62,7 +65,10 @@ spec:
           env:
             - name: SIDEKIQ_ALIVE_SERVER
               value: {{ .Values.worker.probes.probeServer }}
-            {{- include "dependabot-gitlab.environment" . | nindent 12 }}
+            {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
+          envFrom:
+            - configMapRef:
+              name: {{ include "dependabot-gitlab.fullname" . }}
           ports:
             - name: http
               containerPort: 7433
