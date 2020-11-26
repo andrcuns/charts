@@ -7,10 +7,14 @@ data:
   RAILS_SERVE_STATIC_FILES: "true"
   SECRET_KEY_BASE: key
   SETTINGS__GITLAB_URL: {{ .Values.env.gitlabUrl | quote }}
-  SETTINGS__DEPENDABOT_URL: {{ .Values.env.dependabotUrl | quote }}
-  SENTRY_DSN: {{ .Values.env.sentryDsn }}
   MONGODB_DATABASE: {{ .Values.mongodb.auth.database }}
   MONGODB_USER: {{ .Values.mongodb.auth.username }}
+  {{- if .Values.env.dependabotUrl }}
+  SETTINGS__DEPENDABOT_URL: {{ .Values.env.dependabotUrl | quote }}
+  {{- end }}
+  {{- if .Values.env.sentryDsn }}
+  SENTRY_DSN: {{ .Values.env.sentryDsn | quote }}
+  {{- end }}
   {{- if .Values.redis.enabled }}
   REDIS_URL: redis://{{ .Values.redis.fullnameOverride }}-master.{{ .Release.Namespace }}.svc.{{ .Values.redis.clusterDomain }}
   {{- else }}
