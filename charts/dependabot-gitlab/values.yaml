@@ -97,6 +97,8 @@ env:
   gitlabUrl: https://gitlab.com
   # -- Optional sentry dsn for error reporting
   sentryDsn:
+  # -- Optional app url, used for automated webhook creation
+  dependabotUrl:
 
 credentials:
   # -- Gitlab access token, required
