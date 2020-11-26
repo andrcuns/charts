@@ -31,7 +31,7 @@ spec:
             {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
           envFrom:
             - configMapRef:
-              name: {{ include "dependabot-gitlab.fullname" . }}
+                name: {{ include "dependabot-gitlab.fullname" . }}
           ports:
             - name: http
               containerPort: 3000
@@ -68,7 +68,7 @@ spec:
             {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
           envFrom:
             - configMapRef:
-              name: {{ include "dependabot-gitlab.fullname" . }}
+                name: {{ include "dependabot-gitlab.fullname" . }}
           ports:
             - name: http
               containerPort: 7433
