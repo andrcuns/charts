@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.20](https://img.shields.io/badge/Version-0.0.20-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.2](https://img.shields.io/badge/AppVersion-0.2.2-informational?style=flat-square)
+![Version: 0.0.21](https://img.shields.io/badge/Version-0.0.21-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.2](https://img.shields.io/badge/AppVersion-0.2.2-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -76,7 +76,6 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | redis.enabled | bool | `true` | Enable redis installation |
 | redis.fullnameOverride | string | `"redis"` | Override redis name |
 | redis.usePassword | bool | `true` | Use redis password |
-| replicaCount | int | `1` |  |
 | service.annotations | object | `{}` | Service annotations |
 | service.port | int | `3000` | Service pot |
 | service.type | string | `"ClusterIP"` | Service type |
@@ -87,8 +86,9 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | web.probes.livenessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":5}` | Liveness probe settings |
 | web.probes.readinessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":5}` | Readiness probe settings |
 | web.probes.startupProbe | object | `{"failureThreshold":20,"initialDelaySeconds":20,"periodSeconds":5,"timeoutSeconds":5}` | Start probe settings |
+| web.replicaCount | int | `1` | Web container replicas count |
 | web.resources | object | `{}` | Web container resource definitions |
 | worker.probes.livenessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":5}` | Liveness probe settings |
-| worker.probes.probeServer | string | `"puma"` | Probe web server type |
 | worker.probes.startupProbe | object | `{"failureThreshold":20,"initialDelaySeconds":20,"periodSeconds":5,"timeoutSeconds":5}` | Start probe settings |
+| worker.replicaCount | int | `1` | Worker container replicas count |
 | worker.resources | object | `{}` | Worker container resource definitions |
