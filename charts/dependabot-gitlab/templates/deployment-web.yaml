@@ -9,10 +9,12 @@ spec:
   selector:
     matchLabels:
       {{- include "dependabot-gitlab.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: web
   template:
     metadata:
       labels:
         {{- include "dependabot-gitlab.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: web
       annotations:
         {{- include "dependabot-gitlab.podAnnotations" . | nindent 8 }}
     spec:

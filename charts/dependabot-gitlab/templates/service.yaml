@@ -17,3 +17,4 @@ spec:
       name: http
   selector:
     {{- include "dependabot-gitlab.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: web
