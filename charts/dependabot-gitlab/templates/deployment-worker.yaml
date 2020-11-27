@@ -28,8 +28,6 @@ spec:
             - name: credentials
               mountPath: /home/dependabot/config/settings
           env:
-            - name: SIDEKIQ_ALIVE_SERVER
-              value: {{ .Values.worker.probes.probeServer }}
             {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
           envFrom:
             - configMapRef:
