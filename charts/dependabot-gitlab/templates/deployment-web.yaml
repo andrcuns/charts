@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "dependabot-gitlab.fullname" . }}-web
+  labels:
+    {{- include "dependabot-gitlab.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.web.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "dependabot-gitlab.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "dependabot-gitlab.selectorLabels" . | nindent 8 }}
+      annotations:
+        {{- include "dependabot-gitlab.podAnnotations" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "dependabot-gitlab.serviceAccountName" . }}
+      containers:
+        - name: {{ .Chart.Name }}-web
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args: ["rails", "server"]
+          volumeMounts:
+            - name: credentials
+              mountPath: "/home/dependabot/config/settings"
+          env:
+            {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "dependabot-gitlab.fullname" . }}
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            {{- toYaml .Values.web.probes.livenessProbe | nindent 12 }}
+          startupProbe:
+            httpGet:
+              path: /
+              port: http
+            {{- toYaml .Values.web.probes.startupProbe | nindent 12 }}
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            {{- toYaml .Values.web.probes.readinessProbe | nindent 12 }}
+          resources:
+            {{- toYaml .Values.web.resources | nindent 12 }}
+      volumes:
+        - name: credentials
+          secret:
+            secretName: {{ include "dependabot-gitlab.fullname" . }}
+            defaultMode: 0400
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

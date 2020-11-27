@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "dependabot-gitlab.fullname" . }}
+  name: {{ include "dependabot-gitlab.fullname" . }}-worker
   labels:
     {{- include "dependabot-gitlab.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.worker.replicaCount }}
   selector:
     matchLabels:
       {{- include "dependabot-gitlab.selectorLabels" . | nindent 6 }}
@@ -18,41 +18,6 @@ spec:
     spec:
       serviceAccountName: {{ include "dependabot-gitlab.serviceAccountName" . }}
       containers:
-        - name: {{ .Chart.Name }}-web
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          args: ["rails", "server"]
-          volumeMounts:
-            - name: credentials
-              mountPath: "/home/dependabot/config/settings"
-            - name: tmp
-              mountPath: /home/dependabot/tmp
-          env:
-            {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
-          envFrom:
-            - configMapRef:
-                name: {{ include "dependabot-gitlab.fullname" . }}
-          ports:
-            - name: http
-              containerPort: 3000
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-            {{- toYaml .Values.web.probes.livenessProbe | nindent 12 }}
-          startupProbe:
-            httpGet:
-              path: /
-              port: http
-            {{- toYaml .Values.web.probes.startupProbe | nindent 12 }}
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
-            {{- toYaml .Values.web.probes.readinessProbe | nindent 12 }}
-          resources:
-            {{- toYaml .Values.web.resources | nindent 12 }}
         - name: {{ .Chart.Name }}-worker
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
@@ -60,8 +25,6 @@ spec:
           volumeMounts:
             - name: credentials
               mountPath: /home/dependabot/config/settings
-            - name: tmp
-              mountPath: /home/dependabot/tmp
           env:
             - name: SIDEKIQ_ALIVE_SERVER
               value: {{ .Values.worker.probes.probeServer }}
@@ -90,8 +53,6 @@ spec:
           secret:
             secretName: {{ include "dependabot-gitlab.fullname" . }}
             defaultMode: 0400
-        - name: tmp
-          emptyDir: {}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

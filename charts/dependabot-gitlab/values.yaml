@@ -1,5 +1,3 @@
-replicaCount: 1
-
 image:
   # -- Image to use for deploying
   repository: docker.io/andrcuns/dependabot-gitlab
@@ -50,6 +48,8 @@ tolerations: []
 affinity: {}
 
 web:
+  # -- Web container replicas count
+  replicaCount: 1
   # -- Web container resource definitions
   resources: {}
   probes:
@@ -71,6 +71,8 @@ web:
       timeoutSeconds: 5
 
 worker:
+  # -- Worker container replicas count
+  replicaCount: 1
   # -- Worker container resource definitions
   resources: {}
   probes:
