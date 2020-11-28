@@ -57,18 +57,18 @@ web:
     livenessProbe:
       initialDelaySeconds: 10
       failureThreshold: 20
-      periodSeconds: 5
+      periodSeconds: 30
     # -- Readiness probe settings
     readinessProbe:
       initialDelaySeconds: 10
       failureThreshold: 20
-      periodSeconds: 5
+      periodSeconds: 30
     # -- Start probe settings
     startupProbe:
       initialDelaySeconds: 20
       failureThreshold: 20
       periodSeconds: 5
-      timeoutSeconds: 5
+      timeoutSeconds: 10
 
 worker:
   # -- Worker container replicas count
@@ -80,13 +80,13 @@ worker:
     livenessProbe:
       initialDelaySeconds: 10
       failureThreshold: 20
-      periodSeconds: 5
+      periodSeconds: 120
     # -- Start probe settings
     startupProbe:
       initialDelaySeconds: 20
       failureThreshold: 20
       periodSeconds: 5
-      timeoutSeconds: 5
+      timeoutSeconds: 10
 
 env:
   # -- Redis URL
@@ -107,11 +107,14 @@ credentials:
   github_access_token: ""
   # -- Gitlab auth token for webhook authentication
   gitlab_auth_token: ""
-  # -- Private maven repository credentials
+  # -- Private maven repository credentials, multiple repositories referenced by uniqe name  
+  # repoName: {url: url, username: username, password: password} 
   maven: {}
-  # -- Private npm package registry cretentials
+  # -- Private npm package registry cretentials, multiple repositories referenced by uniqe name
+  # registryName: {registry: registry, token: token}
   npm: {}
-  # -- Private docker registry credentials
+  # -- Private docker registry credentials, multiple repositories referenced by uniqe name
+  # registryName: {registry: registry, username: username, password: password}
   docker: {}
 
 redis:

@@ -38,12 +38,12 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity |
-| credentials.docker | object | `{}` | Private docker registry credentials |
+| credentials.docker | object | `{}` | Private docker registry credentials, multiple repositories referenced by uniqe name registryName: {registry: registry, username: username, password: password} |
 | credentials.github_access_token | string | `""` | Github access token |
 | credentials.gitlab_access_token | string | `""` | Gitlab access token, required |
 | credentials.gitlab_auth_token | string | `""` | Gitlab auth token for webhook authentication |
-| credentials.maven | object | `{}` | Private maven repository credentials |
-| credentials.npm | object | `{}` | Private npm package registry cretentials |
+| credentials.maven | object | `{}` | Private maven repository credentials, multiple repositories referenced by uniqe name   repoName: {url: url, username: username, password: password}  |
+| credentials.npm | object | `{}` | Private npm package registry cretentials, multiple repositories referenced by uniqe name registryName: {registry: registry, token: token} |
 | env.dependabotUrl | string | `nil` | Optional app url, used for automated webhook creation |
 | env.gitlabUrl | string | `"https://gitlab.com"` | Gitlab instance URL |
 | env.mongoDbUrl | string | `nil` | MongoDB URL |
@@ -83,12 +83,12 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | serviceAccount.create | bool | `false` | Create service account |
 | serviceAccount.name | string | `""` | Service account name |
 | tolerations | list | `[]` | Tolerations |
-| web.probes.livenessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":5}` | Liveness probe settings |
-| web.probes.readinessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":5}` | Readiness probe settings |
-| web.probes.startupProbe | object | `{"failureThreshold":20,"initialDelaySeconds":20,"periodSeconds":5,"timeoutSeconds":5}` | Start probe settings |
+| web.probes.livenessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":30}` | Liveness probe settings |
+| web.probes.readinessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":30}` | Readiness probe settings |
+| web.probes.startupProbe | object | `{"failureThreshold":20,"initialDelaySeconds":20,"periodSeconds":5,"timeoutSeconds":10}` | Start probe settings |
 | web.replicaCount | int | `1` | Web container replicas count |
 | web.resources | object | `{}` | Web container resource definitions |
-| worker.probes.livenessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":5}` | Liveness probe settings |
-| worker.probes.startupProbe | object | `{"failureThreshold":20,"initialDelaySeconds":20,"periodSeconds":5,"timeoutSeconds":5}` | Start probe settings |
+| worker.probes.livenessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":120}` | Liveness probe settings |
+| worker.probes.startupProbe | object | `{"failureThreshold":20,"initialDelaySeconds":20,"periodSeconds":5,"timeoutSeconds":10}` | Start probe settings |
 | worker.replicaCount | int | `1` | Worker container replicas count |
 | worker.resources | object | `{}` | Worker container resource definitions |
