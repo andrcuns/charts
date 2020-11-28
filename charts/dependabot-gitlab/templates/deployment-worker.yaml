@@ -46,8 +46,14 @@ spec:
               path: /
               port: http
             {{- toYaml .Values.worker.probes.startupProbe | nindent 12 }}
+          lifecycle:
+            preStop:
+              exec:
+                # SIGTERM triggers a quick exit; gracefully terminate instead
+                command: ["kube/sidekiq_quiet.sh"]
           resources:
             {{- toYaml .Values.worker.resources | nindent 12 }}
+      terminationGracePeriodSeconds: 300 # Large dependency files or docker images can take long time to process
       volumes:
         - name: credentials
           secret:
