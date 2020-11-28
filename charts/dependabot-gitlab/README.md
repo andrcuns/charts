@@ -38,12 +38,12 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity |
-| credentials.docker | object | `{}` | Private docker registry credentials, multiple repositories referenced by uniqe name registryName: {registry: registry, username: username, password: password} |
+| credentials.docker | object | `{}` | Private docker registry credentials, multiple repositories referenced by uniqe name: registryName: {registry: registry, username: username, password: password} |
 | credentials.github_access_token | string | `""` | Github access token |
 | credentials.gitlab_access_token | string | `""` | Gitlab access token, required |
 | credentials.gitlab_auth_token | string | `""` | Gitlab auth token for webhook authentication |
-| credentials.maven | object | `{}` | Private maven repository credentials, multiple repositories referenced by uniqe name repoName: {url: url, username: username, password: password} |
-| credentials.npm | object | `{}` | Private npm package registry cretentials, multiple repositories referenced by uniqe name registryName: {registry: registry, token: token} |
+| credentials.maven | object | `{}` | Private maven repository credentials, multiple repositories referenced by uniqe name: repoName: {url: url, username: username, password: password} |
+| credentials.npm | object | `{}` | Private npm package registry cretentials, multiple repositories referenced by uniqe name: registryName: {registry: registry, token: token} |
 | env.dependabotUrl | string | `""` | Optional app url, used for automated webhook creation |
 | env.gitlabUrl | string | `"https://gitlab.com"` | Gitlab instance URL |
 | env.mongoDbUrl | string | `""` | MongoDB URL |
