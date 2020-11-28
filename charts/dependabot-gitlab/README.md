@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.23](https://img.shields.io/badge/Version-0.0.23-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.4](https://img.shields.io/badge/AppVersion-0.2.4-informational?style=flat-square)
+![Version: 0.0.24](https://img.shields.io/badge/Version-0.0.24-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.5](https://img.shields.io/badge/AppVersion-0.2.5-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -71,7 +71,6 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | nodeSelector | object | `{}` | Node selectors |
 | podAnnotations | object | `{}` | Pod annotations |
 | redis.cluster.enabled | bool | `false` | Enable redis cluster |
-| redis.cluster.slaveCount | int | `2` | Slave count |
 | redis.clusterDomain | string | `"cluster.local"` | Kubernetes Cluster Domain |
 | redis.enabled | bool | `true` | Enable redis installation |
 | redis.fullnameOverride | string | `"redis"` | Override redis name |
@@ -83,24 +82,25 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | serviceAccount.create | bool | `false` | Create service account |
 | serviceAccount.name | string | `""` | Service account name |
 | tolerations | list | `[]` | Tolerations |
-| web.probes.livenessProbe.failureThreshold | int | `20` | Liveness probe failure thresold |
-| web.probes.livenessProbe.initialDelaySeconds | int | `10` | Liveness probe initial delay |
-| web.probes.livenessProbe.periodSeconds | int | `30` | Liveness probe period |
-| web.probes.readinessProbe.failureThreshold | int | `20` | Readiness probe failure threshold |
-| web.probes.readinessProbe.initialDelaySeconds | int | `10` | Readiness probe initial delay |
-| web.probes.readinessProbe.periodSeconds | int | `30` | Readiness probe period |
-| web.probes.startupProbe.failureThreshold | int | `20` | Start probe failure threshold |
-| web.probes.startupProbe.initialDelaySeconds | int | `20` | Start probe initial delay |
-| web.probes.startupProbe.periodSeconds | int | `5` | Start probe period |
-| web.probes.startupProbe.timeoutSeconds | int | `10` | Start probe timeout |
+| web.livenessProbe.enabled | bool | `true` | Enable liveness probe |
+| web.livenessProbe.failureThreshold | int | `20` | Liveness probe failure thresold |
+| web.livenessProbe.periodSeconds | int | `30` | Liveness probe period |
+| web.livenessProbe.timeoutSeconds | int | `3` | Liveness probe timeout |
 | web.replicaCount | int | `1` | Web container replicas count |
 | web.resources | object | `{}` | Web container resource definitions |
-| worker.probes.livenessProbe.failureThreshold | int | `20` | Liveness probe failure threshold |
-| worker.probes.livenessProbe.initialDelaySeconds | int | `10` | Liveness probe initial delay |
-| worker.probes.livenessProbe.periodSeconds | int | `120` | Liveness probe period |
-| worker.probes.startupProbe.failureThreshold | int | `20` | Startup probe failure threshold |
-| worker.probes.startupProbe.initialDelaySeconds | int | `20` | Startup probe settings |
-| worker.probes.startupProbe.periodSeconds | int | `5` | Startup probe period |
-| worker.probes.startupProbe.timeoutSeconds | int | `10` | Startup probe timeout |
+| web.startupProbe.enabled | bool | `true` | Enable startup probe |
+| web.startupProbe.failureThreshold | int | `12` | Startup probe failure threshold |
+| web.startupProbe.initialDelaySeconds | int | `10` | Startup probe initial delay |
+| web.startupProbe.periodSeconds | int | `10` | Startup probe period |
+| web.startupProbe.timeoutSeconds | int | `10` | Startup probe timeout |
+| worker.livenessProbe.enabled | bool | `true` | Enable liveness probe |
+| worker.livenessProbe.failureThreshold | int | `20` | Liveness probe failure threshold |
+| worker.livenessProbe.periodSeconds | int | `60` | Liveness probe period |
+| worker.livenessProbe.timeoutSeconds | int | `3` | Liveness probe timeout |
 | worker.replicaCount | int | `1` | Worker container replicas count |
 | worker.resources | object | `{}` | Worker container resource definitions |
+| worker.startupProbe.enabled | bool | `true` | Enable startup probe |
+| worker.startupProbe.failureThreshold | int | `12` | Startup probe failure threshold |
+| worker.startupProbe.initialDelaySeconds | int | `10` | Startup probe initial delay |
+| worker.startupProbe.periodSeconds | int | `10` | Startup probe period |
+| worker.startupProbe.timeoutSeconds | int | `5` | Startup probe timeout |

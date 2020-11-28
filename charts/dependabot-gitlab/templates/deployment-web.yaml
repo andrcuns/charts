@@ -36,21 +36,25 @@ spec:
             - name: http
               containerPort: 3000
               protocol: TCP
+          {{- if .Values.web.livenessProbe.enabled }}
           livenessProbe:
             httpGet:
-              path: /
+              path: /healthcheck
               port: http
-            {{- toYaml .Values.web.probes.livenessProbe | nindent 12 }}
+            failureThreshold: {{ .Values.web.livenessProbe.failureThreshold }}
+            periodSeconds: {{ .Values.web.livenessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.web.livenessProbe.timeoutSeconds }}
+          {{- end }}
+          {{- if .Values.web.livenessProbe.enabled }}
           startupProbe:
             httpGet:
-              path: /
+              path: /healthcheck
               port: http
-            {{- toYaml .Values.web.probes.startupProbe | nindent 12 }}
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
-            {{- toYaml .Values.web.probes.readinessProbe | nindent 12 }}
+            failureThreshold: {{ .Values.web.startupProbe.failureThreshold }}
+            periodSeconds: {{ .Values.web.startupProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.web.startupProbe.timeoutSeconds }}
+            initialDelaySeconds: {{ .Values.web.startupProbe.initialDelaySeconds }}
+          {{- end }}
           resources:
             {{- toYaml .Values.web.resources | nindent 12 }}
       volumes:

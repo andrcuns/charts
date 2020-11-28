@@ -9,4 +9,16 @@ mongodb:
 
 image:
   repository: registry.gitlab.com/dependabot-gitlab/dependabot
-  tag: master-latest
+  tag: check-sidekiq-latest
+
+web:
+  startupProbe:
+    enabled: false
+  livenessProbe:
+    enabled: false
+
+worker:
+  startupProbe:
+    enabled: false
+  livenessProbe:
+    enabled: false

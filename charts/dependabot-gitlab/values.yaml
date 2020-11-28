@@ -52,53 +52,52 @@ web:
   replicaCount: 1
   # -- Web container resource definitions
   resources: {}
-  probes:
-    livenessProbe:
-      # -- Liveness probe initial delay
-      initialDelaySeconds: 10
-      # -- Liveness probe failure thresold
-      failureThreshold: 20
-      # -- Liveness probe period
-      periodSeconds: 30
-    readinessProbe:
-      # -- Readiness probe initial delay
-      initialDelaySeconds: 10
-      # -- Readiness probe failure threshold
-      failureThreshold: 20
-      # -- Readiness probe period
-      periodSeconds: 30
-    startupProbe:
-      # -- Start probe initial delay
-      initialDelaySeconds: 20
-      # -- Start probe failure threshold
-      failureThreshold: 20
-      # -- Start probe period
-      periodSeconds: 5
-      # -- Start probe timeout
-      timeoutSeconds: 10
+  livenessProbe:
+    # -- Enable liveness probe
+    enabled: true
+    # -- Liveness probe failure thresold
+    failureThreshold: 20
+    # -- Liveness probe period
+    periodSeconds: 30
+    # -- Liveness probe timeout
+    timeoutSeconds: 3
+  startupProbe:
+    # -- Enable startup probe
+    enabled: true
+    # -- Startup probe initial delay
+    initialDelaySeconds: 10
+    # -- Startup probe failure threshold
+    failureThreshold: 12
+    # -- Startup probe period
+    periodSeconds: 10
+    # -- Startup probe timeout
+    timeoutSeconds: 10
 
 worker:
   # -- Worker container replicas count
   replicaCount: 1
   # -- Worker container resource definitions
   resources: {}
-  probes:
-    livenessProbe:
-      # -- Liveness probe initial delay
-      initialDelaySeconds: 10
-      # -- Liveness probe failure threshold
-      failureThreshold: 20
-      # -- Liveness probe period
-      periodSeconds: 120
-    startupProbe:
-      # -- Startup probe settings
-      initialDelaySeconds: 20
-      # -- Startup probe failure threshold
-      failureThreshold: 20
-      # -- Startup probe period
-      periodSeconds: 5
-      # -- Startup probe timeout
-      timeoutSeconds: 10
+  livenessProbe:
+    # -- Enable liveness probe
+    enabled: true
+    # -- Liveness probe failure threshold
+    failureThreshold: 20
+    # -- Liveness probe period
+    periodSeconds: 60
+    # -- Liveness probe timeout
+    timeoutSeconds: 3
+  startupProbe:
+    # -- Enable startup probe
+    enabled: true
+    # -- Startup probe initial delay
+    initialDelaySeconds: 10
+    # -- Startup probe failure threshold
+    failureThreshold: 12
+    # -- Startup probe period
+    periodSeconds: 10
+    # -- Startup probe timeout
+    timeoutSeconds: 5
 
 env:
   # -- Redis URL
@@ -135,8 +134,6 @@ redis:
   cluster:
     # -- Enable redis cluster
     enabled: false
-    # -- Slave count
-    slaveCount: 2
   # -- Use redis password
   usePassword: true
   # -- Override redis name
