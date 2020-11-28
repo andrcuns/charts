@@ -90,15 +90,15 @@ worker:
 
 env:
   # -- Redis URL
-  redisUrl:
+  redisUrl: ""
   # -- MongoDB URL
-  mongoDbUrl:
+  mongoDbUrl: ""
   # -- Gitlab instance URL
   gitlabUrl: https://gitlab.com
   # -- Optional sentry dsn for error reporting
-  sentryDsn:
+  sentryDsn: ""
   # -- Optional app url, used for automated webhook creation
-  dependabotUrl:
+  dependabotUrl: ""
 
 credentials:
   # -- Gitlab access token, required
@@ -134,7 +134,7 @@ redis:
 
 mongodb:
   # -- Enable mongodb installation
-  enabled: false
+  enabled: true
   # -- String to fully override mongodb.fullname template
   fullnameOverride: mongodb
   # -- Kubernetes Cluster Domain

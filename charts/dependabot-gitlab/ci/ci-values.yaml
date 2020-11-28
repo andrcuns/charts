@@ -3,9 +3,7 @@ credentials:
   gitlab_access_token: token
 
 mongodb:
-  enabled: true
   auth:
-    enabled: true
     username: username
     password: password
 

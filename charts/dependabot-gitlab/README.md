@@ -44,11 +44,11 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | credentials.gitlab_auth_token | string | `""` | Gitlab auth token for webhook authentication |
 | credentials.maven | object | `{}` | Private maven repository credentials, multiple repositories referenced by uniqe name   repoName: {url: url, username: username, password: password}  |
 | credentials.npm | object | `{}` | Private npm package registry cretentials, multiple repositories referenced by uniqe name registryName: {registry: registry, token: token} |
-| env.dependabotUrl | string | `nil` | Optional app url, used for automated webhook creation |
+| env.dependabotUrl | string | `""` | Optional app url, used for automated webhook creation |
 | env.gitlabUrl | string | `"https://gitlab.com"` | Gitlab instance URL |
-| env.mongoDbUrl | string | `nil` | MongoDB URL |
-| env.redisUrl | string | `nil` | Redis URL |
-| env.sentryDsn | string | `nil` | Optional sentry dsn for error reporting |
+| env.mongoDbUrl | string | `""` | MongoDB URL |
+| env.redisUrl | string | `""` | Redis URL |
+| env.sentryDsn | string | `""` | Optional sentry dsn for error reporting |
 | fullnameOverride | string | `""` | Override fully qualified app name |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"docker.io/andrcuns/dependabot-gitlab"` | Image to use for deploying |
@@ -64,7 +64,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | mongodb.auth.rootPassword | string | `""` | MongoDB root password |
 | mongodb.auth.username | string | `""` | MongoDB custom user username |
 | mongodb.clusterDomain | string | `"cluster.local"` | Kubernetes Cluster Domain |
-| mongodb.enabled | bool | `false` | Enable mongodb installation |
+| mongodb.enabled | bool | `true` | Enable mongodb installation |
 | mongodb.fullnameOverride | string | `"mongodb"` | String to fully override mongodb.fullname template |
 | mongodb.service.port | int | `27017` | Mongodb service port |
 | nameOverride | string | `""` | Override chart name |
