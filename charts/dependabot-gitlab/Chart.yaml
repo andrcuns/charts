@@ -10,10 +10,10 @@ maintainers:
     email: andrejs.cunskis@gmail.com
 dependencies:
 - name: redis
-  version: ~11.2.1
+  version: ~12.1.1
   repository: https://charts.bitnami.com/bitnami
   condition: redis.enabled
 - name: mongodb
-  version: ~9.3.1
+  version: ~10.1.2
   repository: https://charts.bitnami.com/bitnami
   condition: mongodb.enabled
