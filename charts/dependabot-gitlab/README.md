@@ -83,12 +83,24 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | serviceAccount.create | bool | `false` | Create service account |
 | serviceAccount.name | string | `""` | Service account name |
 | tolerations | list | `[]` | Tolerations |
-| web.probes.livenessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":30}` | Liveness probe settings |
-| web.probes.readinessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":30}` | Readiness probe settings |
-| web.probes.startupProbe | object | `{"failureThreshold":20,"initialDelaySeconds":20,"periodSeconds":5,"timeoutSeconds":10}` | Start probe settings |
+| web.probes.livenessProbe.failureThreshold | int | `20` | Liveness probe failure thresold |
+| web.probes.livenessProbe.initialDelaySeconds | int | `10` | Liveness probe initial delay |
+| web.probes.livenessProbe.periodSeconds | int | `30` | Liveness probe period |
+| web.probes.readinessProbe.failureThreshold | int | `20` | Readiness probe failure threshold |
+| web.probes.readinessProbe.initialDelaySeconds | int | `10` | Readiness probe initial delay |
+| web.probes.readinessProbe.periodSeconds | int | `30` | Readiness probe period |
+| web.probes.startupProbe.failureThreshold | int | `20` | Start probe failure threshold |
+| web.probes.startupProbe.initialDelaySeconds | int | `20` | Start probe initial delay |
+| web.probes.startupProbe.periodSeconds | int | `5` | Start probe period |
+| web.probes.startupProbe.timeoutSeconds | int | `10` | Start probe timeout |
 | web.replicaCount | int | `1` | Web container replicas count |
 | web.resources | object | `{}` | Web container resource definitions |
-| worker.probes.livenessProbe | object | `{"failureThreshold":20,"initialDelaySeconds":10,"periodSeconds":120}` | Liveness probe settings |
-| worker.probes.startupProbe | object | `{"failureThreshold":20,"initialDelaySeconds":20,"periodSeconds":5,"timeoutSeconds":10}` | Start probe settings |
+| worker.probes.livenessProbe.failureThreshold | int | `20` | Liveness probe failure threshold |
+| worker.probes.livenessProbe.initialDelaySeconds | int | `10` | Liveness probe initial delay |
+| worker.probes.livenessProbe.periodSeconds | int | `120` | Liveness probe period |
+| worker.probes.startupProbe.failureThreshold | int | `20` | Startup probe failure threshold |
+| worker.probes.startupProbe.initialDelaySeconds | int | `20` | Startup probe settings |
+| worker.probes.startupProbe.periodSeconds | int | `5` | Startup probe period |
+| worker.probes.startupProbe.timeoutSeconds | int | `10` | Startup probe timeout |
 | worker.replicaCount | int | `1` | Worker container replicas count |
 | worker.resources | object | `{}` | Worker container resource definitions |

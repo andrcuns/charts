@@ -53,21 +53,28 @@ web:
   # -- Web container resource definitions
   resources: {}
   probes:
-    # -- Liveness probe settings
     livenessProbe:
+      # -- Liveness probe initial delay
       initialDelaySeconds: 10
+      # -- Liveness probe failure thresold
       failureThreshold: 20
+      # -- Liveness probe period
       periodSeconds: 30
-    # -- Readiness probe settings
     readinessProbe:
+      # -- Readiness probe initial delay
       initialDelaySeconds: 10
+      # -- Readiness probe failure threshold
       failureThreshold: 20
+      # -- Readiness probe period
       periodSeconds: 30
-    # -- Start probe settings
     startupProbe:
+      # -- Start probe initial delay
       initialDelaySeconds: 20
+      # -- Start probe failure threshold
       failureThreshold: 20
+      # -- Start probe period
       periodSeconds: 5
+      # -- Start probe timeout
       timeoutSeconds: 10
 
 worker:
@@ -76,16 +83,21 @@ worker:
   # -- Worker container resource definitions
   resources: {}
   probes:
-    # -- Liveness probe settings
     livenessProbe:
+      # -- Liveness probe initial delay
       initialDelaySeconds: 10
+      # -- Liveness probe failure threshold
       failureThreshold: 20
+      # -- Liveness probe period
       periodSeconds: 120
-    # -- Start probe settings
     startupProbe:
+      # -- Startup probe settings
       initialDelaySeconds: 20
+      # -- Startup probe failure threshold
       failureThreshold: 20
+      # -- Startup probe period
       periodSeconds: 5
+      # -- Startup probe timeout
       timeoutSeconds: 10
 
 env:
