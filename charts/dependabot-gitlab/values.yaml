@@ -107,8 +107,8 @@ credentials:
   github_access_token: ""
   # -- Gitlab auth token for webhook authentication
   gitlab_auth_token: ""
-  # -- Private maven repository credentials, multiple repositories referenced by uniqe name  
-  # repoName: {url: url, username: username, password: password} 
+  # -- Private maven repository credentials, multiple repositories referenced by uniqe name
+  # repoName: {url: url, username: username, password: password}
   maven: {}
   # -- Private npm package registry cretentials, multiple repositories referenced by uniqe name
   # registryName: {registry: registry, token: token}
@@ -140,7 +140,7 @@ mongodb:
   # -- Kubernetes Cluster Domain
   clusterDomain: cluster.local
   auth:
-  # -- Enable authentication
+    # -- Enable authentication
     enabled: true
     # -- MongoDB root password
     rootPassword: ""
