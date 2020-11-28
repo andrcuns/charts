@@ -71,7 +71,7 @@ web:
     # -- Startup probe period
     periodSeconds: 10
     # -- Startup probe timeout
-    timeoutSeconds: 10
+    timeoutSeconds: 3
 
 worker:
   # -- Worker container replicas count
@@ -84,7 +84,7 @@ worker:
     # -- Liveness probe failure threshold
     failureThreshold: 20
     # -- Liveness probe period
-    periodSeconds: 60
+    periodSeconds: 30
     # -- Liveness probe timeout
     timeoutSeconds: 3
   startupProbe:
@@ -97,7 +97,7 @@ worker:
     # -- Startup probe period
     periodSeconds: 10
     # -- Startup probe timeout
-    timeoutSeconds: 5
+    timeoutSeconds: 3
 
 env:
   # -- Redis URL

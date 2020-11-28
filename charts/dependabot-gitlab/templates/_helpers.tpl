@@ -99,24 +99,6 @@ Environment config
 {{- end }}
 
 {{/*
-Liveness and startup probes
-*/}}
-{{- define "dependabot-gitlab.probes" }}
-livenessProbe:
-  httpGet:
-    path: /
-    port: http
-  periodSeconds: 120
-startupProbe:
-  httpGet:
-    path: /
-    port: http
-  initialDelaySeconds: 20
-  failureThreshold: 20
-  periodSeconds: 5
-{{- end }}
-
-{{/*
 Secrets credentials
 */}}
 {{- define "dependabot-gitlab.secrets" -}}
