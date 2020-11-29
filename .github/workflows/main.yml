@@ -65,7 +65,7 @@ jobs:
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
-      - name: Disable Transparent Huge Pages (THP)
+      - name: Disable THP
         if: steps.changes.outputs.changed == 'true'
         run: |
           sudo apt-get install hugepages
