@@ -14,7 +14,7 @@ redis:
 
 image:
   repository: registry.gitlab.com/dependabot-gitlab/dependabot
-  tag: check-sidekiq-latest
+  tag: master-latest
 
 web:
   startupProbe:
