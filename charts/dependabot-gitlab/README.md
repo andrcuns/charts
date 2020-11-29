@@ -83,9 +83,9 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | serviceAccount.name | string | `""` | Service account name |
 | tolerations | list | `[]` | Tolerations |
 | web.livenessProbe.enabled | bool | `true` | Enable liveness probe |
-| web.livenessProbe.failureThreshold | int | `20` | Liveness probe failure thresold |
-| web.livenessProbe.periodSeconds | int | `30` | Liveness probe period |
-| web.livenessProbe.timeoutSeconds | int | `3` | Liveness probe timeout |
+| web.livenessProbe.failureThreshold | int | `5` | Liveness probe failure thresold |
+| web.livenessProbe.periodSeconds | int | `10` | Liveness probe period |
+| web.livenessProbe.timeoutSeconds | int | `1` | Liveness probe timeout |
 | web.replicaCount | int | `1` | Web container replicas count |
 | web.resources | object | `{}` | Web container resource definitions |
 | web.startupProbe.enabled | bool | `true` | Enable startup probe |
@@ -94,13 +94,13 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | web.startupProbe.periodSeconds | int | `10` | Startup probe period |
 | web.startupProbe.timeoutSeconds | int | `3` | Startup probe timeout |
 | worker.livenessProbe.enabled | bool | `true` | Enable liveness probe |
-| worker.livenessProbe.failureThreshold | int | `20` | Liveness probe failure threshold |
-| worker.livenessProbe.periodSeconds | int | `30` | Liveness probe period |
+| worker.livenessProbe.failureThreshold | int | `2` | Liveness probe failure threshold |
+| worker.livenessProbe.periodSeconds | int | `120` | Liveness probe period |
 | worker.livenessProbe.timeoutSeconds | int | `3` | Liveness probe timeout |
 | worker.replicaCount | int | `1` | Worker container replicas count |
 | worker.resources | object | `{}` | Worker container resource definitions |
 | worker.startupProbe.enabled | bool | `true` | Enable startup probe |
 | worker.startupProbe.failureThreshold | int | `12` | Startup probe failure threshold |
 | worker.startupProbe.initialDelaySeconds | int | `10` | Startup probe initial delay |
-| worker.startupProbe.periodSeconds | int | `10` | Startup probe period |
+| worker.startupProbe.periodSeconds | int | `5` | Startup probe period |
 | worker.startupProbe.timeoutSeconds | int | `3` | Startup probe timeout |

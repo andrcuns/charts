@@ -56,11 +56,11 @@ web:
     # -- Enable liveness probe
     enabled: true
     # -- Liveness probe failure thresold
-    failureThreshold: 20
+    failureThreshold: 5
     # -- Liveness probe period
-    periodSeconds: 30
+    periodSeconds: 10
     # -- Liveness probe timeout
-    timeoutSeconds: 3
+    timeoutSeconds: 1
   startupProbe:
     # -- Enable startup probe
     enabled: true
@@ -82,9 +82,9 @@ worker:
     # -- Enable liveness probe
     enabled: true
     # -- Liveness probe failure threshold
-    failureThreshold: 20
+    failureThreshold: 2
     # -- Liveness probe period
-    periodSeconds: 30
+    periodSeconds: 120
     # -- Liveness probe timeout
     timeoutSeconds: 3
   startupProbe:
@@ -95,7 +95,7 @@ worker:
     # -- Startup probe failure threshold
     failureThreshold: 12
     # -- Startup probe period
-    periodSeconds: 10
+    periodSeconds: 5
     # -- Startup probe timeout
     timeoutSeconds: 3
 
