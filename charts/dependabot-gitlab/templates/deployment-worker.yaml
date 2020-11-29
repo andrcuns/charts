@@ -32,25 +32,28 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
-          ports:
-            - name: http
-              containerPort: 7433
-              protocol: TCP
+          {{- if .Values.worker.livenessProbe.enabled }}
           livenessProbe:
-            httpGet:
-              path: /
-              port: http
-            {{- toYaml .Values.worker.probes.livenessProbe | nindent 12 }}
+            exec:
+              command: ["kube/sidekiq-healthcheck.sh"]
+            failureThreshold: {{ .Values.worker.livenessProbe.failureThreshold }}
+            periodSeconds: {{ .Values.worker.livenessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.worker.livenessProbe.timeoutSeconds }}
+          {{- end }}
+          {{- if .Values.worker.livenessProbe.enabled }}
           startupProbe:
-            httpGet:
-              path: /
-              port: http
-            {{- toYaml .Values.worker.probes.startupProbe | nindent 12 }}
+            exec:
+              command: ["kube/sidekiq-healthcheck.sh"]
+            failureThreshold: {{ .Values.worker.startupProbe.failureThreshold }}
+            periodSeconds: {{ .Values.worker.startupProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.worker.startupProbe.timeoutSeconds }}
+            initialDelaySeconds: {{ .Values.worker.startupProbe.initialDelaySeconds }}
+          {{- end }}
           lifecycle:
             preStop:
               exec:
                 # SIGTERM triggers a quick exit; gracefully terminate instead
-                command: ["kube/sidekiq_quiet.sh"]
+                command: ["kube/sidekiq-quiet.sh"]
           resources:
             {{- toYaml .Values.worker.resources | nindent 12 }}
       terminationGracePeriodSeconds: 300 # Large dependency files or docker images can take long time to process

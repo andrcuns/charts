@@ -7,6 +7,19 @@ mongodb:
     username: username
     password: password
 
+redis:
+  master:
+    persistence:
+      enabled: false
+
 image:
   repository: registry.gitlab.com/dependabot-gitlab/dependabot
-  tag: master-latest
+  tag: check-sidekiq-latest
+
+web:
+  startupProbe:
+    initialDelaySeconds: 30
+
+worker:
+  startupProbe:
+    initialDelaySeconds: 30
