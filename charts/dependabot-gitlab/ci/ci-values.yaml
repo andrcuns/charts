@@ -1,6 +1,11 @@
 # required value for dependabot-gitlab deployment
 credentials:
   gitlab_access_token: token
+  maven:
+    private:
+      url: test-url
+      username: username
+      password: password
 
 mongodb:
   auth:
