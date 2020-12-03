@@ -113,7 +113,7 @@ env:
   # -- Configuration path
   appConfigPath: kube/config
   # -- App root
-  appRoot: /home/dependabot
+  appRootPath: /home/dependabot
 
 credentials:
   # -- Gitlab access token, required
