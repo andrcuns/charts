@@ -26,7 +26,7 @@ spec:
           args: ["rails", "server"]
           volumeMounts:
             - name: credentials
-              mountPath: "/home/dependabot/config/settings"
+              mountPath: {{ .Values.env.credentialsPath }}
           env:
             {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
           envFrom:
