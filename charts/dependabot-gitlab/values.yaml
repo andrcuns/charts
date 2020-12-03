@@ -110,8 +110,10 @@ env:
   sentryDsn: ""
   # -- Optional app url, used for automated webhook creation
   dependabotUrl: ""
-  # -- Path to mount credentials secret
-  credentialsPath: /etc/credentials
+  # -- Configuration path
+  appConfigPath: kube/config
+  # -- App root
+  appRoot: /home/dependabot
 
 credentials:
   # -- Gitlab access token, required

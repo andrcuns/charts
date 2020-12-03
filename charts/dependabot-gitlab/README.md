@@ -44,7 +44,8 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | credentials.gitlab_auth_token | string | `""` | Gitlab auth token for webhook authentication |
 | credentials.maven | object | `{}` | Private maven repository credentials, multiple repositories referenced by uniqe name: repoName: {url: url, username: username, password: password} |
 | credentials.npm | object | `{}` | Private npm package registry cretentials, multiple repositories referenced by uniqe name: registryName: {registry: registry, token: token} |
-| env.credentialsPath | string | `"/etc/credentials"` | Path to mount credentials secret |
+| env.appConfigPath | string | `"kube/config"` | Configuration path |
+| env.appRoot | string | `"/home/dependabot"` | App root |
 | env.dependabotUrl | string | `""` | Optional app url, used for automated webhook creation |
 | env.gitlabUrl | string | `"https://gitlab.com"` | Gitlab instance URL |
 | env.mongoDbUrl | string | `""` | MongoDB URL |

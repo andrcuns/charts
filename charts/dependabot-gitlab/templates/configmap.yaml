@@ -9,7 +9,7 @@ data:
   SETTINGS__GITLAB_URL: {{ .Values.env.gitlabUrl | quote }}
   MONGODB_DATABASE: {{ .Values.mongodb.auth.database }}
   MONGODB_USER: {{ .Values.mongodb.auth.username }}
-  CREDENTIALS_CONF: {{ .Values.env.credentialsPath }}/credentials.yml
+  APP_CONFIG: {{ .Values.env.appConfigPath }}
   {{- if .Values.env.dependabotUrl }}
   SETTINGS__DEPENDABOT_URL: {{ .Values.env.dependabotUrl | quote }}
   {{- end }}
