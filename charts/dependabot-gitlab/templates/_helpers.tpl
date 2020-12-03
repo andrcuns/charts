@@ -101,7 +101,7 @@ Environment config
 {{/*
 Secrets credentials
 */}}
-{{- define "dependabot-gitlab.secrets" -}}
+{{- define "dependabot-gitlab.credentials" -}}
 {{- with .Values.credentials -}}
 gitlab_access_token: {{ required "Gitlab access token must be provided" .gitlab_access_token }}
 
