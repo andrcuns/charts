@@ -55,6 +55,7 @@ Pod annotations
 */}}
 {{- define "dependabot-gitlab.podAnnotations" -}}
 checksum/secrets: {{ include (print $.Template.BasePath "/secrets.yaml") . | sha256sum }}
+checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
 {{- /* reset checksum since redis and mongodb generates new random password on each deploy if not provided*/ -}}
 {{- if and .Values.redis.usePassword (not .Values.redis.existingSecret) }}
 checksum/redis-password: {{ default (randAlphaNum 10) .Values.redis.password | sha256sum }}
