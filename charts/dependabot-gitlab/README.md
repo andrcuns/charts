@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.24](https://img.shields.io/badge/Version-0.0.24-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.5](https://img.shields.io/badge/AppVersion-0.2.5-informational?style=flat-square)
+![Version: 0.0.25](https://img.shields.io/badge/Version-0.0.25-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.7](https://img.shields.io/badge/AppVersion-0.2.7-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -44,6 +44,8 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | credentials.gitlab_auth_token | string | `""` | Gitlab auth token for webhook authentication |
 | credentials.maven | object | `{}` | Private maven repository credentials, multiple repositories referenced by uniqe name: repoName: {url: url, username: username, password: password} |
 | credentials.npm | object | `{}` | Private npm package registry cretentials, multiple repositories referenced by uniqe name: registryName: {registry: registry, token: token} |
+| env.appConfigPath | string | `"kube/config"` | Configuration path |
+| env.appRootPath | string | `"/home/dependabot"` | App root |
 | env.dependabotUrl | string | `""` | Optional app url, used for automated webhook creation |
 | env.gitlabUrl | string | `"https://gitlab.com"` | Gitlab instance URL |
 | env.mongoDbUrl | string | `""` | MongoDB URL |
