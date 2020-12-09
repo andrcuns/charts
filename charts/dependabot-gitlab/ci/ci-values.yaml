@@ -30,4 +30,7 @@ worker:
     initialDelaySeconds: 30
 
 projects:
-  - dependabot-gitlab/dependabot
+  - test-repo
+
+env:
+  gitlab_url: gitlab.testing.svc.cluster.local
