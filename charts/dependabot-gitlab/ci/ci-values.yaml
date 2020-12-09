@@ -33,4 +33,4 @@ projects:
   - test-repo
 
 env:
-  gitlab_url: gitlab.testing.svc.cluster.local
+  gitlabUrl: gitlab.testing.svc.cluster.local
