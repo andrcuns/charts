@@ -1,0 +1,35 @@
+{{- if .Values.projects }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "dependabot-gitlab.fullname" . }}-create-projects-job
+  labels:
+    {{- include "dependabot-gitlab.labels" . | nindent 4 }}
+  annotations:
+    helm.sh/hook: post-install
+spec:
+  backoffLimit: 2
+  activeDeadlineSeconds: 30
+  template:
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}-web
+          {{- include "dependabot-gitlab.image" . | nindent 10 }}
+          args:
+            - "rake"
+            - "dependabot:register[{{- include "dependabot-gitlab.projects" . -}}]"
+          volumeMounts:
+            - name: credentials
+              mountPath: "{{ .Values.env.appRootPath }}/{{ .Values.env.appConfigPath }}"
+          env:
+            {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "dependabot-gitlab.fullname" . }}
+      restartPolicy: Never
+      volumes:
+        - name: credentials
+          secret:
+            secretName: {{ include "dependabot-gitlab.fullname" . }}
+            defaultMode: 0400
+{{- end }}

@@ -28,3 +28,6 @@ web:
 worker:
   startupProbe:
     initialDelaySeconds: 30
+
+projects:
+  - dependabot-gitlab/dependabot

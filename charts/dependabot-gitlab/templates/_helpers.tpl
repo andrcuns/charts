@@ -100,6 +100,21 @@ Environment config
 {{- end }}
 
 {{/*
+Projects
+*/}}
+{{- define "dependabot-gitlab.projects" -}}
+{{- join " " .Values.projects }}
+{{- end }}
+
+{{/*
+Image data
+*/}}
+{{- define "dependabot-gitlab.image" -}}
+image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+imagePullPolicy: {{ .Values.image.pullPolicy }}
+{{- end }}
+
+{{/*
 Secrets credentials
 */}}
 {{- define "dependabot-gitlab.credentials" -}}
