@@ -28,3 +28,9 @@ web:
 worker:
   startupProbe:
     initialDelaySeconds: 30
+
+projects:
+  - test-repo
+
+env:
+  gitlabUrl: http://gitlab.testing.svc.cluster.local:4567

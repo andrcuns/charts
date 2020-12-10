@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.25](https://img.shields.io/badge/Version-0.0.25-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.7](https://img.shields.io/badge/AppVersion-0.2.7-informational?style=flat-square)
+![Version: 0.0.26](https://img.shields.io/badge/Version-0.0.26-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.9](https://img.shields.io/badge/AppVersion-0.2.9-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -72,6 +72,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | nameOverride | string | `""` | Override chart name |
 | nodeSelector | object | `{}` | Node selectors |
 | podAnnotations | object | `{}` | Pod annotations |
+| projects | list | `[]` | List of projects to create/update on deployment |
 | redis.cluster.enabled | bool | `false` | Enable redis cluster |
 | redis.clusterDomain | string | `"cluster.local"` | Kubernetes Cluster Domain |
 | redis.enabled | bool | `true` | Enable redis installation |

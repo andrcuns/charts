@@ -73,6 +73,11 @@ jobs:
       - name: Create kind cluster
         if: steps.changes.outputs.changed == 'true'
         uses: helm/kind-action@v1.1.0
+      - name: Deploy fake gitlab
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          kubectl create namespace testing
+          kubectl apply -f charts/dependabot-gitlab/ci/fake-gitlab.yaml -n testing
       - name: Install
         if: steps.changes.outputs.changed == 'true'
         run: ct install --config .github/ct-install.yaml

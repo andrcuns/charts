@@ -21,8 +21,7 @@ spec:
       serviceAccountName: {{ include "dependabot-gitlab.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}-web
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- include "dependabot-gitlab.image" . | nindent 10 }}
           args: ["rails", "server"]
           volumeMounts:
             - name: credentials

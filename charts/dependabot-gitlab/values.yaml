@@ -132,6 +132,9 @@ credentials:
   # registryName: {registry: registry, username: username, password: password}
   docker: {}
 
+# -- List of projects to create/update on deployment
+projects: []
+
 redis:
   # -- Enable redis installation
   enabled: true

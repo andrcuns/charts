@@ -1,4 +1,1 @@
-# Dependabot image is large, download takes around 5 minutes
 helm-extra-args: "--timeout 10m"
-chart-repos:
-  - redis=https://charts.bitnami.com/bitnami
