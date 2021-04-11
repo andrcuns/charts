@@ -30,8 +30,8 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | mongodb | ~10.1.2 |
-| https://charts.bitnami.com/bitnami | redis | ~12.1.1 |
+| https://charts.bitnami.com/bitnami | mongodb | ~10.12.2 |
+| https://charts.bitnami.com/bitnami | redis | ~13.0.1 |
 
 ## Values
 
