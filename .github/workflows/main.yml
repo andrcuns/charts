@@ -21,7 +21,7 @@ env:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -35,7 +35,7 @@ jobs:
         run: .github/script/helm-docs.sh
 
   kubeval:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs:
       - lint
     steps:
@@ -47,7 +47,7 @@ jobs:
         run: .github/script/kubeval.sh
 
   install:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs:
       - lint
       - kubeval
@@ -65,11 +65,6 @@ jobs:
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
-      - name: Disable THP
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          sudo apt-get install hugepages
-          sudo hugeadm --thp-never
       - name: Create kind cluster
         if: steps.changes.outputs.changed == 'true'
         uses: helm/kind-action@v1.1.0
@@ -84,7 +79,7 @@ jobs:
 
   release:
     if: github.event_name == 'push'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs:
       - lint
       - kubeval
