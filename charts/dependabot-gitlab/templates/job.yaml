@@ -12,6 +12,8 @@ spec:
   activeDeadlineSeconds: 30
   template:
     spec:
+      securityContext:
+        {{- include "dependabot-gitlab.securityContext" . | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}-web
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
