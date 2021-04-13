@@ -19,6 +19,8 @@ spec:
         {{- include "dependabot-gitlab.podAnnotations" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "dependabot-gitlab.serviceAccountName" . }}
+      securityContext:
+        {{- include "dependabot-gitlab.securityContext" . | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}-worker
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
