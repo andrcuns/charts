@@ -114,6 +114,8 @@ env:
   appConfigPath: kube/config
   # -- App root
   appRootPath: /home/dependabot/app
+  # -- Dependabot comment command prefix
+  commandsPrefix: ""
 
 credentials:
   # -- Gitlab access token, required

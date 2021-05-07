@@ -13,6 +13,9 @@ data:
   {{- if .Values.env.dependabotUrl }}
   SETTINGS__DEPENDABOT_URL: {{ .Values.env.dependabotUrl | quote }}
   {{- end }}
+  {{- if .Values.env.commandsPrefix }}
+  SETTINGS__COMMANDS_PREFIX: {{ .Values.env.commandsPrefix | quote }}
+  {{- end }}
   {{- if .Values.env.sentryDsn }}
   SENTRY_DSN: {{ .Values.env.sentryDsn | quote }}
   {{- end }}
