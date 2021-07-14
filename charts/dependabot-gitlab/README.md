@@ -81,6 +81,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | redis.enabled | bool | `true` | Enable redis installation |
 | redis.fullnameOverride | string | `"redis"` | Override redis name |
 | redis.usePassword | bool | `true` | Use redis password |
+| registriesCredentials | object | `{}` | Credentials for private registries: PRIVATE_DOCKERHUB_TOKEN: token |
 | service.annotations | object | `{}` | Service annotations |
 | service.port | int | `3000` | Service pot |
 | service.type | string | `"ClusterIP"` | Service type |
