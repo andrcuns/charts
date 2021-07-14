@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.51](https://img.shields.io/badge/Version-0.0.51-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.5.1](https://img.shields.io/badge/AppVersion-0.5.1-informational?style=flat-square)
+![Version: 0.0.52](https://img.shields.io/badge/Version-0.0.52-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.5.1](https://img.shields.io/badge/AppVersion-0.5.1-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -38,6 +38,8 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity |
+| createProjectsJob.activeDeadlineSeconds | int | `30` | Job Active Deadline |
+| createProjectsJob.backoffLimit | int | `2` | Job Backoff Limit |
 | credentials.docker | object | `{}` | Private docker registry credentials, multiple repositories referenced by uniqe name: registryName: {registry: registry, username: username, password: password} |
 | credentials.github_access_token | string | `""` | Github access token |
 | credentials.gitlab_access_token | string | `""` | Gitlab access token, required |
