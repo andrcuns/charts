@@ -99,6 +99,12 @@ worker:
     # -- Startup probe timeout
     timeoutSeconds: 3
 
+createProjectsJob:
+  # -- Job Backoff Limit
+  backoffLimit: 2
+  # -- Job Active Deadline
+  activeDeadlineSeconds: 30
+
 env:
   # -- Redis URL
   redisUrl: ""

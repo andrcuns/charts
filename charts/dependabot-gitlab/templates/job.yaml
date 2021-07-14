@@ -8,14 +8,14 @@ metadata:
   annotations:
     helm.sh/hook: post-install,post-upgrade
 spec:
-  backoffLimit: 2
-  activeDeadlineSeconds: 30
+  backoffLimit: {{ .Values.createProjectsJob.backoffLimit }}
+  activeDeadlineSeconds: {{ .Values.createProjectsJob.activeDeadlineSeconds }}
   template:
     spec:
       securityContext:
         {{- include "dependabot-gitlab.securityContext" . | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}-web
+        - name: {{ .Chart.Name }}-job
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
           args:
             - "rake"
