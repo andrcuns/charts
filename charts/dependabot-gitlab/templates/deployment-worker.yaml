@@ -33,6 +33,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
+            - secretRef:
+                name: {{ include "dependabot-gitlab.fullname" . }}-registries
           {{- if .Values.worker.livenessProbe.enabled }}
           livenessProbe:
             exec:

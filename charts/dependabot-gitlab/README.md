@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.52](https://img.shields.io/badge/Version-0.0.52-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.5.1](https://img.shields.io/badge/AppVersion-0.5.1-informational?style=flat-square)
+![Version: 0.0.53](https://img.shields.io/badge/Version-0.0.53-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.5.1](https://img.shields.io/badge/AppVersion-0.5.1-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -81,6 +81,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | redis.enabled | bool | `true` | Enable redis installation |
 | redis.fullnameOverride | string | `"redis"` | Override redis name |
 | redis.usePassword | bool | `true` | Use redis password |
+| registriesCredentials | object | `{}` | Credentials for private registries: PRIVATE_DOCKERHUB_TOKEN: token |
 | service.annotations | object | `{}` | Service annotations |
 | service.port | int | `3000` | Service pot |
 | service.type | string | `"ClusterIP"` | Service type |

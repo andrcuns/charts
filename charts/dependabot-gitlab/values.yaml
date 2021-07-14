@@ -140,6 +140,10 @@ credentials:
   # registryName: {registry: registry, username: username, password: password}
   docker: {}
 
+# -- Credentials for private registries:
+# PRIVATE_DOCKERHUB_TOKEN: token
+registriesCredentials: {}
+
 # -- List of projects to create/update on deployment
 projects: []
 
