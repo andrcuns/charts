@@ -7,6 +7,10 @@ credentials:
       username: username
       password: password
 
+registriesCredentials:
+  DOCKERHUB_TOKEN: token
+  NPMJS_TOKEN: token
+
 mongodb:
   auth:
     username: username
