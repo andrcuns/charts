@@ -130,15 +130,6 @@ credentials:
   github_access_token: ""
   # -- Gitlab auth token for webhook authentication
   gitlab_auth_token: ""
-  # -- Private maven repository credentials, multiple repositories referenced by uniqe name:
-  # repoName: {url: url, username: username, password: password}
-  maven: {}
-  # -- Private npm package registry cretentials, multiple repositories referenced by uniqe name:
-  # registryName: {registry: registry, token: token}
-  npm: {}
-  # -- Private docker registry credentials, multiple repositories referenced by uniqe name:
-  # registryName: {registry: registry, username: username, password: password}
-  docker: {}
 
 # -- Credentials for private registries:
 # PRIVATE_DOCKERHUB_TOKEN: token
