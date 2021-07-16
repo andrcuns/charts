@@ -62,7 +62,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | ingress.tls | list | `[]` |  |
 | mongodb.auth.database | string | `"dependabot_gitab"` | MongoDB custom database |
 | mongodb.auth.enabled | bool | `true` | Enable authentication |
-| mongodb.auth.password | string | `""` | MongoDB custom user password |
+| mongodb.auth.password | string | `"mongodb-password"` | MongoDB custom user password |
 | mongodb.auth.rootPassword | string | `""` | MongoDB root password |
 | mongodb.auth.username | string | `"dependabot-gitlab"` | MongoDB custom user username |
 | mongodb.clusterDomain | string | `"cluster.local"` | Kubernetes Cluster Domain |
@@ -74,7 +74,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | podAnnotations | object | `{}` | Pod annotations |
 | projects | list | `[]` | List of projects to create/update on deployment |
 | redis.auth.enabled | bool | `true` | Enable authentication |
-| redis.auth.password | string | `""` | Redis password |
+| redis.auth.password | string | `"redis-password"` | Redis password |
 | redis.cluster.enabled | bool | `false` | Enable redis cluster |
 | redis.clusterDomain | string | `"cluster.local"` | Kubernetes Cluster Domain |
 | redis.enabled | bool | `true` | Enable redis installation |
