@@ -152,7 +152,7 @@ redis:
     # -- Enable authentication
     enabled: true
     # -- Redis password
-    password: dependabot-gitlab
+    password: ""
 
 mongodb:
   # -- Enable mongodb installation
@@ -165,11 +165,11 @@ mongodb:
     # -- Enable authentication
     enabled: true
     # -- MongoDB root password
-    rootPassword: "root"
+    rootPassword: ""
     # -- MongoDB custom user username
     username: "dependabot-gitlab"
     # -- MongoDB custom user password
-    password: "dependabot-gitlab"
+    password: ""
     # -- MongoDB custom database
     database: dependabot_gitab
   service:
