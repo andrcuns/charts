@@ -142,9 +142,8 @@ projects: []
 redis:
   # -- Enable redis installation
   enabled: true
-  cluster:
-    # -- Enable redis cluster
-    enabled: false
+  # -- Redis architecture. Allowed values: `standalone` or `replication`
+  architecture: standalone
   # -- Override redis name
   fullnameOverride: redis
   # -- Kubernetes Cluster Domain
