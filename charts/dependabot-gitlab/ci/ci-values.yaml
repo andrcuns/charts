@@ -6,19 +6,10 @@ registriesCredentials:
   DOCKERHUB_TOKEN: token
   NPMJS_TOKEN: token
 
-mongodb:
-  auth:
-    username: username
-    password: password
-
 redis:
   master:
     persistence:
       enabled: false
-
-image:
-  repository: registry.gitlab.com/dependabot-gitlab/dependabot
-  tag: master-latest
 
 web:
   startupProbe:

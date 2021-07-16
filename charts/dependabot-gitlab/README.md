@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.56](https://img.shields.io/badge/Version-0.0.56-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.0](https://img.shields.io/badge/AppVersion-0.6.0-informational?style=flat-square)
+![Version: 0.0.57](https://img.shields.io/badge/Version-0.0.57-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.0](https://img.shields.io/badge/AppVersion-0.6.0-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -64,7 +64,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | mongodb.auth.enabled | bool | `true` | Enable authentication |
 | mongodb.auth.password | string | `""` | MongoDB custom user password |
 | mongodb.auth.rootPassword | string | `""` | MongoDB root password |
-| mongodb.auth.username | string | `""` | MongoDB custom user username |
+| mongodb.auth.username | string | `"dependabot-gitlab"` | MongoDB custom user username |
 | mongodb.clusterDomain | string | `"cluster.local"` | Kubernetes Cluster Domain |
 | mongodb.enabled | bool | `true` | Enable mongodb installation |
 | mongodb.fullnameOverride | string | `"mongodb"` | String to fully override mongodb.fullname template |
@@ -73,11 +73,12 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | nodeSelector | object | `{}` | Node selectors |
 | podAnnotations | object | `{}` | Pod annotations |
 | projects | list | `[]` | List of projects to create/update on deployment |
+| redis.auth.enabled | bool | `true` | Enable authentication |
+| redis.auth.password | string | `""` | Redis password |
 | redis.cluster.enabled | bool | `false` | Enable redis cluster |
 | redis.clusterDomain | string | `"cluster.local"` | Kubernetes Cluster Domain |
 | redis.enabled | bool | `true` | Enable redis installation |
 | redis.fullnameOverride | string | `"redis"` | Override redis name |
-| redis.usePassword | bool | `true` | Use redis password |
 | registriesCredentials | object | `{}` | Credentials for private registries: PRIVATE_DOCKERHUB_TOKEN: token |
 | service.annotations | object | `{}` | Service annotations |
 | service.port | int | `3000` | Service pot |

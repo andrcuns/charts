@@ -138,19 +138,24 @@ registriesCredentials: {}
 # -- List of projects to create/update on deployment
 projects: []
 
+# ref: https://github.com/bitnami/charts/tree/master/bitnami/redis
 redis:
   # -- Enable redis installation
   enabled: true
   cluster:
     # -- Enable redis cluster
     enabled: false
-  # -- Use redis password
-  usePassword: true
   # -- Override redis name
   fullnameOverride: redis
   # -- Kubernetes Cluster Domain
   clusterDomain: cluster.local
+  auth:
+    # -- Enable authentication
+    enabled: true
+    # -- Redis password
+    password: ""
 
+# ref: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
 mongodb:
   # -- Enable mongodb installation
   enabled: true
@@ -164,7 +169,7 @@ mongodb:
     # -- MongoDB root password
     rootPassword: ""
     # -- MongoDB custom user username
-    username: ""
+    username: "dependabot-gitlab"
     # -- MongoDB custom user password
     password: ""
     # -- MongoDB custom database
