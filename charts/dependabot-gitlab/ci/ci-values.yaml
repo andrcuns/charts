@@ -6,11 +6,6 @@ registriesCredentials:
   DOCKERHUB_TOKEN: token
   NPMJS_TOKEN: token
 
-mongodb:
-  auth:
-    username: username
-    password: password
-
 redis:
   master:
     persistence:

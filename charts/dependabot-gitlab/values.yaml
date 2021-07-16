@@ -144,12 +144,15 @@ redis:
   cluster:
     # -- Enable redis cluster
     enabled: false
-  # -- Use redis password
-  usePassword: true
   # -- Override redis name
   fullnameOverride: redis
   # -- Kubernetes Cluster Domain
   clusterDomain: cluster.local
+  auth:
+    # -- Use redis password
+    usePassword: true
+    # -- Redis password
+    password: dependabot-gitlab
 
 mongodb:
   # -- Enable mongodb installation
@@ -162,11 +165,11 @@ mongodb:
     # -- Enable authentication
     enabled: true
     # -- MongoDB root password
-    rootPassword: ""
+    rootPassword: "root"
     # -- MongoDB custom user username
-    username: ""
+    username: "dependabot-gitlab"
     # -- MongoDB custom user password
-    password: ""
+    password: "dependabot-gitlab"
     # -- MongoDB custom database
     database: dependabot_gitab
   service:

@@ -62,9 +62,9 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | ingress.tls | list | `[]` |  |
 | mongodb.auth.database | string | `"dependabot_gitab"` | MongoDB custom database |
 | mongodb.auth.enabled | bool | `true` | Enable authentication |
-| mongodb.auth.password | string | `""` | MongoDB custom user password |
-| mongodb.auth.rootPassword | string | `""` | MongoDB root password |
-| mongodb.auth.username | string | `""` | MongoDB custom user username |
+| mongodb.auth.password | string | `"dependabot-gitlab"` | MongoDB custom user password |
+| mongodb.auth.rootPassword | string | `"root"` | MongoDB root password |
+| mongodb.auth.username | string | `"dependabot-gitlab"` | MongoDB custom user username |
 | mongodb.clusterDomain | string | `"cluster.local"` | Kubernetes Cluster Domain |
 | mongodb.enabled | bool | `true` | Enable mongodb installation |
 | mongodb.fullnameOverride | string | `"mongodb"` | String to fully override mongodb.fullname template |
@@ -73,11 +73,12 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | nodeSelector | object | `{}` | Node selectors |
 | podAnnotations | object | `{}` | Pod annotations |
 | projects | list | `[]` | List of projects to create/update on deployment |
+| redis.auth.password | string | `"dependabot-gitlab"` | Redis password |
+| redis.auth.usePassword | bool | `true` | Use redis password |
 | redis.cluster.enabled | bool | `false` | Enable redis cluster |
 | redis.clusterDomain | string | `"cluster.local"` | Kubernetes Cluster Domain |
 | redis.enabled | bool | `true` | Enable redis installation |
 | redis.fullnameOverride | string | `"redis"` | Override redis name |
-| redis.usePassword | bool | `true` | Use redis password |
 | registriesCredentials | object | `{}` | Credentials for private registries: PRIVATE_DOCKERHUB_TOKEN: token |
 | service.annotations | object | `{}` | Service annotations |
 | service.port | int | `3000` | Service pot |
