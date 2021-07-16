@@ -88,7 +88,7 @@ Environment config
   valueFrom:
     secretKeyRef:
       name: {{ .Values.redis.fullnameOverride }}
-      key: {{ .Values.redis.fullnameOverride }}-password
+      key: redis-password
 {{- end }}
 {{- if .Values.mongodb.auth.enabled }}
 - name: MONGODB_PASSWORD

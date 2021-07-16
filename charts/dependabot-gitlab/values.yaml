@@ -149,8 +149,8 @@ redis:
   # -- Kubernetes Cluster Domain
   clusterDomain: cluster.local
   auth:
-    # -- Use redis password
-    usePassword: true
+    # -- Enable authentication
+    enabled: true
     # -- Redis password
     password: dependabot-gitlab
 

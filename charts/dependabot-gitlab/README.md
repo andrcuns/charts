@@ -73,8 +73,8 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | nodeSelector | object | `{}` | Node selectors |
 | podAnnotations | object | `{}` | Pod annotations |
 | projects | list | `[]` | List of projects to create/update on deployment |
+| redis.auth.enabled | bool | `true` | Enable authentication |
 | redis.auth.password | string | `"dependabot-gitlab"` | Redis password |
-| redis.auth.usePassword | bool | `true` | Use redis password |
 | redis.cluster.enabled | bool | `false` | Enable redis cluster |
 | redis.clusterDomain | string | `"cluster.local"` | Kubernetes Cluster Domain |
 | redis.enabled | bool | `true` | Enable redis installation |
