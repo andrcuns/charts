@@ -57,8 +57,8 @@ Pod annotations
 checksum/secrets: {{ include (print $.Template.BasePath "/secrets.yaml") . | sha256sum }}
 checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
 {{- /* reset checksum since redis and mongodb generates new random password on each deploy if not provided*/ -}}
-{{- if and .Values.redis.usePassword (not .Values.redis.existingSecret) }}
-checksum/redis-password: {{ default (randAlphaNum 10) .Values.redis.password | sha256sum }}
+{{- if and .Values.redis.auth.usePassword (not .Values.redis.existingSecret) }}
+checksum/redis-password: {{ default (randAlphaNum 10) .Values.redis.auth.password | sha256sum }}
 {{- end }}
 {{- if .Values.mongodb.auth.enabled }}
 checksum/mongodb-password: {{ default (randAlphaNum 10) .Values.mongodb.auth.password | sha256sum }}
@@ -83,7 +83,7 @@ Create the name of the service account to use
 Environment config
 */}}
 {{- define "dependabot-gitlab.database-credentials" -}}
-{{- if .Values.redis.usePassword }}
+{{- if .Values.redis.auth.usePassword }}
 - name: REDIS_PASSWORD
   valueFrom:
     secretKeyRef:
