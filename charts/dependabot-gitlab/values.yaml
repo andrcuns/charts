@@ -55,12 +55,12 @@ web:
   livenessProbe:
     # -- Enable liveness probe
     enabled: true
-    # -- Liveness probe failure thresold
+    # -- Liveness probe failure threshold
     failureThreshold: 5
     # -- Liveness probe period
-    periodSeconds: 10
+    periodSeconds: 60
     # -- Liveness probe timeout
-    timeoutSeconds: 1
+    timeoutSeconds: 10
   startupProbe:
     # -- Enable startup probe
     enabled: true
@@ -71,7 +71,7 @@ web:
     # -- Startup probe period
     periodSeconds: 10
     # -- Startup probe timeout
-    timeoutSeconds: 3
+    timeoutSeconds: 10
 
 worker:
   # -- Worker container replicas count
@@ -82,11 +82,11 @@ worker:
     # -- Enable liveness probe
     enabled: true
     # -- Liveness probe failure threshold
-    failureThreshold: 2
+    failureThreshold: 5
     # -- Liveness probe period
-    periodSeconds: 120
+    periodSeconds: 60
     # -- Liveness probe timeout
-    timeoutSeconds: 3
+    timeoutSeconds: 10
   startupProbe:
     # -- Enable startup probe
     enabled: true
@@ -95,9 +95,9 @@ worker:
     # -- Startup probe failure threshold
     failureThreshold: 12
     # -- Startup probe period
-    periodSeconds: 5
+    periodSeconds: 10
     # -- Startup probe timeout
-    timeoutSeconds: 3
+    timeoutSeconds: 10
 
 createProjectsJob:
   # -- Job Backoff Limit
