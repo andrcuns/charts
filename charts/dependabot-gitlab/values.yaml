@@ -122,6 +122,8 @@ env:
   appRootPath: /home/dependabot/app
   # -- Dependabot comment command prefix
   commandsPrefix: ""
+  # -- Update job retry count or 'false' to disable
+  updateRetry: 2
 
 credentials:
   # -- Gitlab access token, required
