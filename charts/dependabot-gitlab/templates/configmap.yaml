@@ -16,6 +16,9 @@ data:
   {{- if .Values.env.commandsPrefix }}
   SETTINGS__COMMANDS_PREFIX: {{ .Values.env.commandsPrefix | quote }}
   {{- end }}
+  {{- if .Values.env.updateRetry }}
+  SETTINGS__UPDATE_RETRY: {{ .Values.env.updateRetry | toString | quote }}
+  {{- end }}
   {{- if .Values.env.sentryDsn }}
   SENTRY_DSN: {{ .Values.env.sentryDsn | quote }}
   {{- end }}

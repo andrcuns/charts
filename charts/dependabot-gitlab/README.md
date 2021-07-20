@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.59](https://img.shields.io/badge/Version-0.0.59-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.0](https://img.shields.io/badge/AppVersion-0.6.0-informational?style=flat-square)
+![Version: 0.0.60](https://img.shields.io/badge/Version-0.0.60-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.0](https://img.shields.io/badge/AppVersion-0.6.0-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -51,6 +51,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | env.mongoDbUrl | string | `""` | MongoDB URL |
 | env.redisUrl | string | `""` | Redis URL |
 | env.sentryDsn | string | `""` | Optional sentry dsn for error reporting |
+| env.updateRetry | int | `2` | Update job retry count or 'false' to disable |
 | fullnameOverride | string | `""` | Override fully qualified app name |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"docker.io/andrcuns/dependabot-gitlab"` | Image to use for deploying |
