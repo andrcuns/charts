@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.61](https://img.shields.io/badge/Version-0.0.61-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.7.0](https://img.shields.io/badge/AppVersion-0.7.0-informational?style=flat-square)
+![Version: 0.0.62](https://img.shields.io/badge/Version-0.0.62-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.7.0](https://img.shields.io/badge/AppVersion-0.7.0-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -73,6 +73,9 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | nameOverride | string | `""` | Override chart name |
 | nodeSelector | object | `{}` | Node selectors |
 | podAnnotations | object | `{}` | Pod annotations |
+| project_registration.cron | string | `""` | Cron expression of project registration cron job |
+| project_registration.mode | string | `"manual"` | Project registration mode |
+| project_registration.namespace | string | `""` | Allowed namespace expression for projects to register |
 | projects | list | `[]` | List of projects to create/update on deployment |
 | redis.architecture | string | `"standalone"` | Redis architecture. Allowed values: `standalone` or `replication` |
 | redis.auth.enabled | bool | `true` | Enable authentication |

@@ -137,6 +137,14 @@ credentials:
 # PRIVATE_DOCKERHUB_TOKEN: token
 registriesCredentials: {}
 
+project_registration:
+  # -- Project registration mode
+  mode: "manual"
+  # -- Cron expression of project registration cron job
+  cron: ""
+  # -- Allowed namespace expression for projects to register
+  namespace: ""
+
 # -- List of projects to create/update on deployment
 projects: []
 
