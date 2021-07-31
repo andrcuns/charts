@@ -6,10 +6,11 @@ data:
   RAILS_ENV: production
   RAILS_SERVE_STATIC_FILES: "true"
   SECRET_KEY_BASE: key
-  SETTINGS__GITLAB_URL: {{ .Values.env.gitlabUrl | quote }}
   MONGODB_DATABASE: {{ .Values.mongodb.auth.database }}
   MONGODB_USER: {{ .Values.mongodb.auth.username }}
   APP_CONFIG: {{ .Values.env.appConfigPath }}
+  SETTINGS__GITLAB_URL: {{ .Values.env.gitlabUrl | quote }}
+  SETTINGS__METRICS: {{ .Values.env.metrics | quote }}
   {{- if .Values.env.dependabotUrl }}
   SETTINGS__DEPENDABOT_URL: {{ .Values.env.dependabotUrl | quote }}
   {{- end }}
