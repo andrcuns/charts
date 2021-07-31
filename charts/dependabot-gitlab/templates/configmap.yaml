@@ -11,14 +11,12 @@ data:
   APP_CONFIG: {{ .Values.env.appConfigPath }}
   SETTINGS__GITLAB_URL: {{ .Values.env.gitlabUrl | quote }}
   SETTINGS__METRICS: {{ .Values.env.metrics | quote }}
+  SETTINGS__UPDATE_RETRY: {{ .Values.env.updateRetry | toString | quote }}
   {{- if .Values.env.dependabotUrl }}
   SETTINGS__DEPENDABOT_URL: {{ .Values.env.dependabotUrl | quote }}
   {{- end }}
   {{- if .Values.env.commandsPrefix }}
   SETTINGS__COMMANDS_PREFIX: {{ .Values.env.commandsPrefix | quote }}
-  {{- end }}
-  {{- if .Values.env.updateRetry }}
-  SETTINGS__UPDATE_RETRY: {{ .Values.env.updateRetry | toString | quote }}
   {{- end }}
   {{- if .Values.project_registration.mode }}
   SETTINGS__PROJECT_REGISTRATION: {{ .Values.project_registration.mode | quote }}
