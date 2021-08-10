@@ -20,7 +20,7 @@ spec:
     spec:
       serviceAccountName: {{ include "dependabot-gitlab.serviceAccountName" . }}
       securityContext:
-        {{- include "dependabot-gitlab.securityContext" . | nindent 8 }}
+        {{- toYaml .Values.web.securityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}-web
           {{- include "dependabot-gitlab.image" . | nindent 10 }}

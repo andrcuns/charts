@@ -40,6 +40,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | affinity | object | `{}` | Affinity |
 | createProjectsJob.activeDeadlineSeconds | int | `30` | Job Active Deadline |
 | createProjectsJob.backoffLimit | int | `2` | Job Backoff Limit |
+| createProjectsJob.securityContext | object | `{ runAsUser: 1000, runAsGroup: 1000, fsGroup: 1000 }` | Job container security context definitions |
 | credentials.github_access_token | string | `""` | Github access token |
 | credentials.gitlab_access_token | string | `""` | Gitlab access token, required |
 | credentials.gitlab_auth_token | string | `""` | Gitlab auth token for webhook authentication |
@@ -98,6 +99,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | web.livenessProbe.timeoutSeconds | int | `1` | Liveness probe timeout |
 | web.replicaCount | int | `1` | Web container replicas count |
 | web.resources | object | `{}` | Web container resource definitions |
+| web.securityContext | object | `{ runAsUser: 1000, runAsGroup: 1000, fsGroup: 1000 }` | Web container security context definitions |
 | web.startupProbe.enabled | bool | `true` | Enable startup probe |
 | web.startupProbe.failureThreshold | int | `12` | Startup probe failure threshold |
 | web.startupProbe.initialDelaySeconds | int | `10` | Startup probe initial delay |
@@ -109,6 +111,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | worker.livenessProbe.timeoutSeconds | int | `3` | Liveness probe timeout |
 | worker.replicaCount | int | `1` | Worker container replicas count |
 | worker.resources | object | `{}` | Worker container resource definitions |
+| worker.securityContext | object | `{ runAsUser: 1000, runAsGroup: 1000, fsGroup: 1000 }` | Worker container security context definitions |
 | worker.startupProbe.enabled | bool | `true` | Enable startup probe |
 | worker.startupProbe.failureThreshold | int | `12` | Startup probe failure threshold |
 | worker.startupProbe.initialDelaySeconds | int | `10` | Startup probe initial delay |

@@ -13,7 +13,7 @@ spec:
   template:
     spec:
       securityContext:
-        {{- include "dependabot-gitlab.securityContext" . | nindent 8 }}
+        {{- toYaml .Values.createProjectsJob.securityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}-job
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
