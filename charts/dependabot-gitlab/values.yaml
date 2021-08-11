@@ -47,6 +47,12 @@ tolerations: []
 # -- Affinity
 affinity: {}
 
+# -- Security Context
+securityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+
 web:
   # -- Web container replicas count
   replicaCount: 1
@@ -72,10 +78,6 @@ web:
     periodSeconds: 10
     # -- Startup probe timeout
     timeoutSeconds: 3
-  securityContext:
-    runAsUser: 1000
-    runAsGroup: 1000
-    fsGroup: 1000
 
 worker:
   # -- Worker container replicas count
@@ -102,20 +104,12 @@ worker:
     periodSeconds: 5
     # -- Startup probe timeout
     timeoutSeconds: 3
-  securityContext:
-    runAsUser: 1000
-    runAsGroup: 1000
-    fsGroup: 1000
 
 createProjectsJob:
   # -- Job Backoff Limit
   backoffLimit: 2
   # -- Job Active Deadline
   activeDeadlineSeconds: 30
-  securityContext:
-    runAsUser: 1000
-    runAsGroup: 1000
-    fsGroup: 1000
 
 env:
   # -- Redis URL
