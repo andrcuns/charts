@@ -47,6 +47,12 @@ tolerations: []
 # -- Affinity
 affinity: {}
 
+# -- Security Context
+podSecurityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+
 web:
   # -- Web container replicas count
   replicaCount: 1

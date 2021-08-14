@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.68](https://img.shields.io/badge/Version-0.0.68-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.9.0](https://img.shields.io/badge/AppVersion-0.9.0-informational?style=flat-square)
+![Version: 0.0.69](https://img.shields.io/badge/Version-0.0.69-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.9.0](https://img.shields.io/badge/AppVersion-0.9.0-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -74,6 +74,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | nameOverride | string | `""` | Override chart name |
 | nodeSelector | object | `{}` | Node selectors |
 | podAnnotations | object | `{}` | Pod annotations |
+| podSecurityContext | object | `{"fsGroup":1000,"runAsGroup":1000,"runAsUser":1000}` | Security Context |
 | project_registration.cron | string | `""` | Cron expression of project registration cron job |
 | project_registration.mode | string | `"manual"` | Project registration mode |
 | project_registration.namespace | string | `""` | Allowed namespace expression for projects to register |

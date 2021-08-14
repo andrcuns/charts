@@ -115,15 +115,6 @@ imagePullPolicy: {{ .Values.image.pullPolicy }}
 {{- end }}
 
 {{/*
-Security context
-*/}}
-{{- define "dependabot-gitlab.securityContext" -}}
-runAsUser: 1000
-runAsGroup: 1000
-fsGroup: 1000
-{{- end }}
-
-{{/*
 Secrets credentials
 */}}
 {{- define "dependabot-gitlab.credentials" -}}
