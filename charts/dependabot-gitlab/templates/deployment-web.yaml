@@ -19,7 +19,7 @@ spec:
         {{- include "dependabot-gitlab.podAnnotations" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "dependabot-gitlab.serviceAccountName" . }}
-      {{- with .Values.securityContext }}
+      {{- with .Values.podSecurityContext }}
       securityContext:
         {{- toYaml . | nindent 8 }}
       {{- end }}
