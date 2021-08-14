@@ -27,8 +27,10 @@ spec:
         - name: {{ .Chart.Name }}-web
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
           args: ["rails", "server"]
+          {{- with (include "dependabot-gitlab.database-credentials" .) }}
           env:
-            {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
+            {{- . | nindent 12 }}
+          {{- end }}
           envFrom:
             - configMapRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
@@ -57,8 +59,10 @@ spec:
             timeoutSeconds: {{ .Values.web.startupProbe.timeoutSeconds }}
             initialDelaySeconds: {{ .Values.web.startupProbe.initialDelaySeconds }}
           {{- end }}
+          {{- with .Values.web.resources }}
           resources:
-            {{- toYaml .Values.web.resources | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
