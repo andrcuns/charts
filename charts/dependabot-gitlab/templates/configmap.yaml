@@ -8,7 +8,6 @@ data:
   SECRET_KEY_BASE: key
   MONGODB_DATABASE: {{ .Values.mongodb.auth.database }}
   MONGODB_USER: {{ .Values.mongodb.auth.username }}
-  APP_CONFIG: {{ .Values.env.appConfigPath }}
   SETTINGS__GITLAB_URL: {{ .Values.env.gitlabUrl | quote }}
   SETTINGS__METRICS: {{ .Values.env.metrics | quote }}
   SETTINGS__UPDATE_RETRY: {{ .Values.env.updateRetry | toString | quote }}
