@@ -30,9 +30,4 @@ spec:
             - secretRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
       restartPolicy: Never
-      volumes:
-        - name: credentials
-          secret:
-            secretName: {{ include "dependabot-gitlab.fullname" . }}
-            defaultMode: 0400
 {{- end }}
