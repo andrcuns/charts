@@ -83,14 +83,14 @@ Create the name of the service account to use
 Environment config
 */}}
 {{- define "dependabot-gitlab.database-credentials" -}}
-{{- if .Values.redis.auth.enabled }}
+{{- if and .Values.redis.enabled .Values.redis.auth.enabled }}
 - name: REDIS_PASSWORD
   valueFrom:
     secretKeyRef:
       name: {{ .Values.redis.fullnameOverride }}
       key: redis-password
 {{- end }}
-{{- if .Values.mongodb.auth.enabled }}
+{{- if and .Values.mongodb.enabled .Values.mongodb.auth.enabled }}
 - name: MONGODB_PASSWORD
   valueFrom:
     secretKeyRef:
@@ -112,54 +112,4 @@ Image data
 {{- define "dependabot-gitlab.image" -}}
 image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
 imagePullPolicy: {{ .Values.image.pullPolicy }}
-{{- end }}
-
-{{/*
-Secrets credentials
-*/}}
-{{- define "dependabot-gitlab.credentials" -}}
-{{- with .Values.credentials -}}
-gitlab_access_token: {{ required "Gitlab access token must be provided" .gitlab_access_token }}
-
-{{- if .github_access_token }}
-github_access_token: {{ .github_access_token }}
-{{- end }}
-
-{{- if .gitlab_auth_token }}
-gitlab_auth_token: {{ .gitlab_auth_token }}
-{{- end }}
-
-{{- if or (.maven) (.npm) (.docker) }}
-credentials:
-  {{- if .maven }}
-  maven:
-    {{- range $registry, $values := .maven }}
-    {{ $registry }}:
-    {{- range $key, $val := $values }}
-      {{ $key }}: {{ $val | quote }}
-    {{- end}}
-    {{- end }}
-  {{- end -}}
-
-  {{- if .npm }}
-  npm:
-    {{- range $registry, $values := .npm }}
-    {{ $registry }}:
-    {{- range $key, $val := $values }}
-      {{ $key }}: {{ $val | quote }}
-    {{- end }}
-    {{- end }}
-  {{- end -}}
-
-  {{- if .docker }}
-  docker:
-    {{- range $registry, $values := .docker }}
-    {{ $registry }}:
-    {{- range $key, $val := $values }}
-      {{ $key }}: {{ $val | quote }}
-    {{- end }}
-    {{- end }}
-  {{- end }}
-{{- end }}
-{{- end }}
 {{- end }}

@@ -27,16 +27,15 @@ spec:
         - name: {{ .Chart.Name }}-worker
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
           args: ["sidekiq"]
-          volumeMounts:
-            - name: credentials
-              mountPath: "{{ .Values.env.appRootPath }}/{{ .Values.env.appConfigPath }}"
+          {{- with (include "dependabot-gitlab.database-credentials" .) }}
           env:
-            {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
+            {{- . | nindent 12 }}
+          {{- end }}
           envFrom:
             - configMapRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
             - secretRef:
-                name: {{ include "dependabot-gitlab.fullname" . }}-registries
+                name: {{ include "dependabot-gitlab.fullname" . }}
           {{- if .Values.worker.livenessProbe.enabled }}
           livenessProbe:
             exec:
@@ -59,14 +58,11 @@ spec:
               exec:
                 # SIGTERM triggers a quick exit; gracefully terminate instead
                 command: ["kube/sidekiq-quiet.sh"]
+          {{- with .Values.web.resources }}
           resources:
-            {{- toYaml .Values.worker.resources | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
       terminationGracePeriodSeconds: 300 # Large dependency files or docker images can take long time to process
-      volumes:
-        - name: credentials
-          secret:
-            secretName: {{ include "dependabot-gitlab.fullname" . }}
-            defaultMode: 0400
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

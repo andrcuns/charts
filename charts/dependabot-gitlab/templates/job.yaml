@@ -22,18 +22,12 @@ spec:
           args:
             - "rake"
             - "dependabot:register[{{- include "dependabot-gitlab.projects" . -}}]"
-          volumeMounts:
-            - name: credentials
-              mountPath: "{{ .Values.env.appRootPath }}/{{ .Values.env.appConfigPath }}"
           env:
             {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
           envFrom:
             - configMapRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
+            - secretRef:
+                name: {{ include "dependabot-gitlab.fullname" . }}
       restartPolicy: Never
-      volumes:
-        - name: credentials
-          secret:
-            secretName: {{ include "dependabot-gitlab.fullname" . }}
-            defaultMode: 0400
 {{- end }}
