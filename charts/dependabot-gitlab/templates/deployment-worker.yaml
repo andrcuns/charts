@@ -58,7 +58,7 @@ spec:
               exec:
                 # SIGTERM triggers a quick exit; gracefully terminate instead
                 command: ["kube/sidekiq-quiet.sh"]
-          {{- with .Values.web.resources }}
+          {{- with .Values.worker.resources }}
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
