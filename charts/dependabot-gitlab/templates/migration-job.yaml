@@ -1,15 +1,14 @@
-{{- if .Values.projects }}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "dependabot-gitlab.fullname" . }}-create-projects-job
+  name: {{ include "dependabot-gitlab.fullname" . }}-migration-job
   labels:
     {{- include "dependabot-gitlab.labels" . | nindent 4 }}
   annotations:
-    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook: pre-install,pre-upgrade
 spec:
-  backoffLimit: {{ .Values.createProjectsJob.backoffLimit }}
-  activeDeadlineSeconds: {{ .Values.createProjectsJob.activeDeadlineSeconds }}
+  backoffLimit: 2
+  activeDeadlineSeconds: 60
   template:
     spec:
       {{- with .Values.podSecurityContext }}
@@ -21,13 +20,14 @@ spec:
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
           args:
             - "rake"
-            - "dependabot:register[{{- include "dependabot-gitlab.projects" . -}}]"
+            - "db:migrate"
+          {{- with (include "dependabot-gitlab.database-credentials" .) }}
           env:
-            {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
+            {{- . | nindent 12 }}
+          {{- end }}
           envFrom:
             - configMapRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
             - secretRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
       restartPolicy: Never
-{{- end }}
