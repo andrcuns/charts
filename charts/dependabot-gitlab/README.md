@@ -62,6 +62,8 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
+| migrationJob.activeDeadlineSeconds | int | `60` | Job Active Deadline |
+| migrationJob.backoffLimit | int | `4` | Job Backoff Limit |
 | mongodb.auth.database | string | `"dependabot_gitab"` | MongoDB custom database |
 | mongodb.auth.enabled | bool | `true` | Enable authentication |
 | mongodb.auth.password | string | `"mongodb-password"` | MongoDB custom user password |

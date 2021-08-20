@@ -111,6 +111,12 @@ createProjectsJob:
   # -- Job Active Deadline
   activeDeadlineSeconds: 30
 
+migrationJob:
+  # -- Job Backoff Limit
+  backoffLimit: 4
+  # -- Job Active Deadline
+  activeDeadlineSeconds: 60
+
 env:
   # -- Redis URL
   redisUrl: ""
