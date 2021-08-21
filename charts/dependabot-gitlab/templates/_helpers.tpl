@@ -79,7 +79,7 @@ Create the name of the service account to use
 Environment config
 */}}
 {{- define "dependabot-gitlab.database-credentials" -}}
-{{- if and .Values.redis.enabled .Values.redis.auth.enabled }}
+{{- if and .Values.redis.enabled .Values.redis.auth.enabled -}}
 - name: REDIS_PASSWORD
   valueFrom:
     secretKeyRef:

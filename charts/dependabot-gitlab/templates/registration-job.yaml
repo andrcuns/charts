@@ -31,5 +31,5 @@ spec:
                 name: {{ include "dependabot-gitlab.fullname" . }}
             - secretRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
-      restartPolicy: Never
+      restartPolicy: OnFailure
 {{- end }}
