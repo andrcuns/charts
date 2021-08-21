@@ -72,18 +72,14 @@ checksum/mongodb-password: {{ default (randAlphaNum 10) .Values.mongodb.auth.pas
 Create the name of the service account to use
 */}}
 {{- define "dependabot-gitlab.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
 {{- default (include "dependabot-gitlab.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
 {{- end }}
 
 {{/*
 Environment config
 */}}
 {{- define "dependabot-gitlab.database-credentials" -}}
-{{- if and .Values.redis.enabled .Values.redis.auth.enabled }}
+{{- if and .Values.redis.enabled .Values.redis.auth.enabled -}}
 - name: REDIS_PASSWORD
   valueFrom:
     secretKeyRef:
@@ -112,4 +108,21 @@ Image data
 {{- define "dependabot-gitlab.image" -}}
 image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
 imagePullPolicy: {{ .Values.image.pullPolicy }}
+{{- end }}
+
+{{/*
+Migration job wait container
+*/}}
+{{- define "dependabot-gitlab.migrationsWaitContainer" -}}
+- name: migrations-wait
+  image: "{{ .Values.kubectlImage.repository }}:{{ .Values.kubectlImage.tag }}"
+  imagePullPolicy: {{ .Values.kubectlImage.pullPolicy }}
+  command:
+    - "kubectl"
+    - "wait"
+    - "job/{{ include "dependabot-gitlab.fullname" . }}-migration-job"
+    - "--namespace"
+    - "{{ .Release.Namespace }}"
+    - "--for=condition=complete"
+    - "--timeout={{ .Values.migrationJob.activeDeadlineSeconds }}s"
 {{- end }}

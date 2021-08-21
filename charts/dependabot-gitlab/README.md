@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.74](https://img.shields.io/badge/Version-0.0.74-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.9.3](https://img.shields.io/badge/AppVersion-0.9.3-informational?style=flat-square)
+![Version: 0.0.75](https://img.shields.io/badge/Version-0.0.75-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.9.3](https://img.shields.io/badge/AppVersion-0.9.3-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -38,8 +38,8 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity |
-| createProjectsJob.activeDeadlineSeconds | int | `30` | Job Active Deadline |
-| createProjectsJob.backoffLimit | int | `2` | Job Backoff Limit |
+| createProjectsJob.activeDeadlineSeconds | int | `240` | Job Active Deadline |
+| createProjectsJob.backoffLimit | int | `4` | Job Back off limit |
 | credentials.github_access_token | string | `""` | Github access token |
 | credentials.gitlab_access_token | string | `""` | Gitlab access token, required |
 | credentials.gitlab_auth_token | string | `""` | Gitlab auth token for webhook authentication |
@@ -62,6 +62,11 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
+| kubectlImage.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
+| kubectlImage.repository | string | `"bitnami/kubectl"` | Image to use for kubectl init containers |
+| kubectlImage.tag | string | `"1.20.10"` | Image tag |
+| migrationJob.activeDeadlineSeconds | int | `180` | Job Active Deadline |
+| migrationJob.backoffLimit | int | `4` | Job Back off limit |
 | mongodb.auth.database | string | `"dependabot_gitab"` | MongoDB custom database |
 | mongodb.auth.enabled | bool | `true` | Enable authentication |
 | mongodb.auth.password | string | `"mongodb-password"` | MongoDB custom user password |
@@ -90,13 +95,12 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | service.port | int | `3000` | Service pot |
 | service.type | string | `"ClusterIP"` | Service type |
 | serviceAccount.annotations | object | `{}` | Service account annotations |
-| serviceAccount.create | bool | `false` | Create service account |
 | serviceAccount.name | string | `""` | Service account name |
 | tolerations | list | `[]` | Tolerations |
 | web.livenessProbe.enabled | bool | `true` | Enable liveness probe |
-| web.livenessProbe.failureThreshold | int | `5` | Liveness probe failure thresold |
+| web.livenessProbe.failureThreshold | int | `5` | Liveness probe failure threshold |
 | web.livenessProbe.periodSeconds | int | `10` | Liveness probe period |
-| web.livenessProbe.timeoutSeconds | int | `1` | Liveness probe timeout |
+| web.livenessProbe.timeoutSeconds | int | `2` | Liveness probe timeout |
 | web.replicaCount | int | `1` | Web container replicas count |
 | web.resources | object | `{}` | Web container resource definitions |
 | web.startupProbe.enabled | bool | `true` | Enable startup probe |

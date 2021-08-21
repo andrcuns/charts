@@ -23,10 +23,13 @@ spec:
       securityContext:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      initContainers:
+        {{- include "dependabot-gitlab.migrationsWaitContainer" . | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}-worker
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
-          args: ["sidekiq"]
+          args:
+            - "sidekiq"
           {{- with (include "dependabot-gitlab.database-credentials" .) }}
           env:
             {{- . | nindent 12 }}

@@ -1,0 +1,46 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "dependabot-gitlab.fullname" . }}-migration-job
+  labels:
+    {{- include "dependabot-gitlab.labels" . | nindent 4 }}
+spec:
+  backoffLimit: {{ .Values.migrationJob.backoffLimit }}
+  activeDeadlineSeconds: {{ .Values.migrationJob.activeDeadlineSeconds }}
+  template:
+    spec:
+      {{- with .Values.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      initContainers:
+        - name: init-db
+          {{- include "dependabot-gitlab.image" . | nindent 10 }}
+          args:
+            - "rake"
+            - "db:version"
+          {{- with (include "dependabot-gitlab.database-credentials" .) }}
+          env:
+            {{- . | nindent 12 }}
+          {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "dependabot-gitlab.fullname" . }}
+            - secretRef:
+                name: {{ include "dependabot-gitlab.fullname" . }}
+      containers:
+        - name: {{ .Chart.Name }}-job
+          {{- include "dependabot-gitlab.image" . | nindent 10 }}
+          args:
+            - "rake"
+            - "db:migrate"
+          {{- with (include "dependabot-gitlab.database-credentials" .) }}
+          env:
+            {{- . | nindent 12 }}
+          {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "dependabot-gitlab.fullname" . }}
+            - secretRef:
+                name: {{ include "dependabot-gitlab.fullname" . }}
+      restartPolicy: OnFailure

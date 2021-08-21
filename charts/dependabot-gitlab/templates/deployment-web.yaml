@@ -23,10 +23,14 @@ spec:
       securityContext:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      initContainers:
+        {{- include "dependabot-gitlab.migrationsWaitContainer" . | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}-web
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
-          args: ["rails", "server"]
+          args:
+            - "rails"
+            - "server"
           {{- with (include "dependabot-gitlab.database-credentials" .) }}
           env:
             {{- . | nindent 12 }}

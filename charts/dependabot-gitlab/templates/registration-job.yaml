@@ -12,22 +12,27 @@ spec:
   activeDeadlineSeconds: {{ .Values.createProjectsJob.activeDeadlineSeconds }}
   template:
     spec:
+      serviceAccountName: {{ include "dependabot-gitlab.serviceAccountName" . }}
       {{- with .Values.podSecurityContext }}
       securityContext:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      initContainers:
+        {{- include "dependabot-gitlab.migrationsWaitContainer" . | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}-job
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
           args:
             - "rake"
             - "dependabot:register[{{- include "dependabot-gitlab.projects" . -}}]"
+          {{- with (include "dependabot-gitlab.database-credentials" .) }}
           env:
-            {{- include "dependabot-gitlab.database-credentials" . | nindent 12 }}
+            {{- . | nindent 12 }}
+          {{- end }}
           envFrom:
             - configMapRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
             - secretRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
-      restartPolicy: Never
+      restartPolicy: OnFailure
 {{- end }}
