@@ -166,6 +166,29 @@ entries:
   dependabot-gitlab:
   - apiVersion: v2
     appVersion: 0.9.3
+    created: "2021-08-21T18:40:38.778290337Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: ~14.7.0
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: ~10.23.0
+    description: Deployment chart for dependabot-gitlab app
+    digest: 811687b8c5ebc5f86c4a61113fa3efd82c10737497727a6dcfe7936993c71b20
+    icon: https://gitlab.com/dependabot-gitlab/dependabot/-/raw/master/logo.png
+    maintainers:
+    - email: andrejs.cunskis@gmail.com
+      name: Andrejs Cunskis
+    name: dependabot-gitlab
+    type: application
+    urls:
+    - https://github.com/andrcuns/charts/releases/download/dependabot-gitlab-0.0.75/dependabot-gitlab-0.0.75.tgz
+    version: 0.0.75
+  - apiVersion: v2
+    appVersion: 0.9.3
     created: "2021-08-21T18:03:56.199051728Z"
     dependencies:
     - condition: redis.enabled
@@ -1620,4 +1643,4 @@ entries:
     urls:
     - https://github.com/andrcuns/charts/releases/download/dependabot-gitlab-0.0.10/dependabot-gitlab-0.0.10.tgz
     version: 0.0.10
-generated: "2021-08-21T18:03:56.199584326Z"
+generated: "2021-08-21T18:40:38.781078757Z"
