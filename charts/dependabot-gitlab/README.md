@@ -38,8 +38,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity |
-| createProjectsJob.activeDeadlineSeconds | int | `30` | Job Active Deadline |
-| createProjectsJob.backoffLimit | int | `2` | Job Backoff Limit |
+| createProjectsJob.activeDeadlineSeconds | int | `120` | Job Active Deadline |
 | credentials.github_access_token | string | `""` | Github access token |
 | credentials.gitlab_access_token | string | `""` | Gitlab access token, required |
 | credentials.gitlab_auth_token | string | `""` | Gitlab auth token for webhook authentication |
@@ -95,9 +94,9 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | serviceAccount.name | string | `""` | Service account name |
 | tolerations | list | `[]` | Tolerations |
 | web.livenessProbe.enabled | bool | `true` | Enable liveness probe |
-| web.livenessProbe.failureThreshold | int | `5` | Liveness probe failure thresold |
+| web.livenessProbe.failureThreshold | int | `5` | Liveness probe failure threshold |
 | web.livenessProbe.periodSeconds | int | `10` | Liveness probe period |
-| web.livenessProbe.timeoutSeconds | int | `1` | Liveness probe timeout |
+| web.livenessProbe.timeoutSeconds | int | `2` | Liveness probe timeout |
 | web.replicaCount | int | `1` | Web container replicas count |
 | web.resources | object | `{}` | Web container resource definitions |
 | web.startupProbe.enabled | bool | `true` | Enable startup probe |

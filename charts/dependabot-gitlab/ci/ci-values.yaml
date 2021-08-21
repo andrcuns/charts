@@ -11,14 +11,6 @@ redis:
     persistence:
       enabled: false
 
-web:
-  startupProbe:
-    initialDelaySeconds: 30
-
-worker:
-  startupProbe:
-    initialDelaySeconds: 30
-
 projects:
   - test-repo
 

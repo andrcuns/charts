@@ -59,12 +59,12 @@ web:
   livenessProbe:
     # -- Enable liveness probe
     enabled: true
-    # -- Liveness probe failure thresold
+    # -- Liveness probe failure threshold
     failureThreshold: 5
     # -- Liveness probe period
     periodSeconds: 10
     # -- Liveness probe timeout
-    timeoutSeconds: 1
+    timeoutSeconds: 2
   startupProbe:
     # -- Enable startup probe
     enabled: true
@@ -104,10 +104,8 @@ worker:
     timeoutSeconds: 3
 
 createProjectsJob:
-  # -- Job Backoff Limit
-  backoffLimit: 2
   # -- Job Active Deadline
-  activeDeadlineSeconds: 30
+  activeDeadlineSeconds: 120
 
 migrationJob:
   # -- Job Active Deadline

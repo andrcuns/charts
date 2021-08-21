@@ -12,6 +12,7 @@ spec:
   activeDeadlineSeconds: {{ .Values.createProjectsJob.activeDeadlineSeconds }}
   template:
     spec:
+      serviceAccountName: {{ include "dependabot-gitlab.serviceAccountName" . }}
       {{- with .Values.podSecurityContext }}
       securityContext:
         {{- toYaml . | nindent 8 }}
