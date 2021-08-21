@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "dependabot-gitlab.fullname" . }}-migration-job
+  name: "{{- include "dependabot-gitlab.migrationJobName" . }}"
   labels:
     {{- include "dependabot-gitlab.labels" . | nindent 4 }}
 spec:
@@ -14,7 +14,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       initContainers:
-        - name: init-db
+        - name: wait-db
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
           args:
             - "rake"
