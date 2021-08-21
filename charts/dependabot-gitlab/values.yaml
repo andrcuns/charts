@@ -6,6 +6,14 @@ image:
   # -- Image tag
   tag: ""
 
+kubectlImage:
+  # -- Image to use for kubectl init containers
+  repository: bitnami/kubectl
+  # -- Image pull policy
+  pullPolicy: IfNotPresent
+  # -- Image tag
+  tag: "1.20.10"
+
 # -- Override chart name
 nameOverride: ""
 # -- Override fully qualified app name
@@ -104,16 +112,16 @@ worker:
     timeoutSeconds: 3
 
 createProjectsJob:
+  # -- Job Back off limit
+  backoffLimit: 4
   # -- Job Active Deadline
-  activeDeadlineSeconds: 120
+  activeDeadlineSeconds: 240
 
 migrationJob:
+  # -- Job Back off limit
+  backoffLimit: 4
   # -- Job Active Deadline
-  activeDeadlineSeconds: 120
-
-
-# -- Docker image with kubectl
-kubectlImage: bitnami/kubectl:1.20.10
+  activeDeadlineSeconds: 180
 
 env:
   # -- Redis URL

@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "dependabot-gitlab.labels" . | nindent 4 }}
 spec:
+  backoffLimit: {{ .Values.migrationJob.backoffLimit }}
   activeDeadlineSeconds: {{ .Values.migrationJob.activeDeadlineSeconds }}
   template:
     spec:

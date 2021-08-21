@@ -38,7 +38,8 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity |
-| createProjectsJob.activeDeadlineSeconds | int | `120` | Job Active Deadline |
+| createProjectsJob.activeDeadlineSeconds | int | `240` | Job Active Deadline |
+| createProjectsJob.backoffLimit | int | `4` | Job Back off limit |
 | credentials.github_access_token | string | `""` | Github access token |
 | credentials.gitlab_access_token | string | `""` | Gitlab access token, required |
 | credentials.gitlab_auth_token | string | `""` | Gitlab auth token for webhook authentication |
@@ -61,8 +62,11 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
-| kubectlImage | string | `"bitnami/kubectl:1.20.10"` | Docker image with kubectl |
-| migrationJob.activeDeadlineSeconds | int | `120` | Job Active Deadline |
+| kubectlImage.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
+| kubectlImage.repository | string | `"bitnami/kubectl"` | Image to use for kubectl init containers |
+| kubectlImage.tag | string | `"1.20.10"` | Image tag |
+| migrationJob.activeDeadlineSeconds | int | `180` | Job Active Deadline |
+| migrationJob.backoffLimit | int | `4` | Job Back off limit |
 | mongodb.auth.database | string | `"dependabot_gitab"` | MongoDB custom database |
 | mongodb.auth.enabled | bool | `true` | Enable authentication |
 | mongodb.auth.password | string | `"mongodb-password"` | MongoDB custom user password |
