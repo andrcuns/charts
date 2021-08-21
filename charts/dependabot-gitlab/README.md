@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.75](https://img.shields.io/badge/Version-0.0.75-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.9.3](https://img.shields.io/badge/AppVersion-0.9.3-informational?style=flat-square)
+![Version: 0.0.76](https://img.shields.io/badge/Version-0.0.76-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.9.3](https://img.shields.io/badge/AppVersion-0.9.3-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -39,7 +39,6 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity |
 | createProjectsJob.activeDeadlineSeconds | int | `240` | Job Active Deadline |
-| createProjectsJob.backoffLimit | int | `4` | Job Back off limit |
 | credentials.github_access_token | string | `""` | Github access token |
 | credentials.gitlab_access_token | string | `""` | Gitlab access token, required |
 | credentials.gitlab_auth_token | string | `""` | Gitlab auth token for webhook authentication |

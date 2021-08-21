@@ -112,8 +112,6 @@ worker:
     timeoutSeconds: 3
 
 createProjectsJob:
-  # -- Job Back off limit
-  backoffLimit: 4
   # -- Job Active Deadline
   activeDeadlineSeconds: 240
 

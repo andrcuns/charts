@@ -8,7 +8,8 @@ metadata:
   annotations:
     helm.sh/hook: post-install,post-upgrade
 spec:
-  backoffLimit: {{ .Values.createProjectsJob.backoffLimit }}
+  # migrations wait has built in wait so try only once
+  backoffLimit: 1
   activeDeadlineSeconds: {{ .Values.createProjectsJob.activeDeadlineSeconds }}
   template:
     spec:
