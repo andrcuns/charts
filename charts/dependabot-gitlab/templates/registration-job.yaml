@@ -16,6 +16,17 @@ spec:
       securityContext:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      initContainers:
+        - name: init-migration
+          image: {{ .Values.kubectlImage }}
+          command:
+            - "kubectl"
+            - "wait"
+            - "job/{{ include "dependabot-gitlab.fullname" . }}-migration-job"
+            - "--namespace"
+            - "{{ .Release.Namespace }}"
+            - "--for=condition=complete"
+            - "--timeout={{ .Values.migrationJob.activeDeadlineSeconds }}s"
       containers:
         - name: {{ .Chart.Name }}-job
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
