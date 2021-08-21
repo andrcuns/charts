@@ -16,7 +16,3 @@ projects:
 
 env:
   gitlabUrl: http://gitlab.testing.svc.cluster.local:4567
-
-createProjectsJob:
-  backoffLimit: 10
-  activeDeadlineSeconds: 240
