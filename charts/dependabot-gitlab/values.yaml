@@ -115,7 +115,11 @@ migrationJob:
   # -- Job Backoff Limit
   backoffLimit: 4
   # -- Job Active Deadline
-  activeDeadlineSeconds: 60
+  activeDeadlineSeconds: 120
+
+
+# -- Docker image with kubectl
+kubectlImage: bitnami/kubectl:1.20.10
 
 env:
   # -- Redis URL
