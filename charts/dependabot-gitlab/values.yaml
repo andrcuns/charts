@@ -12,8 +12,6 @@ nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
-  # -- Create service account
-  create: false
   # -- Service account annotations
   annotations: {}
   # -- Service account name

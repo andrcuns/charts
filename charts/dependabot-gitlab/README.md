@@ -93,7 +93,6 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | service.port | int | `3000` | Service pot |
 | service.type | string | `"ClusterIP"` | Service type |
 | serviceAccount.annotations | object | `{}` | Service account annotations |
-| serviceAccount.create | bool | `false` | Create service account |
 | serviceAccount.name | string | `""` | Service account name |
 | tolerations | list | `[]` | Tolerations |
 | web.livenessProbe.enabled | bool | `true` | Enable liveness probe |

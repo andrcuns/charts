@@ -72,11 +72,7 @@ checksum/mongodb-password: {{ default (randAlphaNum 10) .Values.mongodb.auth.pas
 Create the name of the service account to use
 */}}
 {{- define "dependabot-gitlab.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
 {{- default (include "dependabot-gitlab.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
 {{- end }}
 
 {{/*
