@@ -32,10 +32,12 @@ data:
   {{- else }}
   REDIS_URL: {{ required "redisUrl must be provided" .Values.env.redisUrl | quote }}
   {{- end }}
+  {{- if not .Values.env.mongoDbUri }}
+  MONGODB_DATABASE: {{ .Values.mongodb.auth.database }}
+  MONGODB_USER: {{ .Values.mongodb.auth.username }}
+  {{- end }}
   {{- if .Values.mongodb.enabled }}
   MONGODB_URL: {{ .Values.mongodb.fullnameOverride }}.{{ .Release.Namespace }}.svc.{{ .Values.mongodb.clusterDomain }}:{{ .Values.mongodb.service.port }}
   {{- else if not .Values.env.mongoDbUri }}
   MONGODB_URL: {{ required "mongodbUrl must be provided" .Values.env.mongoDbUrl | quote }}
-  MONGODB_DATABASE: {{ .Values.mongodb.auth.database }}
-  MONGODB_USER: {{ .Values.mongodb.auth.username }}
   {{- end }}
