@@ -134,3 +134,24 @@ Migration job wait container
     - "--for=condition=complete"
     - "--timeout={{ .Values.migrationJob.activeDeadlineSeconds }}s"
 {{- end }}
+
+
+{{/*
+Redis wait container
+*/}}
+{{- define "dependabot-gitlab.redisWaitContainer" -}}
+- name: wait-redis
+  {{- include "dependabot-gitlab.image" . | nindent 2 }}
+  args:
+    - "rake"
+    - "dependabot:check_redis"
+  {{- with (include "dependabot-gitlab.database-credentials" .) }}
+  env:
+    {{- . | nindent 4 }}
+  {{- end }}
+  envFrom:
+    - configMapRef:
+        name: {{ include "dependabot-gitlab.fullname" . }}
+    - secretRef:
+        name: {{ include "dependabot-gitlab.fullname" . }}
+{{- end }}

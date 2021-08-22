@@ -18,7 +18,7 @@ spec:
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
           args:
             - "rake"
-            - "db:version"
+            - "dependabot:check_db"
           {{- with (include "dependabot-gitlab.database-credentials" .) }}
           env:
             {{- . | nindent 12 }}

@@ -25,6 +25,7 @@ spec:
       {{- end }}
       initContainers:
         {{- include "dependabot-gitlab.migrationsWaitContainer" . | nindent 8 }}
+        {{- include "dependabot-gitlab.redisWaitContainer" . | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}-web
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
