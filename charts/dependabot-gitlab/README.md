@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.79](https://img.shields.io/badge/Version-0.0.79-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.9.5](https://img.shields.io/badge/AppVersion-0.9.5-informational?style=flat-square)
+![Version: 0.0.80](https://img.shields.io/badge/Version-0.0.80-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.9.5](https://img.shields.io/badge/AppVersion-0.9.5-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -75,6 +75,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | mongodb.enabled | bool | `true` | Enable mongodb installation |
 | mongodb.fullnameOverride | string | `"mongodb"` | String to fully override mongodb.fullname template |
 | mongodb.service.port | int | `27017` | Mongodb service port |
+| mongodb.uri | string | `""` | URI string for connection to mongodb. Cluster installation must be disabled |
 | nameOverride | string | `""` | Override chart name |
 | nodeSelector | object | `{}` | Node selectors |
 | podAnnotations | object | `{}` | Pod annotations |

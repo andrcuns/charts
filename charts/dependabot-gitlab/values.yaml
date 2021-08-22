@@ -184,6 +184,8 @@ redis:
 
 # ref: https://github.com/bitnami/charts/tree/master/bitnami/mongodb
 mongodb:
+  # -- URI string for connection to mongodb. Cluster installation must be disabled
+  uri: ""
   # -- Enable mongodb installation
   enabled: true
   # -- String to fully override mongodb.fullname template
