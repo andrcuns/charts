@@ -126,6 +126,8 @@ env:
   redisUrl: ""
   # -- MongoDB URL
   mongoDbUrl: ""
+  # -- MongoDB URI
+  mongoDbUri: ""
   # -- Gitlab instance URL
   gitlabUrl: https://gitlab.com
   # -- Optional sentry dsn for error reporting

@@ -6,8 +6,6 @@ data:
   RAILS_ENV: production
   RAILS_SERVE_STATIC_FILES: "true"
   SECRET_KEY_BASE: key
-  MONGODB_DATABASE: {{ .Values.mongodb.auth.database }}
-  MONGODB_USER: {{ .Values.mongodb.auth.username }}
   SETTINGS__GITLAB_URL: {{ .Values.env.gitlabUrl | quote }}
   SETTINGS__METRICS: {{ .Values.env.metrics | quote }}
   SETTINGS__UPDATE_RETRY: {{ .Values.env.updateRetry | toString | quote }}
@@ -34,8 +32,12 @@ data:
   {{- else }}
   REDIS_URL: {{ required "redisUrl must be provided" .Values.env.redisUrl | quote }}
   {{- end }}
+  {{- if not .Values.env.mongoDbUri }}
+  MONGODB_DATABASE: {{ .Values.mongodb.auth.database }}
+  MONGODB_USER: {{ .Values.mongodb.auth.username }}
+  {{- end }}
   {{- if .Values.mongodb.enabled }}
   MONGODB_URL: {{ .Values.mongodb.fullnameOverride }}.{{ .Release.Namespace }}.svc.{{ .Values.mongodb.clusterDomain }}:{{ .Values.mongodb.service.port }}
-  {{- else }}
+  {{- else if not .Values.env.mongoDbUri }}
   MONGODB_URL: {{ required "mongodbUrl must be provided" .Values.env.mongoDbUrl | quote }}
   {{- end }}
