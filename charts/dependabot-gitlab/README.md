@@ -48,6 +48,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | env.dependabotUrl | string | `""` | Optional app url, used for automated webhook creation |
 | env.gitlabUrl | string | `"https://gitlab.com"` | Gitlab instance URL |
 | env.metrics | bool | `true` | Enable metrics endpoint for prometheus |
+| env.mongoDbUri | string | `""` | URI string for connection to mongodb. Cluster installation must be disabled |
 | env.mongoDbUrl | string | `""` | MongoDB URL |
 | env.redisUrl | string | `""` | Redis URL |
 | env.sentryDsn | string | `""` | Optional sentry dsn for error reporting |
@@ -75,7 +76,6 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | mongodb.enabled | bool | `true` | Enable mongodb installation |
 | mongodb.fullnameOverride | string | `"mongodb"` | String to fully override mongodb.fullname template |
 | mongodb.service.port | int | `27017` | Mongodb service port |
-| mongodb.uri | string | `""` | URI string for connection to mongodb. Cluster installation must be disabled |
 | nameOverride | string | `""` | Override chart name |
 | nodeSelector | object | `{}` | Node selectors |
 | podAnnotations | object | `{}` | Pod annotations |
