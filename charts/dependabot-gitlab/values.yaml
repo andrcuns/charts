@@ -126,7 +126,7 @@ env:
   redisUrl: ""
   # -- MongoDB URL
   mongoDbUrl: ""
-  # -- URI string for connection to mongodb. Cluster installation must be disabled
+  # -- MongoDB URI
   mongoDbUri: ""
   # -- Gitlab instance URL
   gitlabUrl: https://gitlab.com
