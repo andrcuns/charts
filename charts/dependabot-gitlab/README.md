@@ -40,7 +40,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | affinity | object | `{}` | Affinity |
 | createProjectsJob.activeDeadlineSeconds | int | `240` | Job Active Deadline |
 | credentials.github_access_token | string | `""` | Github access token |
-| credentials.gitlab_access_token | string | `""` | Gitlab access token, required |
+| credentials.gitlab_access_token | string | `"test"` | Gitlab access token, required |
 | credentials.gitlab_auth_token | string | `""` | Gitlab auth token for webhook authentication |
 | env.appConfigPath | string | `"kube/config"` | Configuration path |
 | env.appRootPath | string | `"/home/dependabot/app"` | App root |

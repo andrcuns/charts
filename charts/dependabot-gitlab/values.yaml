@@ -147,7 +147,7 @@ env:
 
 credentials:
   # -- Gitlab access token, required
-  gitlab_access_token: ""
+  gitlab_access_token: "test"
   # -- Github access token
   github_access_token: ""
   # -- Gitlab auth token for webhook authentication

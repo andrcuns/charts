@@ -109,7 +109,6 @@ Image data
 image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
 imagePullPolicy: {{ .Values.image.pullPolicy }}
 {{- end }}
-{{ include "dependabot-gitlab.fullname" . }}-migration-job
 
 {{/*
 Migration job name
