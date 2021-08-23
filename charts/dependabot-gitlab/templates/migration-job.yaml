@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{- include "dependabot-gitlab.migrationJobName" . }}"
+  name: "{{- include "dependabot-gitlab.migrationJobName" . | trunc 63 | trimSuffix "-" }}"
   labels:
     {{- include "dependabot-gitlab.labels" . | nindent 4 }}
 spec:

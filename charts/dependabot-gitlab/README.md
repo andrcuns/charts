@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.82](https://img.shields.io/badge/Version-0.0.82-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.9.6](https://img.shields.io/badge/AppVersion-0.9.6-informational?style=flat-square)
+![Version: 0.0.83](https://img.shields.io/badge/Version-0.0.83-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.9.6](https://img.shields.io/badge/AppVersion-0.9.6-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -40,7 +40,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | affinity | object | `{}` | Affinity |
 | createProjectsJob.activeDeadlineSeconds | int | `240` | Job Active Deadline |
 | credentials.github_access_token | string | `""` | Github access token |
-| credentials.gitlab_access_token | string | `""` | Gitlab access token, required |
+| credentials.gitlab_access_token | string | `"test"` | Gitlab access token, required |
 | credentials.gitlab_auth_token | string | `""` | Gitlab auth token for webhook authentication |
 | env.appConfigPath | string | `"kube/config"` | Configuration path |
 | env.appRootPath | string | `"/home/dependabot/app"` | App root |
