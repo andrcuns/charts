@@ -127,7 +127,7 @@ Migration job wait container
   command:
     - "kubectl"
     - "wait"
-    - "job/{{- include "dependabot-gitlab.migrationJobName" . }}"
+    - "job/{{- include "dependabot-gitlab.migrationJobName" . | trunc 63 | trimSuffix "-" }}"
     - "--namespace"
     - "{{ .Release.Namespace }}"
     - "--for=condition=complete"
