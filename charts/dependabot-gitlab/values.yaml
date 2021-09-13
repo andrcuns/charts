@@ -144,6 +144,10 @@ env:
   updateRetry: 2
   # -- Enable metrics endpoint for prometheus
   metrics: true
+  # -- Enable upstream http proxy
+  https_proxy: ""
+  http_proxy: ""
+  no_proxy: ""
 
 credentials:
   # -- Gitlab access token, required
