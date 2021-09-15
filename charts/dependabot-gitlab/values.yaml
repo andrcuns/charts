@@ -144,9 +144,11 @@ env:
   updateRetry: 2
   # -- Enable metrics endpoint for prometheus
   metrics: true
-  # -- Enable upstream http proxy
+  # -- Enable upstream https proxy
   https_proxy: ""
+  # -- Enable upstream http proxy
   http_proxy: ""
+  # -- Set proxy exceptions
   no_proxy: ""
 
 credentials:
