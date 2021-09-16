@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.85](https://img.shields.io/badge/Version-0.0.85-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.9.7](https://img.shields.io/badge/AppVersion-0.9.7-informational?style=flat-square)
+![Version: 0.0.86](https://img.shields.io/badge/Version-0.0.86-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.9.7](https://img.shields.io/badge/AppVersion-0.9.7-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
@@ -47,9 +47,12 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | env.commandsPrefix | string | `""` | Dependabot comment command prefix |
 | env.dependabotUrl | string | `""` | Optional app url, used for automated webhook creation |
 | env.gitlabUrl | string | `"https://gitlab.com"` | Gitlab instance URL |
+| env.http_proxy | string | `""` | Enable upstream http proxy |
+| env.https_proxy | string | `""` | Enable upstream https proxy |
 | env.metrics | bool | `true` | Enable metrics endpoint for prometheus |
 | env.mongoDbUri | string | `""` | MongoDB URI |
 | env.mongoDbUrl | string | `""` | MongoDB URL |
+| env.no_proxy | string | `""` | Set proxy exceptions |
 | env.redisUrl | string | `""` | Redis URL |
 | env.sentryDsn | string | `""` | Optional sentry dsn for error reporting |
 | env.updateRetry | int | `2` | Update job retry count or 'false' to disable |

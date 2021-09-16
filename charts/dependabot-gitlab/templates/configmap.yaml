@@ -41,3 +41,12 @@ data:
   {{- else if not .Values.env.mongoDbUri }}
   MONGODB_URL: {{ required "mongodbUrl must be provided" .Values.env.mongoDbUrl | quote }}
   {{- end }}
+  {{- if .Values.env.http_proxy }}
+  http_proxy: {{ .Values.env.http_proxy }}
+  {{- end }}
+  {{- if .Values.env.https_proxy }}
+  https_proxy: {{ .Values.env.https_proxy }}
+  {{- end }}
+  {{- if .Values.env.no_proxy }}
+  no_proxy: {{ .Values.env.no_proxy }}
+  {{- end }}
