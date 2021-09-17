@@ -120,6 +120,13 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | worker.probePort | int | `7433` | Health check probe port |
 | worker.replicaCount | int | `1` | Worker container replicas count |
 | worker.resources | object | `{}` | Worker container resource definitions |
+| worker.serviceMonitor.additionalLabels | object | `{}` |  |
+| worker.serviceMonitor.enabled | bool | `true` |  |
+| worker.serviceMonitor.metricRelabelings | list | `[]` |  |
+| worker.serviceMonitor.namespace | string | `""` |  |
+| worker.serviceMonitor.namespaceSelector | object | `{}` |  |
+| worker.serviceMonitor.scrapeInterval | string | `"30s"` |  |
+| worker.serviceMonitor.targetLabels | list | `[]` |  |
 | worker.startupProbe.enabled | bool | `true` | Enable startup probe |
 | worker.startupProbe.failureThreshold | int | `12` | Startup probe failure threshold |
 | worker.startupProbe.initialDelaySeconds | int | `10` | Startup probe initial delay |
