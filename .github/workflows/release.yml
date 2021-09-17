@@ -24,6 +24,8 @@ jobs:
         uses: helm/chart-testing-action@v2.1.0
       - name: Lint
         run: ct lint --config .github/ct-lint.yaml
+      - name: Lint docs
+        run: .github/script/helm-docs.sh
 
   release:
     if: "contains(github.event.head_commit.message, 'Update chart to version')"
