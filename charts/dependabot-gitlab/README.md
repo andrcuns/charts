@@ -49,6 +49,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | env.gitlabUrl | string | `"https://gitlab.com"` | Gitlab instance URL |
 | env.http_proxy | string | `""` | Enable upstream http proxy |
 | env.https_proxy | string | `""` | Enable upstream https proxy |
+| env.logLevel | string | `"info"` | App log level |
 | env.metrics | bool | `true` | Enable metrics endpoint for prometheus |
 | env.mongoDbUri | string | `""` | MongoDB URI |
 | env.mongoDbUrl | string | `""` | MongoDB URL |

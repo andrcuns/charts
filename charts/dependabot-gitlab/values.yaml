@@ -146,6 +146,8 @@ env:
   updateRetry: 2
   # -- Enable metrics endpoint for prometheus
   metrics: true
+  # -- App log level
+  logLevel: "info"
   # -- Enable upstream https proxy
   https_proxy: ""
   # -- Enable upstream http proxy
