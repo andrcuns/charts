@@ -90,6 +90,8 @@ worker:
   replicaCount: 1
   # -- Worker container resource definitions
   resources: {}
+  # Health check probe port
+  probePort: 7433
   livenessProbe:
     # -- Enable liveness probe
     enabled: true
