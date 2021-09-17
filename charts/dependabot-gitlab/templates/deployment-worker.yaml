@@ -42,16 +42,18 @@ spec:
                 name: {{ include "dependabot-gitlab.fullname" . }}
           {{- if .Values.worker.livenessProbe.enabled }}
           livenessProbe:
-            exec:
-              command: ["kube/sidekiq-healthcheck.sh"]
+            httpGet:
+              path: /healthcheck
+              port: {{ .Values.worker.probePort }}
             failureThreshold: {{ .Values.worker.livenessProbe.failureThreshold }}
             periodSeconds: {{ .Values.worker.livenessProbe.periodSeconds }}
             timeoutSeconds: {{ .Values.worker.livenessProbe.timeoutSeconds }}
           {{- end }}
           {{- if .Values.worker.livenessProbe.enabled }}
           startupProbe:
-            exec:
-              command: ["kube/sidekiq-healthcheck.sh"]
+            httpGet:
+              path: /healthcheck
+              port: {{ .Values.worker.probePort }}
             failureThreshold: {{ .Values.worker.startupProbe.failureThreshold }}
             periodSeconds: {{ .Values.worker.startupProbe.periodSeconds }}
             timeoutSeconds: {{ .Values.worker.startupProbe.timeoutSeconds }}

@@ -16,3 +16,8 @@ projects:
 
 env:
   gitlabUrl: http://gitlab.testing.svc.cluster.local:4567
+  logLevel: "debug"
+
+image:
+  repository: registry.gitlab.com/dependabot-gitlab/dependabot
+  tag: improvement-sidekiq-alive-e039fe19

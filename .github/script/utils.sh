@@ -9,7 +9,7 @@ function changed-charts() {
 }
 
 function install-kubeval() {
-  KUBEVAL_SOURCE="https://github.com/instrumenta/kubeval/releases/download/${KUBEVAL_VERSION}/kubeval-linux-amd64.tar.gz"
+  KUBEVAL_SOURCE="https://github.com/instrumenta/kubeval/releases/download/v${KUBEVAL_VERSION}/kubeval-linux-amd64.tar.gz"
 
   log "Downloading kubeval v${KUBEVAL_VERSION}"
   curl --silent --show-error --fail --location --output /tmp/kubeval.tar.gz "${KUBEVAL_SOURCE}"
