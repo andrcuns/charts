@@ -10,7 +10,7 @@ data:
   SETTINGS__METRICS: {{ .Values.env.metrics | quote }}
   SETTINGS__UPDATE_RETRY: {{ .Values.env.updateRetry | toString | quote }}
   {{- if or .Values.worker.livenessProbe.enabled .Values.worker.startupProbe.enabled }}
-  SIDEKIQ_ALIVE_PORT: {{ .Values.worker.probePort }}
+  SIDEKIQ_ALIVE_PORT: {{ .Values.worker.probePort | toString | quote }}
   {{- else }}
   DISABLE_SIDEKIQ_ALIVE: "true"
   {{- end }}
