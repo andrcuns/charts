@@ -8,8 +8,8 @@ on:
       - charts/*/Chart.yaml
 
 env:
-  KUBEVAL_VERSION: "0.15.0"
-  HELMDOCS_VERSION: "1.4.0"
+  KUBEVAL_VERSION: "0.16.1"
+  HELMDOCS_VERSION: "1.5.0"
 
 jobs:
   lint:
