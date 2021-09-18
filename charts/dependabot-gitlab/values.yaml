@@ -59,6 +59,12 @@ podSecurityContext:
   runAsGroup: 1000
   fsGroup: 1000
 
+metrics:
+  # -- Enable metrics endpoint for prometheus
+  enabled: true
+  # -- Worker metrics web server port
+  workerPort: 9394
+
 web:
   # -- Web container replicas count
   replicaCount: 1
@@ -90,7 +96,7 @@ worker:
   replicaCount: 1
   # -- Worker container resource definitions
   resources: {}
-  # Health check probe port
+  # -- Health check probe port
   probePort: 7433
   livenessProbe:
     # -- Enable liveness probe
