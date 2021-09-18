@@ -14,7 +14,12 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: http
       protocol: TCP
-      name: http
+      name: web
+    {{- if .Values.metrics.enabled }}
+    - port: {{ .Values.metrics.workerPort }}
+      targetPort: metrics
+      protocol: TCP
+      name: worker
+    {{- end }}
   selector:
     {{- include "dependabot-gitlab.selectorLabels" . | nindent 4 }}
-    app.kubernetes.io/component: web
