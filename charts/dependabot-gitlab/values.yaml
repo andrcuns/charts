@@ -150,8 +150,6 @@ env:
   commandsPrefix: ""
   # -- Update job retry count or 'false' to disable
   updateRetry: 2
-  # -- Enable metrics endpoint for prometheus
-  metrics: true
   # -- App log level
   logLevel: "info"
   # -- Enable upstream https proxy

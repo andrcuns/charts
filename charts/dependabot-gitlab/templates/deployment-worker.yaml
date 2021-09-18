@@ -57,9 +57,9 @@ spec:
                 name: {{ include "dependabot-gitlab.fullname" . }}
             - secretRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
-          {{- if .Values.env.metrics }}
+          {{- if .Values.metrics.enabled }}
           ports:
-            - name: metrics
+            - name: http
               containerPort: {{ .Values.metrics.workerPort }}
               protocol: TCP
           {{- end }}
