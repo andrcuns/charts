@@ -20,4 +20,4 @@ env:
 
 image:
   repository: registry.gitlab.com/dependabot-gitlab/dependabot
-  tag: improvement-sidekiq-alive-e039fe19
+  tag: master-latest
