@@ -41,7 +41,11 @@ spec:
           {{- end }}
           {{- if .Values.metrics.enabled }}
             - name: PROMETHEUS_EXPORTER_LOG_REQUESTS
+              {{- if eq .Values.env.logLevel "debug" }}
+              value: "true"
+              {{- else }}
               value: "false"
+              {{- end }}
             - name: PROMETHEUS_EXPORTER_PORT
               value: {{ .Values.metrics.workerPort | quote }}
           {{- end }}
