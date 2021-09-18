@@ -50,7 +50,6 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | env.http_proxy | string | `""` | Enable upstream http proxy |
 | env.https_proxy | string | `""` | Enable upstream https proxy |
 | env.logLevel | string | `"info"` | App log level |
-| env.metrics | bool | `true` | Enable metrics endpoint for prometheus |
 | env.mongoDbUri | string | `""` | MongoDB URI |
 | env.mongoDbUrl | string | `""` | MongoDB URL |
 | env.no_proxy | string | `""` | Set proxy exceptions |
@@ -69,6 +68,8 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | kubectlImage.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | kubectlImage.repository | string | `"bitnami/kubectl"` | Image to use for kubectl init containers |
 | kubectlImage.tag | string | `"1.20.10"` | Image tag |
+| metrics.enabled | bool | `true` | Enable metrics endpoint for prometheus |
+| metrics.workerPort | int | `9394` | Worker metrics web server port |
 | migrationJob.activeDeadlineSeconds | int | `180` | Job Active Deadline |
 | migrationJob.backoffLimit | int | `4` | Job Back off limit |
 | mongodb.auth.database | string | `"dependabot_gitab"` | MongoDB custom database |
@@ -116,7 +117,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | worker.livenessProbe.failureThreshold | int | `2` | Liveness probe failure threshold |
 | worker.livenessProbe.periodSeconds | int | `120` | Liveness probe period |
 | worker.livenessProbe.timeoutSeconds | int | `3` | Liveness probe timeout |
-| worker.probePort | int | `7433` |  |
+| worker.probePort | int | `7433` | Health check probe port |
 | worker.replicaCount | int | `1` | Worker container replicas count |
 | worker.resources | object | `{}` | Worker container resource definitions |
 | worker.startupProbe.enabled | bool | `true` | Enable startup probe |

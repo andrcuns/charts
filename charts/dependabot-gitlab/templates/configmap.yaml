@@ -7,14 +7,9 @@ data:
   RAILS_SERVE_STATIC_FILES: "true"
   SECRET_KEY_BASE: key
   SETTINGS__GITLAB_URL: {{ .Values.env.gitlabUrl | quote }}
-  SETTINGS__METRICS: {{ .Values.env.metrics | quote }}
-  SETTINGS__UPDATE_RETRY: {{ .Values.env.updateRetry | toString | quote }}
+  SETTINGS__UPDATE_RETRY: {{ .Values.env.updateRetry | quote }}
   SETTINGS__LOG_LEVEL: {{ .Values.env.logLevel }}
-  {{- if or .Values.worker.livenessProbe.enabled .Values.worker.startupProbe.enabled }}
-  SIDEKIQ_ALIVE_PORT: {{ .Values.worker.probePort | toString | quote }}
-  {{- else }}
-  DISABLE_SIDEKIQ_ALIVE: "true"
-  {{- end }}
+  SETTINGS__METRICS: {{ .Values.metrics.enabled | quote }}
   {{- if .Values.env.dependabotUrl }}
   SETTINGS__DEPENDABOT_URL: {{ .Values.env.dependabotUrl | quote }}
   {{- end }}

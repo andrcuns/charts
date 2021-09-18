@@ -31,8 +31,25 @@ spec:
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
           args:
             - "sidekiq"
-          {{- with (include "dependabot-gitlab.database-credentials" .) }}
           env:
+          {{- if or .Values.worker.livenessProbe.enabled .Values.worker.startupProbe.enabled }}
+            - name: SIDEKIQ_ALIVE_PORT
+              value: {{ .Values.worker.probePort | quote }}
+          {{- else }}
+            - name: DISABLE_SIDEKIQ_ALIVE
+              value: "true"
+          {{- end }}
+          {{- if .Values.metrics.enabled }}
+            - name: PROMETHEUS_EXPORTER_LOG_REQUESTS
+              {{- if eq .Values.env.logLevel "debug" }}
+              value: "true"
+              {{- else }}
+              value: "false"
+              {{- end }}
+            - name: PROMETHEUS_EXPORTER_PORT
+              value: {{ .Values.metrics.workerPort | quote }}
+          {{- end }}
+          {{- with (include "dependabot-gitlab.database-credentials" .) }}
             {{- . | nindent 12 }}
           {{- end }}
           envFrom:
@@ -40,6 +57,12 @@ spec:
                 name: {{ include "dependabot-gitlab.fullname" . }}
             - secretRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
+          {{- if .Values.metrics.enabled }}
+          ports:
+            - name: metrics
+              containerPort: {{ .Values.metrics.workerPort }}
+              protocol: TCP
+          {{- end }}
           {{- if .Values.worker.livenessProbe.enabled }}
           livenessProbe:
             httpGet:
