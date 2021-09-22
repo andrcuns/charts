@@ -65,6 +65,25 @@ metrics:
   # -- Worker metrics web server port
   workerPort: 9394
 
+serviceMonitor:
+  # -- Enable serviceMonitor
+  enabled: true
+  # -- AdditionalLabels for serviceMonitor
+  additionalLabels: {}
+  # The label to use to retrieve the job name from.
+  # jobLabel: "app.kubernetes.io/name"
+  # -- Set namespace where serviceMonitor will deploy
+  namespace: ""
+  namespaceSelector: {}
+  # Default: scrape .Release.Namespace only
+  # To scrape all, use the following:
+  # namespaceSelector:
+  #   any: true
+  scrapeInterval: 30s
+  # honorLabels: true
+  targetLabels: []
+  metricRelabelings: []
+
 web:
   # -- Web container replicas count
   replicaCount: 1
@@ -119,21 +138,7 @@ worker:
     # -- Startup probe timeout
     timeoutSeconds: 3
 
-  serviceMonitor:
-    enabled: true
-    additionalLabels: {}
-    # The label to use to retrieve the job name from.
-    # jobLabel: "app.kubernetes.io/name"
-    namespace: ""
-    namespaceSelector: {}
-    # Default: scrape .Release.Namespace only
-    # To scrape all, use the following:
-    # namespaceSelector:
-    #   any: true
-    scrapeInterval: 30s
-    # honorLabels: true
-    targetLabels: []
-    metricRelabelings: []
+
 
 createProjectsJob:
   # -- Job Active Deadline

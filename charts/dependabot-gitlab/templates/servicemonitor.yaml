@@ -1,45 +1,42 @@
-{{- if and ( .Capabilities.APIVersions.Has "monitoring.coreos.com/v1" )   .Values.worker.serviceMonitor.enabled -}}
+{{- if .Values.metrics.enabled -}}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ include "dependabot-gitlab.fullname" . }}-worker
-{{- if .Values.worker.serviceMonitor.namespace }}
-  namespace: {{ .Values.worker.serviceMonitor.namespace | quote }}
-{{- end }}
+  name: {{ include "dependabot-gitlab.fullname" . }}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "dependabot-gitlab.labels" . | nindent 4 }}
     app.kubernetes.io/component: controller
-  {{- if .Values.worker.serviceMonitor.additionalLabels }}
-    {{- toYaml .Values.worker.serviceMonitor.additionalLabels | nindent 4 }}
+  {{- if .Values.serviceMonitor.additionalLabels }}
+    {{- toYaml .Values.serviceMonitor.additionalLabels | nindent 4 }}
   {{- end }}
 spec:
   endpoints:
     - port: http
-      interval: {{ .Values.worker.serviceMonitor.scrapeInterval }}
-    {{- if .Values.worker.serviceMonitor.honorLabels }}
+      interval: {{ .Values.serviceMonitor.scrapeInterval }}
+    {{- if .Values.serviceMonitor.honorLabels }}
       honorLabels: true
     {{- end }}
-    {{- if .Values.worker.serviceMonitor.metricRelabelings }}
-      metricRelabelings: {{ toYaml .Values.worker.serviceMonitor.metricRelabelings | nindent 8 }}
+    {{- if .Values.serviceMonitor.metricRelabelings }}
+      metricRelabelings: {{ toYaml .Values.serviceMonitor.metricRelabelings | nindent 8 }}
     {{- end }}
-{{- if .Values.worker.serviceMonitor.jobLabel }}
-  jobLabel: {{ .Values.worker.serviceMonitor.jobLabel | quote }}
+{{- if .Values.serviceMonitor.jobLabel }}
+  jobLabel: {{ .Values.serviceMonitor.jobLabel | quote }}
 {{- end }}
-{{- if .Values.worker.serviceMonitor.namespaceSelector }}
-  namespaceSelector: {{ toYaml .Values.worker.serviceMonitor.namespaceSelector | nindent 4 }}
+{{- if .Values.serviceMonitor.namespaceSelector }}
+  namespaceSelector: {{ toYaml .Values.serviceMonitor.namespaceSelector | nindent 4 }}
 {{ else }}
   namespaceSelector:
     matchNames:
       - {{ .Release.Namespace }}
 {{- end }}
-{{- if .Values.worker.serviceMonitor.targetLabels }}
+{{- if .Values.serviceMonitor.targetLabels }}
   targetLabels:
-  {{- range .Values.worker.serviceMonitor.targetLabels }}
+  {{- range .Values.serviceMonitor.targetLabels }}
     - {{ . }}
   {{- end }}
 {{- end }}
   selector:
     matchLabels:
       {{- include "dependabot-gitlab.selectorLabels" . | nindent 6 }}
-      app.kubernetes.io/component: worker
 {{- end }}
