@@ -69,6 +69,12 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | kubectlImage.repository | string | `"bitnami/kubectl"` | Image to use for kubectl init containers |
 | kubectlImage.tag | string | `"1.20.10"` | Image tag |
 | metrics.enabled | bool | `true` | Enable metrics endpoint for prometheus |
+| metrics.serviceMonitor.additionalLabels | object | `{}` | Additional labels that can be used so ServiceMonitor resource(s) can be discovered by Prometheus |
+| metrics.serviceMonitor.enabled | bool | `true` | Enable serviceMonitor |
+| metrics.serviceMonitor.honorLabels | bool | `false` | Specify honorLabels parameter to add the scrape endpoint |
+| metrics.serviceMonitor.metricRelabelings | list | `[]` | Metrics RelabelConfigs to apply to samples before ingestion |
+| metrics.serviceMonitor.relabellings | list | `[]` | Metrics RelabelConfigs to apply to samples before scraping |
+| metrics.serviceMonitor.scrapeInterval | string | `"30s"` | Metrics scrape interval |
 | metrics.workerPort | int | `9394` | Worker metrics web server port |
 | migrationJob.activeDeadlineSeconds | int | `180` | Job Active Deadline |
 | migrationJob.backoffLimit | int | `4` | Job Back off limit |
@@ -101,13 +107,6 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | service.type | string | `"ClusterIP"` | Service type |
 | serviceAccount.annotations | object | `{}` | Service account annotations |
 | serviceAccount.name | string | `""` | Service account name |
-| serviceMonitor.additionalLabels | object | `{}` | AdditionalLabels for serviceMonitor |
-| serviceMonitor.enabled | bool | `true` | Enable serviceMonitor |
-| serviceMonitor.metricRelabelings | list | `[]` |  |
-| serviceMonitor.namespace | string | `""` |  |
-| serviceMonitor.namespaceSelector | object | `{}` |  |
-| serviceMonitor.scrapeInterval | string | `"30s"` |  |
-| serviceMonitor.targetLabels | list | `[]` |  |
 | tolerations | list | `[]` | Tolerations |
 | web.livenessProbe.enabled | bool | `true` | Enable liveness probe |
 | web.livenessProbe.failureThreshold | int | `5` | Liveness probe failure threshold |

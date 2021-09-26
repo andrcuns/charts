@@ -1,4 +1,4 @@
-{{- if .Values.metrics.enabled -}}
+{{- if and .Values.metrics.enabled .Values.metrics.serviceMonitor.enabled }}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
@@ -6,36 +6,53 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "dependabot-gitlab.labels" . | nindent 4 }}
-    app.kubernetes.io/component: controller
-  {{- if .Values.serviceMonitor.additionalLabels }}
-    {{- toYaml .Values.serviceMonitor.additionalLabels | nindent 4 }}
-  {{- end }}
+    app.kubernetes.io/component: metrics
+    {{- if .Values.metrics.serviceMonitor.additionalLabels }}
+    {{- toYaml .Values.metrics.serviceMonitor.additionalLabels | nindent 4 }}
+    {{- end }}
 spec:
   endpoints:
-    - port: http
-      interval: {{ .Values.serviceMonitor.scrapeInterval }}
-    {{- if .Values.serviceMonitor.honorLabels }}
-      honorLabels: true
-    {{- end }}
-    {{- if .Values.serviceMonitor.metricRelabelings }}
-      metricRelabelings: {{ toYaml .Values.serviceMonitor.metricRelabelings | nindent 8 }}
-    {{- end }}
-{{- if .Values.serviceMonitor.jobLabel }}
-  jobLabel: {{ .Values.serviceMonitor.jobLabel | quote }}
-{{- end }}
-{{- if .Values.serviceMonitor.namespaceSelector }}
-  namespaceSelector: {{ toYaml .Values.serviceMonitor.namespaceSelector | nindent 4 }}
-{{ else }}
+    - port: web
+      {{- if .Values.metrics.serviceMonitor.interval }}
+      interval: {{ .Values.metrics.serviceMonitor.interval }}
+      {{- end }}
+      {{- if .Values.metrics.serviceMonitor.scrapeTimeout }}
+      scrapeTimeout: {{ .Values.metrics.serviceMonitor.scrapeTimeout }}
+      {{- end }}
+      {{- if .Values.metrics.serviceMonitor.honorLabels }}
+      honorLabels: {{ .Values.metrics.serviceMonitor.honorLabels }}
+      {{- end }}
+      {{- if .Values.metrics.serviceMonitor.relabellings }}
+      relabelings: {{- toYaml .Values.metrics.serviceMonitor.relabellings | nindent 6 }}
+      {{- end }}
+      {{- if .Values.metrics.serviceMonitor.metricRelabelings }}
+      metricRelabelings: {{- toYaml .Values.metrics.serviceMonitor.metricRelabelings | nindent 6 }}
+      {{- end }}
+    - port: worker
+      {{- if .Values.metrics.serviceMonitor.interval }}
+      interval: {{ .Values.metrics.serviceMonitor.interval }}
+      {{- end }}
+      {{- if .Values.metrics.serviceMonitor.scrapeTimeout }}
+      scrapeTimeout: {{ .Values.metrics.serviceMonitor.scrapeTimeout }}
+      {{- end }}
+      {{- if .Values.metrics.serviceMonitor.honorLabels }}
+      honorLabels: {{ .Values.metrics.serviceMonitor.honorLabels }}
+      {{- end }}
+      {{- if .Values.metrics.serviceMonitor.relabellings }}
+      relabelings: {{- toYaml .Values.metrics.serviceMonitor.relabellings | nindent 6 }}
+      {{- end }}
+      {{- if .Values.metrics.serviceMonitor.metricRelabelings }}
+      metricRelabelings: {{- toYaml .Values.metrics.serviceMonitor.metricRelabelings | nindent 6 }}
+      {{- end }}
   namespaceSelector:
     matchNames:
       - {{ .Release.Namespace }}
-{{- end }}
-{{- if .Values.serviceMonitor.targetLabels }}
+  {{- if .Values.metrics.serviceMonitor.targetLabels }}
   targetLabels:
-  {{- range .Values.serviceMonitor.targetLabels }}
+    {{- range .Values.metrics.serviceMonitor.targetLabels }}
     - {{ . }}
+    {{- end }}
   {{- end }}
-{{- end }}
   selector:
     matchLabels:
       {{- include "dependabot-gitlab.selectorLabels" . | nindent 6 }}

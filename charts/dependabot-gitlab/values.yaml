@@ -64,25 +64,19 @@ metrics:
   enabled: true
   # -- Worker metrics web server port
   workerPort: 9394
-
-serviceMonitor:
-  # -- Enable serviceMonitor
-  enabled: true
-  # -- AdditionalLabels for serviceMonitor
-  additionalLabels: {}
-  # The label to use to retrieve the job name from.
-  # jobLabel: "app.kubernetes.io/name"
-  # -- Set namespace where serviceMonitor will deploy
-  namespace: ""
-  namespaceSelector: {}
-  # Default: scrape .Release.Namespace only
-  # To scrape all, use the following:
-  # namespaceSelector:
-  #   any: true
-  scrapeInterval: 30s
-  # honorLabels: true
-  targetLabels: []
-  metricRelabelings: []
+  serviceMonitor:
+    # -- Enable serviceMonitor
+    enabled: true
+    # -- Additional labels that can be used so ServiceMonitor resource(s) can be discovered by Prometheus
+    additionalLabels: {}
+    # -- Metrics scrape interval
+    scrapeInterval: 30s
+    # -- Metrics RelabelConfigs to apply to samples before scraping
+    relabellings: []
+    # -- Metrics RelabelConfigs to apply to samples before ingestion
+    metricRelabelings: []
+    # -- Specify honorLabels parameter to add the scrape endpoint
+    honorLabels: false
 
 web:
   # -- Web container replicas count
@@ -138,8 +132,6 @@ worker:
     # -- Startup probe timeout
     timeoutSeconds: 3
 
-
-
 createProjectsJob:
   # -- Job Active Deadline
   activeDeadlineSeconds: 240
@@ -149,9 +141,6 @@ migrationJob:
   backoffLimit: 4
   # -- Job Active Deadline
   activeDeadlineSeconds: 180
-
-
-
 
 env:
   # -- Redis URL
