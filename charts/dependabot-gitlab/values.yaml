@@ -61,9 +61,22 @@ podSecurityContext:
 
 metrics:
   # -- Enable metrics endpoint for prometheus
-  enabled: true
+  enabled: false
   # -- Worker metrics web server port
   workerPort: 9394
+  serviceMonitor:
+    # -- Enable serviceMonitor
+    enabled: false
+    # -- Additional labels that can be used so ServiceMonitor resource(s) can be discovered by Prometheus
+    additionalLabels: {}
+    # -- Metrics scrape interval
+    scrapeInterval: 30s
+    # -- Metrics RelabelConfigs to apply to samples before scraping
+    relabellings: []
+    # -- Metrics RelabelConfigs to apply to samples before ingestion
+    metricRelabelings: []
+    # -- Specify honorLabels parameter to add the scrape endpoint
+    honorLabels: false
 
 web:
   # -- Web container replicas count

@@ -68,7 +68,13 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | kubectlImage.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | kubectlImage.repository | string | `"bitnami/kubectl"` | Image to use for kubectl init containers |
 | kubectlImage.tag | string | `"1.20.10"` | Image tag |
-| metrics.enabled | bool | `true` | Enable metrics endpoint for prometheus |
+| metrics.enabled | bool | `false` | Enable metrics endpoint for prometheus |
+| metrics.serviceMonitor.additionalLabels | object | `{}` | Additional labels that can be used so ServiceMonitor resource(s) can be discovered by Prometheus |
+| metrics.serviceMonitor.enabled | bool | `false` | Enable serviceMonitor |
+| metrics.serviceMonitor.honorLabels | bool | `false` | Specify honorLabels parameter to add the scrape endpoint |
+| metrics.serviceMonitor.metricRelabelings | list | `[]` | Metrics RelabelConfigs to apply to samples before ingestion |
+| metrics.serviceMonitor.relabellings | list | `[]` | Metrics RelabelConfigs to apply to samples before scraping |
+| metrics.serviceMonitor.scrapeInterval | string | `"30s"` | Metrics scrape interval |
 | metrics.workerPort | int | `9394` | Worker metrics web server port |
 | migrationJob.activeDeadlineSeconds | int | `180` | Job Active Deadline |
 | migrationJob.backoffLimit | int | `4` | Job Back off limit |
