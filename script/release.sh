@@ -1,3 +1,6 @@
 #!/bin/bash
 
-git commit -m "Update chart to version $1"
+chart=$1
+version=$2
+
+git commit -m "$chart: Update chart to version $version"
