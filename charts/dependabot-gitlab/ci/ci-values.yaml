@@ -21,3 +21,8 @@ env:
 image:
   repository: registry.gitlab.com/dependabot-gitlab/dependabot
   tag: master-latest
+
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true
