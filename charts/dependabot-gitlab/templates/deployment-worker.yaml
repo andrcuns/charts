@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "dependabot-gitlab.labels" . | nindent 4 }}
 spec:
+  strategy: {{ toYaml .Values.worker.updateStrategy | nindent 4 }}
   replicas: {{ .Values.worker.replicaCount }}
   selector:
     matchLabels:

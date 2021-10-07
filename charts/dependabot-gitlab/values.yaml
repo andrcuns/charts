@@ -83,6 +83,9 @@ web:
   replicaCount: 1
   # -- Web container resource definitions
   resources: {}
+  # -- Set up strategy for web installation
+  updateStrategy:
+    type: RollingUpdate
   livenessProbe:
     # -- Enable liveness probe
     enabled: true
@@ -111,6 +114,9 @@ worker:
   resources: {}
   # -- Health check probe port
   probePort: 7433
+  # -- Set up strategy for worker installation
+  updateStrategy:
+    type: RollingUpdate
   livenessProbe:
     # -- Enable liveness probe
     enabled: true

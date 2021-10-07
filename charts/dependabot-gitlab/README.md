@@ -119,6 +119,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | web.startupProbe.initialDelaySeconds | int | `10` | Startup probe initial delay |
 | web.startupProbe.periodSeconds | int | `10` | Startup probe period |
 | web.startupProbe.timeoutSeconds | int | `3` | Startup probe timeout |
+| web.updateStrategy | object | `{"type":"RollingUpdate"}` | Set up strategy for web installation |
 | worker.livenessProbe.enabled | bool | `true` | Enable liveness probe |
 | worker.livenessProbe.failureThreshold | int | `2` | Liveness probe failure threshold |
 | worker.livenessProbe.periodSeconds | int | `120` | Liveness probe period |
@@ -131,3 +132,4 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | worker.startupProbe.initialDelaySeconds | int | `10` | Startup probe initial delay |
 | worker.startupProbe.periodSeconds | int | `5` | Startup probe period |
 | worker.startupProbe.timeoutSeconds | int | `3` | Startup probe timeout |
+| worker.updateStrategy | object | `{"type":"RollingUpdate"}` | Set up strategy for worker installation |
