@@ -55,5 +55,6 @@ spec:
   {{- end }}
   selector:
     matchLabels:
+      app.kubernetes.io/component: metrics
       {{- include "dependabot-gitlab.selectorLabels" . | nindent 6 }}
 {{- end }}

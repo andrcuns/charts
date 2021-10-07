@@ -69,6 +69,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | kubectlImage.repository | string | `"bitnami/kubectl"` | Image to use for kubectl init containers |
 | kubectlImage.tag | string | `"1.20.10"` | Image tag |
 | metrics.enabled | bool | `false` | Enable metrics endpoint for prometheus |
+| metrics.service.type | string | `"ClusterIP"` | Metrics service type |
 | metrics.serviceMonitor.additionalLabels | object | `{}` | Additional labels that can be used so ServiceMonitor resource(s) can be discovered by Prometheus |
 | metrics.serviceMonitor.enabled | bool | `false` | Enable serviceMonitor |
 | metrics.serviceMonitor.honorLabels | bool | `false` | Specify honorLabels parameter to add the scrape endpoint |
