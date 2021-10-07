@@ -44,7 +44,7 @@ spec:
                 name: {{ include "dependabot-gitlab.fullname" . }}
           ports:
             - name: http
-              containerPort: 3000
+              containerPort: {{ .Values.service.port }}
               protocol: TCP
           {{- if .Values.web.livenessProbe.enabled }}
           livenessProbe:

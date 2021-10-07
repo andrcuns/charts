@@ -6,6 +6,7 @@ data:
   RAILS_ENV: production
   RAILS_SERVE_STATIC_FILES: "true"
   SECRET_KEY_BASE: key
+  PORT: {{ .Values.service.port | quote }}
   SETTINGS__GITLAB_URL: {{ .Values.env.gitlabUrl | quote }}
   SETTINGS__UPDATE_RETRY: {{ .Values.env.updateRetry | quote }}
   SETTINGS__LOG_LEVEL: {{ .Values.env.logLevel }}

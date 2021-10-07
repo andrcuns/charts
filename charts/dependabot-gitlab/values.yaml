@@ -64,6 +64,9 @@ metrics:
   enabled: false
   # -- Worker metrics web server port
   workerPort: 9394
+  service:
+    # -- Metrics service type
+    type: ClusterIP
   serviceMonitor:
     # -- Enable serviceMonitor
     enabled: false
