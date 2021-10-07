@@ -5,6 +5,7 @@ kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
+    app.kubernetes.io/component: web
     {{- include "dependabot-gitlab.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
@@ -33,7 +34,7 @@ spec:
               service:
                 name: {{ $fullName }}
                 port:
-                  name: web
+                  name: http
           {{- end }}
     {{- end }}
   {{- end }}
