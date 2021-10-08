@@ -57,6 +57,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | env.sentryDsn | string | `""` | Optional sentry dsn for error reporting |
 | env.updateRetry | int | `2` | Update job retry count or 'false' to disable |
 | fullnameOverride | string | `""` | Override fully qualified app name |
+| image.imagePullSecrets | string | `nil` | Image pull secrets specification |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"docker.io/andrcuns/dependabot-gitlab"` | Image to use for deploying |
 | image.tag | string | `""` | Image tag |

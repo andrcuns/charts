@@ -6,6 +6,9 @@ image:
   # -- Image tag
   tag: ""
 
+  # -- Image pull secrets specification
+  imagePullSecrets:
+
 kubectlImage:
   # -- Image to use for kubectl init containers
   repository: bitnami/kubectl
@@ -13,6 +16,7 @@ kubectlImage:
   pullPolicy: IfNotPresent
   # -- Image tag
   tag: "1.20.10"
+
 
 # -- Override chart name
 nameOverride: ""

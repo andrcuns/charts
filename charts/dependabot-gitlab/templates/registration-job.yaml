@@ -36,4 +36,8 @@ spec:
             - secretRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
       restartPolicy: Never
-{{- end }}
+      {{- with .Values.image.imagePullSecrets }}
+      imagePullSecrets:
+      {{- toYaml . | nindent 6 }}
+      {{- end}}
+  {{- end }}
