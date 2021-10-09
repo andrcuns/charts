@@ -6,6 +6,9 @@ image:
   # -- Image tag
   tag: ""
 
+  # -- Image pull secrets specification
+  imagePullSecrets:
+
 kubectlImage:
   # -- Image to use for kubectl init containers
   repository: bitnami/kubectl

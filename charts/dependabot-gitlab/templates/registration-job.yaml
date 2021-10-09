@@ -41,4 +41,8 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
       restartPolicy: Never
-{{- end }}
+      {{- with .Values.image.imagePullSecrets }}
+      imagePullSecrets:
+      {{- toYaml . | nindent 6 }}
+      {{- end}}
+  {{- end }}
