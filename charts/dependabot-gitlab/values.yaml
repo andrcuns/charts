@@ -144,12 +144,16 @@ worker:
 createProjectsJob:
   # -- Job Active Deadline
   activeDeadlineSeconds: 240
+  # -- Create projects job resource definitions
+  resources: {}
 
 migrationJob:
   # -- Job Back off limit
   backoffLimit: 4
   # -- Job Active Deadline
   activeDeadlineSeconds: 180
+  # -- Migration job resource definitions
+  resources: {}
 
 env:
   # -- Redis URL
