@@ -39,6 +39,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity |
 | createProjectsJob.activeDeadlineSeconds | int | `240` | Job Active Deadline |
+| createProjectsJob.resources | object | `{}` | Create projects job resource definitions |
 | credentials.github_access_token | string | `""` | Github access token |
 | credentials.gitlab_access_token | string | `"test"` | Gitlab access token, required |
 | credentials.gitlab_auth_token | string | `""` | Gitlab auth token for webhook authentication |
@@ -79,6 +80,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | metrics.workerPort | int | `9394` | Worker metrics web server port |
 | migrationJob.activeDeadlineSeconds | int | `180` | Job Active Deadline |
 | migrationJob.backoffLimit | int | `4` | Job Back off limit |
+| migrationJob.resources | object | `{}` | Migration job resource definitions |
 | mongodb.auth.database | string | `"dependabot_gitab"` | MongoDB custom database |
 | mongodb.auth.enabled | bool | `true` | Enable authentication |
 | mongodb.auth.password | string | `"mongodb-password"` | MongoDB custom user password |
