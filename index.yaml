@@ -2,6 +2,20 @@ apiVersion: v1
 entries:
   buildkit-service:
   - apiVersion: v2
+    appVersion: v0.9.1
+    created: "2021-10-10T10:31:22.825606329Z"
+    description: Helm chart for buildkit service deployment
+    digest: 75943b6fcdd3c77bae5f00f270f8e1d3ebbfe078cab4c26c88809ee32d43f82b
+    icon: https://raw.githubusercontent.com/andrcuns/buildkit-chart/master/charts/buildkit-service/icon.png
+    maintainers:
+    - email: andrejs.cunskis@gmail.com
+      name: Andrejs Cunskis
+    name: buildkit-service
+    type: application
+    urls:
+    - https://github.com/andrcuns/charts/releases/download/buildkit-service-0.0.13/buildkit-service-0.0.13.tgz
+    version: 0.0.13
+  - apiVersion: v2
     appVersion: v0.9.0
     created: "2021-08-19T18:13:17.822596064Z"
     description: Helm chart for buildkit service deployment
@@ -2126,4 +2140,4 @@ entries:
     urls:
     - https://github.com/andrcuns/charts/releases/download/dependabot-gitlab-0.0.10/dependabot-gitlab-0.0.10.tgz
     version: 0.0.10
-generated: "2021-10-09T10:55:51.224590493Z"
+generated: "2021-10-10T10:31:22.827368082Z"
