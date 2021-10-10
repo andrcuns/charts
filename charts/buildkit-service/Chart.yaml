@@ -3,7 +3,7 @@ name: buildkit-service
 description: Helm chart for buildkit service deployment
 type: application
 version: 0.0.12
-appVersion: v0.9.0
+appVersion: v0.9.1
 icon: https://raw.githubusercontent.com/andrcuns/buildkit-chart/master/charts/buildkit-service/icon.png
 maintainers:
   - name: Andrejs Cunskis
