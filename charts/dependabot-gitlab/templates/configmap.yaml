@@ -19,15 +19,18 @@ data:
   {{- end }}
   {{- if .Values.project_registration.mode }}
   SETTINGS__PROJECT_REGISTRATION: {{ .Values.project_registration.mode | quote }}
-  {{- end -}}
+  {{- end }}
   {{- if .Values.project_registration.cron }}
   SETTINGS__PROJECT_REGISTRATION_CRON: {{ .Values.project_registration.cron | quote }}
-  {{- end -}}
+  {{- end }}
   {{- if .Values.project_registration.namespace }}
   SETTINGS__PROJECT_REGISTRATION_NAMESPACE: {{ .Values.project_registration.namespace | quote }}
-  {{- end -}}
+  {{- end }}
   {{- if .Values.env.sentryDsn }}
   SENTRY_DSN: {{ .Values.env.sentryDsn | quote }}
+  {{- end }}
+  {{- if .Values.env.sentryTracesSampleRate }}
+  SETTINGS__SENTRY_TRACES_SAMPLE_RATE: .Values.env.sentryTracesSampleRate
   {{- end }}
   {{- if .Values.redis.enabled }}
   REDIS_URL: redis://{{ .Values.redis.fullnameOverride }}-master.{{ .Release.Namespace }}.svc.{{ .Values.redis.clusterDomain }}
