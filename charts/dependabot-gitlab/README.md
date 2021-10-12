@@ -56,6 +56,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | env.no_proxy | string | `""` | Set proxy exceptions |
 | env.redisUrl | string | `""` | Redis URL |
 | env.sentryDsn | string | `""` | Optional sentry dsn for error reporting |
+| env.sentryTracesSampleRate | string | `""` | Sentry traces sample rate |
 | env.updateRetry | int | `2` | Update job retry count or 'false' to disable |
 | fullnameOverride | string | `""` | Override fully qualified app name |
 | image.imagePullSecrets | string | `nil` | Image pull secrets specification |
