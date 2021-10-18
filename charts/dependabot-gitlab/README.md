@@ -37,7 +37,6 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| affinity | object | `{}` | Affinity |
 | createProjectsJob.activeDeadlineSeconds | int | `240` | Job Active Deadline |
 | createProjectsJob.resources | object | `{}` | Create projects job resource definitions |
 | credentials.github_access_token | string | `""` | Github access token |
@@ -93,8 +92,6 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | mongodb.fullnameOverride | string | `"mongodb"` | String to fully override mongodb.fullname template |
 | mongodb.service.port | int | `27017` | Mongodb service port |
 | nameOverride | string | `""` | Override chart name |
-| nodeSelector | object | `{}` | Node selectors |
-| podAnnotations | object | `{}` | Pod annotations |
 | podSecurityContext | object | `{"fsGroup":1000,"runAsGroup":1000,"runAsUser":1000}` | Security Context |
 | project_registration.cron | string | `""` | Cron expression of project registration cron job |
 | project_registration.mode | string | `"manual"` | Project registration mode |
@@ -112,11 +109,13 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | service.type | string | `"ClusterIP"` | Service type |
 | serviceAccount.annotations | object | `{}` | Service account annotations |
 | serviceAccount.name | string | `""` | Service account name |
-| tolerations | list | `[]` | Tolerations |
+| web.affinity | object | `{}` | Affinity |
 | web.livenessProbe.enabled | bool | `true` | Enable liveness probe |
 | web.livenessProbe.failureThreshold | int | `5` | Liveness probe failure threshold |
 | web.livenessProbe.periodSeconds | int | `10` | Liveness probe period |
 | web.livenessProbe.timeoutSeconds | int | `2` | Liveness probe timeout |
+| web.nodeSelector | object | `{}` | Node selectors |
+| web.podAnnotations | object | `{}` | Pod annotations |
 | web.replicaCount | int | `1` | Web container replicas count |
 | web.resources | object | `{}` | Web container resource definitions |
 | web.startupProbe.enabled | bool | `true` | Enable startup probe |
@@ -124,11 +123,15 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | web.startupProbe.initialDelaySeconds | int | `10` | Startup probe initial delay |
 | web.startupProbe.periodSeconds | int | `10` | Startup probe period |
 | web.startupProbe.timeoutSeconds | int | `3` | Startup probe timeout |
+| web.tolerations | list | `[]` | Tolerations |
 | web.updateStrategy | object | `{"type":"RollingUpdate"}` | Set up strategy for web installation |
+| worker.affinity | object | `{}` | Affinity |
 | worker.livenessProbe.enabled | bool | `true` | Enable liveness probe |
 | worker.livenessProbe.failureThreshold | int | `2` | Liveness probe failure threshold |
 | worker.livenessProbe.periodSeconds | int | `120` | Liveness probe period |
 | worker.livenessProbe.timeoutSeconds | int | `3` | Liveness probe timeout |
+| worker.nodeSelector | object | `{}` | Node selectors |
+| worker.podAnnotations | object | `{}` | Pod annotations |
 | worker.probePort | int | `7433` | Health check probe port |
 | worker.replicaCount | int | `1` | Worker container replicas count |
 | worker.resources | object | `{}` | Worker container resource definitions |
@@ -137,4 +140,5 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | worker.startupProbe.initialDelaySeconds | int | `10` | Startup probe initial delay |
 | worker.startupProbe.periodSeconds | int | `5` | Startup probe period |
 | worker.startupProbe.timeoutSeconds | int | `3` | Startup probe timeout |
+| worker.tolerations | list | `[]` | Tolerations |
 | worker.updateStrategy | object | `{"type":"RollingUpdate"}` | Set up strategy for worker installation |

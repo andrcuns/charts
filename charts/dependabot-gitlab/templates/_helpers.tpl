@@ -63,9 +63,6 @@ checksum/redis-password: {{ default (randAlphaNum 10) .Values.redis.auth.passwor
 {{- if .Values.mongodb.auth.enabled }}
 checksum/mongodb-password: {{ default (randAlphaNum 10) .Values.mongodb.auth.password | sha256sum }}
 {{- end }}
-{{- with .Values.podAnnotations }}
-{{ toYaml . }}
-{{- end }}
 {{- end }}
 
 {{/*

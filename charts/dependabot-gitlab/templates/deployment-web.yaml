@@ -18,6 +18,9 @@ spec:
         app.kubernetes.io/component: web
       annotations:
         {{- include "dependabot-gitlab.podAnnotations" . | nindent 8 }}
+        {{- with .Values.web.podAnnotations }}
+        {{ toYaml . | nindent 8 }}
+        {{- end }}
     spec:
       serviceAccountName: {{ include "dependabot-gitlab.serviceAccountName" . }}
       {{- with .Values.podSecurityContext }}
@@ -69,15 +72,15 @@ spec:
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-      {{- with .Values.nodeSelector }}
+      {{- with .Values.web.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.affinity }}
+      {{- with .Values.web.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.tolerations }}
+      {{- with .Values.web.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}

@@ -44,18 +44,6 @@ ingress:
       paths: []
   tls: []
 
-# -- Pod annotations
-podAnnotations: {}
-
-# -- Node selectors
-nodeSelector: {}
-
-# -- Tolerations
-tolerations: []
-
-# -- Affinity
-affinity: {}
-
 # -- Security Context
 podSecurityContext:
   runAsUser: 1000
@@ -85,6 +73,14 @@ metrics:
     honorLabels: false
 
 web:
+  # -- Pod annotations
+  podAnnotations: {}
+  # -- Node selectors
+  nodeSelector: {}
+  # -- Tolerations
+  tolerations: []
+  # -- Affinity
+  affinity: {}
   # -- Web container replicas count
   replicaCount: 1
   # -- Web container resource definitions
@@ -114,6 +110,14 @@ web:
     timeoutSeconds: 3
 
 worker:
+  # -- Pod annotations
+  podAnnotations: {}
+  # -- Node selectors
+  nodeSelector: {}
+  # -- Tolerations
+  tolerations: []
+  # -- Affinity
+  affinity: {}
   # -- Worker container replicas count
   replicaCount: 1
   # -- Worker container resource definitions
