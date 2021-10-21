@@ -1,14 +1,15 @@
+---
 apiVersion: v2
-appVersion: 0.10.5
+appVersion: 0.10.6
 dependencies:
 - condition: redis.enabled
   name: redis
   repository: https://charts.bitnami.com/bitnami
-  version: ~14.7.0
+  version: "~14.7.0"
 - condition: mongodb.enabled
   name: mongodb
   repository: https://charts.bitnami.com/bitnami
-  version: ~10.23.0
+  version: "~10.23.0"
 description: Deployment chart for dependabot-gitlab app
 icon: https://gitlab.com/dependabot-gitlab/dependabot/-/raw/master/logo.png
 maintainers:
@@ -16,4 +17,4 @@ maintainers:
   name: Andrejs Cunskis
 name: dependabot-gitlab
 type: application
-version: 0.0.99
+version: 0.0.100
