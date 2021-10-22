@@ -108,6 +108,10 @@ web:
     periodSeconds: 10
     # -- Startup probe timeout
     timeoutSeconds: 3
+  # Extra volumeMounts for the pods
+  extraVolumeMounts:
+  # Extra volumes
+  extraVolumes:
 
 worker:
   # -- Pod annotations
@@ -147,6 +151,10 @@ worker:
     periodSeconds: 5
     # -- Startup probe timeout
     timeoutSeconds: 3
+  # Extra volumeMounts for the pods, this can be used to use a netrc by mounting a secret at `/home/dependabot/.netrc` this can be used for various package managers such as gomod
+  extraVolumeMounts:
+  # Extra volumes
+  extraVolumes:
 
 createProjectsJob:
   # -- Job Active Deadline
