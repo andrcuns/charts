@@ -1,6 +1,6 @@
 # dependabot-gitlab
 
-![Version: 0.0.101](https://img.shields.io/badge/Version-0.0.101-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.10.6](https://img.shields.io/badge/AppVersion-0.10.6-informational?style=flat-square)
+![Version: 0.0.102](https://img.shields.io/badge/Version-0.0.102-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.10.6](https://img.shields.io/badge/AppVersion-0.10.6-informational?style=flat-square)
 
 [dependabot-gitlab](https://gitlab.com/dependabot-gitlab/dependabot) is application providing automated dependency management for gitlab projects
 
