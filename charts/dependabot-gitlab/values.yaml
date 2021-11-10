@@ -5,17 +5,8 @@ image:
   pullPolicy: IfNotPresent
   # -- Image tag
   tag: ""
-
   # -- Image pull secrets specification
   imagePullSecrets:
-
-kubectlImage:
-  # -- Image to use for kubectl init containers
-  repository: bitnami/kubectl
-  # -- Image pull policy
-  pullPolicy: IfNotPresent
-  # -- Image tag
-  tag: "1.20.10"
 
 # -- Override chart name
 nameOverride: ""
@@ -157,6 +148,8 @@ worker:
   extraVolumes:
 
 createProjectsJob:
+  # -- Job Back off limit
+  backoffLimit: 1
   # -- Job Active Deadline
   activeDeadlineSeconds: 240
   # -- Create projects job resource definitions

@@ -38,6 +38,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | createProjectsJob.activeDeadlineSeconds | int | `240` | Job Active Deadline |
+| createProjectsJob.backoffLimit | int | `1` | Job Back off limit |
 | createProjectsJob.resources | object | `{}` | Create projects job resource definitions |
 | credentials.github_access_token | string | `""` | Github access token |
 | credentials.gitlab_access_token | string | `"test"` | Gitlab access token, required |
@@ -67,9 +68,6 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | ingress.hosts[0].host | string | `"chart-example.local"` |  |
 | ingress.hosts[0].paths | list | `[]` |  |
 | ingress.tls | list | `[]` |  |
-| kubectlImage.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
-| kubectlImage.repository | string | `"bitnami/kubectl"` | Image to use for kubectl init containers |
-| kubectlImage.tag | string | `"1.20.10"` | Image tag |
 | metrics.enabled | bool | `false` | Enable metrics endpoint for prometheus |
 | metrics.service.type | string | `"ClusterIP"` | Metrics service type |
 | metrics.serviceMonitor.additionalLabels | object | `{}` | Additional labels that can be used so ServiceMonitor resource(s) can be discovered by Prometheus |

@@ -108,27 +108,23 @@ imagePullPolicy: {{ .Values.image.pullPolicy }}
 {{- end }}
 
 {{/*
-Migration job name
-*/}}
-{{- define "dependabot-gitlab.migrationJobName" -}}
-{{- include "dependabot-gitlab.fullname" . }}-migration-job-{{ default .Chart.AppVersion .Values.image.tag }}
-{{- end }}
-
-{{/*
 Migration job wait container
 */}}
 {{- define "dependabot-gitlab.migrationsWaitContainer" -}}
 - name: wait-migrations
-  image: "{{ .Values.kubectlImage.repository }}:{{ .Values.kubectlImage.tag }}"
-  imagePullPolicy: {{ .Values.kubectlImage.pullPolicy }}
-  command:
-    - "kubectl"
-    - "wait"
-    - "job/{{- include "dependabot-gitlab.migrationJobName" . | trunc 63 | trimSuffix "-" }}"
-    - "--namespace"
-    - "{{ .Release.Namespace }}"
-    - "--for=condition=complete"
-    - "--timeout={{ .Values.migrationJob.activeDeadlineSeconds }}s"
+  {{- include "dependabot-gitlab.image" . | nindent 2 }}
+  args:
+    - "rake"
+    - "dependabot:check_migrations"
+  {{- with (include "dependabot-gitlab.database-credentials" .) }}
+  env:
+    {{- . | nindent 4 }}
+  {{- end }}
+  envFrom:
+    - configMapRef:
+        name: {{ include "dependabot-gitlab.fullname" . }}
+    - secretRef:
+        name: {{ include "dependabot-gitlab.fullname" . }}
 {{- end }}
 
 
