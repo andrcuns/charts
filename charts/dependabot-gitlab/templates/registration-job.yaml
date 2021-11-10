@@ -9,8 +9,7 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
 spec:
   ttlSecondsAfterFinished: 3600
-  # migrations wait has built in wait so try only once
-  backoffLimit: 1
+  backoffLimit: {{ .Values.createProjectsJob.backoffLimit }}
   activeDeadlineSeconds: {{ .Values.createProjectsJob.activeDeadlineSeconds }}
   template:
     spec:
@@ -19,8 +18,6 @@ spec:
       securityContext:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      initContainers:
-        {{- include "dependabot-gitlab.migrationsWaitContainer" . | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}-job
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
