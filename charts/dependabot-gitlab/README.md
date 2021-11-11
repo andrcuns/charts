@@ -108,6 +108,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | serviceAccount.annotations | object | `{}` | Service account annotations |
 | serviceAccount.name | string | `""` | Service account name |
 | web.affinity | object | `{}` | Affinity |
+| web.extraEnvVars | object | `{}` |  |
 | web.extraVolumeMounts | string | `nil` |  |
 | web.extraVolumes | string | `nil` |  |
 | web.livenessProbe.enabled | bool | `true` | Enable liveness probe |
@@ -126,6 +127,7 @@ By default chart installs instance of [redis](https://github.com/bitnami/charts/
 | web.tolerations | list | `[]` | Tolerations |
 | web.updateStrategy | object | `{"type":"RollingUpdate"}` | Set up strategy for web installation |
 | worker.affinity | object | `{}` | Affinity |
+| worker.extraEnvVars | object | `{}` |  |
 | worker.extraVolumeMounts | string | `nil` |  |
 | worker.extraVolumes | string | `nil` |  |
 | worker.livenessProbe.enabled | bool | `true` | Enable liveness probe |
