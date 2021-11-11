@@ -19,7 +19,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
-        - name: {{ .Chart.Name }}-job
+        - name: {{ .Chart.Name }}-registration-job
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
           args:
             - "rake"

@@ -30,7 +30,7 @@ spec:
             - secretRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
       containers:
-        - name: {{ .Chart.Name }}-job
+        - name: {{ .Chart.Name }}-migration-job
           {{- include "dependabot-gitlab.image" . | nindent 10 }}
           args:
             - "rake"
