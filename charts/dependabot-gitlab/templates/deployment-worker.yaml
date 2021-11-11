@@ -56,6 +56,9 @@ spec:
           {{- with (include "dependabot-gitlab.database-credentials" .) }}
             {{- . | nindent 12 }}
           {{- end }}
+          {{- with .Values.worker.extraEnvVars }}
+            {{- toYaml .Values.worker.extraEnvVars | nindent 12 }}
+          {{- end}}
           envFrom:
             - configMapRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}

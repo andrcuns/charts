@@ -103,6 +103,8 @@ web:
   extraVolumeMounts:
   # Extra volumes
   extraVolumes:
+  # Extra environment variables
+  extraEnvVars: {}
 
 worker:
   # -- Pod annotations
@@ -146,6 +148,8 @@ worker:
   extraVolumeMounts:
   # Extra volumes
   extraVolumes:
+  # Extra environment variables
+  extraEnvVars: {}
 
 createProjectsJob:
   # -- Job Back off limit

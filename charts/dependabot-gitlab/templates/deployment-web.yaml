@@ -36,10 +36,13 @@ spec:
           args:
             - "rails"
             - "server"
-          {{- with (include "dependabot-gitlab.database-credentials" .) }}
           env:
+          {{- with (include "dependabot-gitlab.database-credentials" .) }}
             {{- . | nindent 12 }}
           {{- end }}
+          {{- with .Values.web.extraEnvVars }}
+            {{- toYaml .Values.web.extraEnvVars | nindent 12 }}
+          {{- end}}
           envFrom:
             - configMapRef:
                 name: {{ include "dependabot-gitlab.fullname" . }}
