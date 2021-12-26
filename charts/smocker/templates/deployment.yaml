@@ -25,7 +25,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ include "smocker.imageTag" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: web
+            - name: mock
               containerPort: 8080
               protocol: TCP
             - name: admin

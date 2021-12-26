@@ -12,9 +12,9 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.webPort }}
-      targetPort: web
+      targetPort: mock
       protocol: TCP
-      name: web
+      name: mock
     - port: {{ .Values.service.adminPort }}
       targetPort: admin
       protocol: TCP
