@@ -34,13 +34,13 @@ spec:
           readinessProbe:
             httpGet:
               path: /version
-              port: http
+              port: admin
             initialDelaySeconds: 2
             periodSeconds: 30
           livenessProbe:
             httpGet:
               path: /version
-              port: http
+              port: admin
             initialDelaySeconds: 2
             periodSeconds: 30
           resources:
