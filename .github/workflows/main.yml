@@ -69,14 +69,6 @@ jobs:
       - name: Create kind cluster
         if: steps.changes.outputs.changed == 'true'
         uses: helm/kind-action@v1.2.0
-      - name: Deploy fake gitlab
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          kubectl create namespace testing
-          kubectl apply -f charts/dependabot-gitlab/ci/fake-gitlab.yaml -n testing
-      - name: Create serviceMonitor CDR
-        if: steps.changes.outputs.changed == 'true'
-        run: kubectl create -f https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/main/manifests/setup/prometheus-operator-0servicemonitorCustomResourceDefinition.yaml
       - name: Install
         if: steps.changes.outputs.changed == 'true'
         run: ct install --config .github/ct-install.yaml
