@@ -5,6 +5,7 @@ This repository hosts variable helm charts.
 ## Charts
 
 * [buildkit-service](charts/buildkit-service/README.md)
+* [smocker](charts/smocker/README.md)
 * **dependabot-gitlab**: migrated to <https://gitlab.com/dependabot-gitlab/chart>
 
 ## Development

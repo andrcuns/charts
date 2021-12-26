@@ -26,6 +26,6 @@ for chart_dir in "${charts[@]}"; do
     log "$delimiter"
 
     helm dependency update $chart_dir
-    helm template $chart_dir $values_opt | kubeval --additional-schema-locations https://raw.githubusercontent.com/joshuaspence/kubernetes-json-schema/master --strict
+    helm template $chart_dir $values_opt | kubeval --strict
   done
 done
