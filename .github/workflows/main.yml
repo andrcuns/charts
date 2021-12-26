@@ -31,7 +31,7 @@ jobs:
       - name: Setup chart testing
         uses: helm/chart-testing-action@v2.1.0
       - name: Lint
-        run: ct lint --config .github/ct-lint.yaml --check-version-increment=false
+        run: ct lint --config .github/config/ct-lint.yaml --check-version-increment=false
       - name: Lint docs
         run: .github/script/helm-docs.sh
 
@@ -71,4 +71,4 @@ jobs:
         uses: helm/kind-action@v1.2.0
       - name: Install
         if: steps.changes.outputs.changed == 'true'
-        run: ct install --config .github/ct-install.yaml
+        run: ct install --config .github/config/ct-install.yaml
