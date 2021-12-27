@@ -24,7 +24,8 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ include "smocker.imageTag" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: /opt/smocker/start.sh
+          command:
+            - /opt/smocker/start.sh
           ports:
             - name: mock
               containerPort: 8080
@@ -52,7 +53,7 @@ spec:
           {{- if .Values.mocks }}
           env:
             - name: MOCKS
-              value: {{ .Values.mocks }}
+              value: "{{ .Values.mocks }}"
           {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
