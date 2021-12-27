@@ -210,6 +210,7 @@ entries:
       name: mongodb
       repository: https://charts.bitnami.com/bitnami
       version: ~10.23.0
+    deprecated: true
     description: Deployment chart for dependabot-gitlab app
     digest: 6082493b2bbf29ee814b16c5a9aa8bdf4edc411eb229c3ea7994434595cf39a3
     icon: https://gitlab.com/dependabot-gitlab/dependabot/-/raw/master/logo.png
@@ -221,7 +222,6 @@ entries:
     urls:
     - https://github.com/andrcuns/charts/releases/download/dependabot-gitlab-0.0.106/dependabot-gitlab-0.0.106.tgz
     version: 0.0.106
-    deprecated: true
   - apiVersion: v2
     appVersion: 0.10.8
     created: "2021-11-11T20:03:26.948917001Z"
@@ -2377,6 +2377,26 @@ entries:
           url: https://github.com/andrcuns/charts/issues
     apiVersion: v2
     appVersion: 0.17.1
+    created: "2021-12-27T23:02:39.171895032Z"
+    description: Helm chart for smocker mock service deployment
+    digest: 33d87833c1ed997c339eea1019496210f5b8641e42c35f7442ffaac1735386c8
+    icon: https://raw.githubusercontent.com/andrcuns/buildkit-chart/master/charts/smocker/icon.png
+    maintainers:
+    - email: andrejs.cunskis@gmail.com
+      name: Andrejs Cunskis
+    name: smocker
+    type: application
+    urls:
+    - https://github.com/andrcuns/charts/releases/download/smocker-0.0.2/smocker-0.0.2.tgz
+    version: 0.0.2
+  - annotations:
+      artifacthub.io/links: |
+        - name: source
+          url: https://github.com/andrcuns/charts
+        - name: support
+          url: https://github.com/andrcuns/charts/issues
+    apiVersion: v2
+    appVersion: 0.17.1
     created: "2021-12-27T00:34:21.204256456Z"
     description: Helm chart for smocker mock service deployment
     digest: cc55e35b6dd12ca6f4ff91e93c123cf0a1ddfae165ab96efa41f86613b43b2b9
@@ -2389,4 +2409,4 @@ entries:
     urls:
     - https://github.com/andrcuns/charts/releases/download/smocker-0.0.1/smocker-0.0.1.tgz
     version: 0.0.1
-generated: "2021-12-27T00:45:05.691325484Z"
+generated: "2021-12-27T23:02:39.172742037Z"
