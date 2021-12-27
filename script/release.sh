@@ -17,7 +17,7 @@ helm local-chart-version bump -c charts/$chart -s $version_segment
 
 log
 log "update docs"
-helm-docs
+helm-docs -c charts/$chart
 
 log
 log "create release commit"
