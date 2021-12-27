@@ -21,6 +21,7 @@ data:
     }
 
     set_mocks() {
+      echo "Setting session mocks ${MOCKS}"
       curl -sSf -XPOST \
         --header "Content-Type: application/x-yaml" \
         --data "${MOCKS}" \
