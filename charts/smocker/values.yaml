@@ -6,8 +6,8 @@ image:
   # -- Image tag
   tag: ""
 
-# -- Mocks definition yaml to set on startup
-mocks: ""
+# -- Mocks definitions, see: https://smocker.dev/technical-documentation/mock-definition.html
+mocks: []
 
 # -- Smocker log level
 logLevel: info

@@ -33,7 +33,7 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | image.repository | string | `"andrcuns/smocker"` | Image name |
 | image.tag | string | `""` | Image tag |
 | logLevel | string | `"info"` | Smocker log level |
-| mocks | string | `""` | Mocks definition yaml to set on startup |
+| mocks | list | `[]` | Mocks definitions, see: https://smocker.dev/technical-documentation/mock-definition.html |
 | nodeSelector | object | `{}` | Node selector |
 | podAnnotations | object | `{}` | Pod annotations |
 | resources | object | `{}` | Resource definitions |

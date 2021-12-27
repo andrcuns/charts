@@ -1,0 +1,11 @@
+{{- if .Values.mocks }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "smocker.fullname" . }}-mock
+  labels:
+    {{- include "smocker.labels" . | nindent 4 }}
+data:
+  mock-definition.yaml: |
+    {{- .Values.mocks | toYaml | nindent 4 }}
+{{- end }}

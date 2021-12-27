@@ -33,9 +33,16 @@ spec:
             - name: admin
               containerPort: 8081
               protocol: TCP
+          env:
+            - name: SMOCKER_LOG_LEVEL
+              value: {{ .Values.logLevel }}
           volumeMounts:
             - name: startup
               mountPath: /usr/local/bin
+            {{- if .Values.mocks }}
+            - name: mocks
+              mountPath: /mocks
+            {{- end }}
           readinessProbe:
             httpGet:
               path: /version
@@ -50,13 +57,6 @@ spec:
             periodSeconds: 30
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          env:
-            - name: SMOCKER_LOG_LEVEL
-              value: {{ .Values.logLevel }}
-            {{- if .Values.mocks }}
-            - name: MOCKS
-              value: "{{ .Values.mocks }}"
-            {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -74,3 +74,8 @@ spec:
           configMap:
             name: {{ include "smocker.fullname" . }}
             defaultMode: 0755
+        {{- if .Values.mocks }}
+        - name: mocks
+          configMap:
+            name: {{ include "smocker.fullname" . }}-mock
+        {{- end }}
