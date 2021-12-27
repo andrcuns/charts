@@ -1,3 +1,1 @@
-service:
-  webPort: 1234
-  adminPort: 1235
+logLevel: trace

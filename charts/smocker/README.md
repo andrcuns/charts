@@ -30,8 +30,10 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity |
 | image.pullPolicy | string | `"IfNotPresent"` | Pull policy |
-| image.repository | string | `"thiht/smocker"` | Image name |
+| image.repository | string | `"andrcuns/smocker"` | Image name |
 | image.tag | string | `""` | Image tag |
+| logLevel | string | `"info"` | Smocker log level |
+| mocks | list | `[]` | Mocks definitions, see: https://smocker.dev/technical-documentation/mock-definition.html |
 | nodeSelector | object | `{}` | Node selector |
 | podAnnotations | object | `{}` | Pod annotations |
 | resources | object | `{}` | Resource definitions |

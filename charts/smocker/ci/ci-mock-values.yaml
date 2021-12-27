@@ -1,0 +1,13 @@
+mocks:
+  - request:
+      method:
+        matcher: ShouldMatch
+        value: (GET|PUT|POST)
+      path:
+        matcher: ShouldStartWith
+        value: /
+    proxy:
+      host: https://api.github.com
+      follow_redirect: true
+
+logLevel: trace

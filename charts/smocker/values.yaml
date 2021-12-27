@@ -1,10 +1,16 @@
 image:
   # -- Image name
-  repository: thiht/smocker
+  repository: andrcuns/smocker
   # -- Pull policy
   pullPolicy: IfNotPresent
   # -- Image tag
   tag: ""
+
+# -- Mocks definitions, see: https://smocker.dev/technical-documentation/mock-definition.html
+mocks: []
+
+# -- Smocker log level
+logLevel: info
 
 # -- Pod annotations
 podAnnotations: {}
