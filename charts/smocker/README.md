@@ -32,7 +32,8 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | image.pullPolicy | string | `"IfNotPresent"` | Pull policy |
 | image.repository | string | `"andrcuns/smocker"` | Image name |
 | image.tag | string | `""` | Image tag |
-| mocks | string | `""` |  |
+| logLevel | string | `"info"` | Smocker log level |
+| mocks | string | `""` | Mocks definition yaml to set on startup |
 | nodeSelector | object | `{}` | Node selector |
 | podAnnotations | object | `{}` | Pod annotations |
 | resources | object | `{}` | Resource definitions |

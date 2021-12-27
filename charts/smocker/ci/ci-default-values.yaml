@@ -9,3 +9,5 @@ mocks: |
     proxy:
       host: https://api.github.com
       follow_redirect: true
+
+logLevel: trace

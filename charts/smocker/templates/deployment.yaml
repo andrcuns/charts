@@ -50,11 +50,13 @@ spec:
             periodSeconds: 30
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if .Values.mocks }}
           env:
+            - name: SMOCKER_LOG_LEVEL
+              value: {{ .Values.logLevel }}
+            {{- if .Values.mocks }}
             - name: MOCKS
               value: "{{ .Values.mocks }}"
-          {{- end }}
+            {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

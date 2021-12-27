@@ -6,8 +6,11 @@ image:
   # -- Image tag
   tag: ""
 
-# Mocks definition yaml to set on startup
+# -- Mocks definition yaml to set on startup
 mocks: ""
+
+# -- Smocker log level
+logLevel: info
 
 # -- Pod annotations
 podAnnotations: {}
