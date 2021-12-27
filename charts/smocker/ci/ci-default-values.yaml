@@ -1,3 +1,12 @@
-service:
-  webPort: 1234
-  adminPort: 1235
+mocks: |
+  - request:
+      method:
+        matcher: ShouldMatch
+        value: (GET|PUT|POST)
+      path:
+        matcher: ShouldStartWith
+        value: /
+    proxy:
+      host: https://api.github.com
+      follow_redirect: true
+
