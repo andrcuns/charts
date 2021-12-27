@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "smocker.fullname" . }}
+  labels:
+    {{- include "smocker.labels" . | nindent 4 }}
+data:
+  start.sh: |
+    #!/bin/bash
+
+    set -m
+
+    mock_server="localhost:8081"
+
+    wait_server_started() {
+      echo "Waiting for mock server to start"
+      timeout 30 sh -c \
+        "until curl -sSf ${mock_server}/version > /dev/null 2>&1; do
+          print '.'
+          sleep 1
+        done"
+    }
+
+    set_mocks() {
+      curl -sSf -XPOST \
+        --header "Content-Type: application/x-yaml" \
+        --data "${MOCKS}" \
+        "${mock_server}/mocks"
+    }
+
+    # Start the primary process and put it in the background
+    /opt/smocker &
+
+    if [ ! -z "$MOCKS" ]; then
+      wait_server_started
+      set_mocks
+    fi
+
+    fg %1

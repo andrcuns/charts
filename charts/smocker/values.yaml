@@ -1,10 +1,13 @@
 image:
   # -- Image name
-  repository: thiht/smocker
+  repository: andrcuns/smocker
   # -- Pull policy
   pullPolicy: IfNotPresent
   # -- Image tag
   tag: ""
+
+# Mocks definition yaml to set on startup
+mocks: ""
 
 # -- Pod annotations
 podAnnotations: {}

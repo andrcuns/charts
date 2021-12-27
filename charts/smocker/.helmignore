@@ -1,4 +1,7 @@
-ci/
-README.md.gotmpl
+.dockerignore
 Chart.lock
+Dockerfile
 icon.png
+README.md.gotmpl
+
+ci/

@@ -24,6 +24,7 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ include "smocker.imageTag" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: /opt/smocker/start.sh
           ports:
             - name: mock
               containerPort: 8080
@@ -31,6 +32,9 @@ spec:
             - name: admin
               containerPort: 8081
               protocol: TCP
+          volumeMounts:
+            - name: startup
+              mountPath: /opt/smocker
           readinessProbe:
             httpGet:
               path: /version
@@ -45,6 +49,11 @@ spec:
             periodSeconds: 30
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.mocks }}
+          env:
+            - name: MOCKS
+              value: {{ .Values.mocks }}
+          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -57,3 +66,8 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: startup
+          configMap:
+            name: {{ include "smocker.fullname" . }}
+            defaultMode: 0755
