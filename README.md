@@ -1,3 +1,5 @@
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/andrcuns)](https://artifacthub.io/packages/search?repo=andrcuns)
+
 # Helm charts
 
 This repository hosts variable helm charts.
@@ -5,6 +7,7 @@ This repository hosts variable helm charts.
 ## Charts
 
 * [buildkit-service](charts/buildkit-service/README.md)
+* [smocker](charts/smocker/README.md)
 * **dependabot-gitlab**: migrated to <https://gitlab.com/dependabot-gitlab/chart>
 
 ## Development

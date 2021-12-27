@@ -1,0 +1,38 @@
+image:
+  # -- Image name
+  repository: thiht/smocker
+  # -- Pull policy
+  pullPolicy: IfNotPresent
+  # -- Image tag
+  tag: ""
+
+# -- Pod annotations
+podAnnotations: {}
+
+service:
+  # -- Service type
+  type: ClusterIP
+  # -- Service web port
+  webPort: 8080
+  # -- Service admin port
+  adminPort: 8081
+  # -- Service annotations
+  annotations: {}
+
+# -- Resource definitions
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+# -- Node selector
+nodeSelector: {}
+
+# -- Tolerations
+tolerations: []
+
+# -- Affinity
+affinity: {}

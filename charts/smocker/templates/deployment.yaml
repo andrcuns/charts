@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "smocker.fullname" . }}
+  labels:
+    {{- include "smocker.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "smocker.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- if .Values.podAnnotations }}
+      annotations:
+        {{- with .Values.podAnnotations -}}
+        {{ toYaml . | nindent 8 }}
+        {{- end }}
+      {{- end }}
+      labels:
+        {{- include "smocker.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ include "smocker.imageTag" . }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: mock
+              containerPort: 8080
+              protocol: TCP
+            - name: admin
+              containerPort: 8081
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /version
+              port: admin
+            initialDelaySeconds: 2
+            periodSeconds: 30
+          livenessProbe:
+            httpGet:
+              path: /version
+              port: admin
+            initialDelaySeconds: 2
+            periodSeconds: 30
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

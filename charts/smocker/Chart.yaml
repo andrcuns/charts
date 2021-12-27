@@ -5,12 +5,12 @@ annotations:
     - name: support
       url: https://github.com/andrcuns/charts/issues
 apiVersion: v2
-appVersion: v0.9.1
-description: Helm chart for buildkit service deployment
-icon: https://raw.githubusercontent.com/andrcuns/buildkit-chart/master/charts/buildkit-service/icon.png
+appVersion: 0.17.1
+description: Helm chart for smocker mock service deployment
+icon: https://raw.githubusercontent.com/andrcuns/buildkit-chart/master/charts/smocker/icon.png
 maintainers:
 - email: andrejs.cunskis@gmail.com
   name: Andrejs Cunskis
-name: buildkit-service
+name: smocker
 type: application
-version: 0.0.13
+version: 0.0.0
