@@ -25,7 +25,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ include "smocker.imageTag" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
-            - /opt/smocker/start.sh
+            - start.sh
           ports:
             - name: mock
               containerPort: 8080
@@ -35,7 +35,7 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: startup
-              mountPath: /opt/smocker
+              mountPath: /usr/local/bin
           readinessProbe:
             httpGet:
               path: /version
