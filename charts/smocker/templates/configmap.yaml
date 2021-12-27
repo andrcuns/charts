@@ -13,7 +13,6 @@ data:
     mock_server="localhost:8081"
 
     wait_server_started() {
-      echo "Waiting for mock server to start"
       timeout 30 sh -c \
         "until curl -sSf ${mock_server}/version > /dev/null 2>&1; do
           print '.'
