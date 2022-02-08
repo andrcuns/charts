@@ -1,3 +1,3 @@
-FROM thiht/smocker:0.17.1
+FROM thiht/smocker:0.18.0
 
 RUN apk --no-cache add bash curl
