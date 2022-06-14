@@ -2,7 +2,7 @@
 
 # Helm charts
 
-This repository hosts variable helm charts.
+This repository hosts various helm charts.
 
 ## Charts
 
