@@ -26,6 +26,6 @@ for chart_dir in "${charts[@]}"; do
     log "$delimiter"
 
     helm dependency update $chart_dir
-    helm template $chart_dir $values_opt | kubeconform -strict -output tap
+    helm template $chart_dir $values_opt | kubeconform -strict -verbose -kubernetes-version "${KUBERNETES_VERSION}"
   done
 done

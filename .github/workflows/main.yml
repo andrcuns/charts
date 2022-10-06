@@ -35,10 +35,14 @@ jobs:
       - name: Lint docs
         run: .github/script/helm-docs.sh
 
-  kubeconform:
+  validate:
     runs-on: ubuntu-latest
     needs:
       - lint
+    strategy:
+      fail-fast: false
+      matrix:
+        kubernetes_version: ['1.22.13', '1.23.8', '1.24.2']
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -46,12 +50,14 @@ jobs:
           fetch-depth: 0
       - name: Run kubeconform
         run: .github/script/kubeconform.sh
+        env:
+          KUBERNETES_VERSION: ${{ matrix.kubernetes_version }}
 
   install:
     runs-on: ubuntu-latest
     needs:
       - lint
-      - kubeconform
+      - validate
     steps:
       - name: Checkout
         uses: actions/checkout@v3
