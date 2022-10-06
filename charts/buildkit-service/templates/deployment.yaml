@@ -80,13 +80,17 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      {{- if or .Values.rootless .Values.tls.enabled }}
       volumes:
+      {{- if .Values.rootless }}
       - name: buildkitd
         emptyDir: {}
+      {{- end }}
       {{- if .Values.tls.enabled }}
       - name: certs
         secret:
           secretName: {{ include "buildkit.fullname" . }}
+      {{- end }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
