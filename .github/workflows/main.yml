@@ -17,12 +17,12 @@ on:
       - .github/**/*
 
 env:
-  KUBEVAL_VERSION: "0.16.1"
+  KUBECONFORM_VERSION: "0.4.14"
   HELMDOCS_VERSION: "1.5.0"
 
 jobs:
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -35,23 +35,29 @@ jobs:
       - name: Lint docs
         run: .github/script/helm-docs.sh
 
-  kubeval:
-    runs-on: ubuntu-20.04
+  validate:
+    runs-on: ubuntu-latest
     needs:
       - lint
+    strategy:
+      fail-fast: false
+      matrix:
+        kubernetes_version: ['1.22.13', '1.23.8', '1.24.2']
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Run kubeval
-        run: .github/script/kubeval.sh
+      - name: Run kubeconform
+        run: .github/script/kubeconform.sh
+        env:
+          KUBERNETES_VERSION: ${{ matrix.kubernetes_version }}
 
   install:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     needs:
       - lint
-      - kubeval
+      - validate
     steps:
       - name: Checkout
         uses: actions/checkout@v3

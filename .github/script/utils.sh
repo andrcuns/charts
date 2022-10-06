@@ -8,13 +8,13 @@ function changed-charts() {
   git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/master -- charts | cut -d/ -f 1-2 | sort | uniq
 }
 
-function install-kubeval() {
-  KUBEVAL_SOURCE="https://github.com/instrumenta/kubeval/releases/download/v${KUBEVAL_VERSION}/kubeval-linux-amd64.tar.gz"
+function install-kubeconform() {
+  KUBECONFORM_SOURCE="https://github.com/yannh/kubeconform/releases/download/v${KUBECONFORM_VERSION}/kubeconform-linux-amd64.tar.gz"
 
-  log "Downloading kubeval v${KUBEVAL_VERSION}"
-  curl --silent --show-error --fail --location --output /tmp/kubeval.tar.gz "${KUBEVAL_SOURCE}"
-  tar -xf /tmp/kubeval.tar.gz kubeval
-  sudo mv kubeval /usr/local/bin/
+  log "Downloading kubeconform v${KUBECONFORM_VERSION}"
+  curl --silent --show-error --fail --location --output /tmp/kubeconform.tar.gz "${KUBECONFORM_SOURCE}"
+  tar -xf /tmp/kubeconform.tar.gz kubeconform
+  sudo mv kubeconform /usr/local/bin/
 }
 
 function install-helmdocs() {
