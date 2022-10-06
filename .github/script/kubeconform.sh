@@ -11,7 +11,7 @@ if [ ${#charts[@]} -eq 0 ]; then
   exit
 fi
 
-install-kubeval
+install-kubeconform
 
 for chart_dir in "${charts[@]}"; do
   for yaml in $chart_dir/ci/ci-*.yaml; do
@@ -26,6 +26,6 @@ for chart_dir in "${charts[@]}"; do
     log "$delimiter"
 
     helm dependency update $chart_dir
-    helm template $chart_dir $values_opt | kubeval --strict
+    helm template $chart_dir $values_opt | kubeconform -strict -output tap
   done
 done
