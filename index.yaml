@@ -9,6 +9,26 @@ entries:
           url: https://github.com/andrcuns/charts/issues
     apiVersion: v2
     appVersion: v0.10.4
+    created: "2022-10-07T20:48:16.049454186Z"
+    description: Helm chart for buildkit service deployment
+    digest: 2455a20927fc7b3c0b94dbf9e6a984ac09807707c16cdbe5147872db25fd4a1a
+    icon: https://raw.githubusercontent.com/andrcuns/buildkit-chart/master/charts/buildkit-service/icon.png
+    maintainers:
+    - email: andrejs.cunskis@gmail.com
+      name: Andrejs Cunskis
+    name: buildkit-service
+    type: application
+    urls:
+    - https://github.com/andrcuns/charts/releases/download/buildkit-service-0.2.1/buildkit-service-0.2.1.tgz
+    version: 0.2.1
+  - annotations:
+      artifacthub.io/links: |
+        - name: source
+          url: https://github.com/andrcuns/charts
+        - name: support
+          url: https://github.com/andrcuns/charts/issues
+    apiVersion: v2
+    appVersion: v0.10.4
     created: "2022-10-06T22:00:50.714725101Z"
     description: Helm chart for buildkit service deployment
     digest: 3b2ef5e5afe16e58614e98c7b34d6f43bf306cec79624937ad4c3d6214bdef2a
@@ -2449,4 +2469,4 @@ entries:
     urls:
     - https://github.com/andrcuns/charts/releases/download/smocker-0.0.1/smocker-0.0.1.tgz
     version: 0.0.1
-generated: "2022-10-06T22:00:50.715151626Z"
+generated: "2022-10-07T20:48:16.049884491Z"
