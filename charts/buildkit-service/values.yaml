@@ -19,6 +19,8 @@ service:
   type: ClusterIP
   # -- Service port
   port: 1234
+  # -- Static ip address for load balancer
+  loadbalancerIp: ""
   # -- Service annotations
   annotations: {}
 

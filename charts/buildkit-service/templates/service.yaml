@@ -10,6 +10,9 @@ metadata:
   {{- end }}
 spec:
   type: {{ .Values.service.type }}
+  {{- if .Values.service.loadbalancerIp }}
+  loadbalancerIP: {{ .Values.service.loadbalancerIp }}
+  {{- end }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: tcp
