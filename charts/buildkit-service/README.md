@@ -40,6 +40,7 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | resources | object | `{}` | Resource definitions |
 | rootless | bool | `false` | Run rootless mode, https://github.com/moby/buildkit/blob/master/docs/rootless.md |
 | service.annotations | object | `{}` | Service annotations |
+| service.loadbalancerIp | string | `""` | Static ip address for load balancer |
 | service.port | int | `1234` | Service port |
 | service.type | string | `"ClusterIP"` | Service type |
 | tls.cert | string | `nil` | Base64 encoded cert.pem |
