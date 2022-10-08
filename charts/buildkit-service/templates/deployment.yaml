@@ -38,6 +38,7 @@ spec:
             - mountPath: /home/user/.local/share/buildkit
               name: buildkitd
           {{- end }}
+          {{- end }}
           args:
             - --addr
             - unix:///run/{{ .Values.rootless | ternary "user/1000" ""}}/buildkit/buildkitd.sock
