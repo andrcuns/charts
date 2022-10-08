@@ -1,4 +1,5 @@
 rootless: true
+debugLog: true
 
 tls:
   enabled: true
