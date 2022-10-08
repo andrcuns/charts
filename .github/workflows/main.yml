@@ -77,4 +77,6 @@ jobs:
         uses: helm/kind-action@v1.4.0
       - name: Install
         if: steps.changes.outputs.changed == 'true'
-        run: ct install --config .github/config/ct-install.yaml
+        run: |
+          rm charts/buildkit-service/ci/ci-lb-values.yaml
+          ct install --config .github/config/ct-install.yaml
