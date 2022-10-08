@@ -11,6 +11,9 @@ image:
 # -- Run rootless mode, https://github.com/moby/buildkit/blob/master/docs/rootless.md
 rootless: false
 
+# -- Enable debug logging
+debugLog: false
+
 # -- Pod annotations
 podAnnotations: {}
 
