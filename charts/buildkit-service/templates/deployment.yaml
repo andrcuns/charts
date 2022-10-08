@@ -27,11 +27,17 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ include "buildkit.imageTag" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.tls.enabled }}
+          {{- if or .Values.rootless .Values.tls.enabled }}
           volumeMounts:
+          {{- if .Values.tls.enabled }}
             - name: certs
               readOnly: true
               mountPath: /certs
+          {{- end }}
+          {{- if .Values.rootless }}
+            - mountPath: /home/user/.local/share/buildkit
+              name: buildkitd
+          {{- end }}
           {{- end }}
           args:
             - --addr
