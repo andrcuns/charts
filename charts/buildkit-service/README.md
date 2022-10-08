@@ -31,6 +31,7 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity |
+| debugLog | bool | `false` | Enable debug logging |
 | image.pullPolicy | string | `"IfNotPresent"` | Pull policy |
 | image.repository | string | `"moby/buildkit"` | Image name |
 | image.tag | string | `""` | Image tag |

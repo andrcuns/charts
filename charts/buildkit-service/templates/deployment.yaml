@@ -55,6 +55,9 @@ spec:
             - --tlskey
             - /certs/key.pem
           {{- end }}
+          {{- if .Values.debugLog }}
+            - --debug
+          {{- end }}
           ports:
             - name: tcp
               containerPort: 1234
