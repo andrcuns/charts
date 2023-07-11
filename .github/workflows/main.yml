@@ -74,7 +74,7 @@ jobs:
           fi
       - name: Create kind cluster
         if: steps.changes.outputs.changed == 'true'
-        uses: helm/kind-action@v1.7.0
+        uses: helm/kind-action@v1.8.0
       - name: Install
         if: steps.changes.outputs.changed == 'true'
         run: |
