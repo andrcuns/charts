@@ -1,0 +1,13 @@
+{{- if (gt (.Values.replicaCount | int) 1) }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  labels:
+    {{- include "buildkit.labels" . | nindent 4 }}
+  name: {{ include "buildkit.fullname" . }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "buildkit.selectorLabels" . | nindent 6 }}
+  minAvailable: {{ .Values.pdb.minAvailable }}
+{{- end }}

@@ -14,6 +14,8 @@ rootless: false
 # -- Enable debug logging
 debugLog: false
 
+pdb:
+  minAvailable: 1
 # -- Pod annotations
 podAnnotations: {}
 
