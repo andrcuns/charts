@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup chart testing
-        uses: helm/chart-testing-action@v2.6.0
+        uses: helm/chart-testing-action@v2.6.1
       - name: Lint
         run: ct lint --config .github/config/ct-lint.yaml
       - name: Lint docs
