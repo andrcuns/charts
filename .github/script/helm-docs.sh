@@ -17,3 +17,4 @@ log "Running helm-docs to validate if chart documentation is up-to-date..."
 helm-docs -c charts
 log "Checking if helm-docs produced any changes..."
 git diff --color --exit-code
+echo "docs are up to date!"
