@@ -33,6 +33,17 @@
       ],
       "depNameTemplate": "norwoodj/helm-docs",
       "datasourceTemplate": "github-releases"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": [
+        ".github/script/utils.sh"
+      ],
+      "matchStrings": [
+        "HELM_VERSION=\"(?<currentValue>.*?)\"\\n"
+      ],
+      "depNameTemplate": "helm/helm",
+      "datasourceTemplate": "github-releases"
     }
   ]
 }
