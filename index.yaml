@@ -2496,6 +2496,26 @@ entries:
         - name: support
           url: https://github.com/andrcuns/charts/issues
     apiVersion: v2
+    appVersion: 0.18.5
+    created: "2023-11-26T16:25:26.937854398Z"
+    description: Helm chart for smocker mock service deployment
+    digest: 67c3120bc6bc198693f7a9656b56ff0775e212ce00d058b1b34f0784b044c372
+    icon: https://raw.githubusercontent.com/andrcuns/buildkit-chart/main/charts/smocker/icon.png
+    maintainers:
+    - email: andrejs.cunskis@gmail.com
+      name: Andrejs Cunskis
+    name: smocker
+    type: application
+    urls:
+    - https://github.com/andrcuns/charts/releases/download/smocker-0.0.3/smocker-0.0.3.tgz
+    version: 0.0.3
+  - annotations:
+      artifacthub.io/links: |
+        - name: source
+          url: https://github.com/andrcuns/charts
+        - name: support
+          url: https://github.com/andrcuns/charts/issues
+    apiVersion: v2
     appVersion: 0.17.1
     created: "2021-12-27T23:02:39.171895032Z"
     description: Helm chart for smocker mock service deployment
@@ -2529,4 +2549,4 @@ entries:
     urls:
     - https://github.com/andrcuns/charts/releases/download/smocker-0.0.1/smocker-0.0.1.tgz
     version: 0.0.1
-generated: "2023-11-26T09:09:16.482739234Z"
+generated: "2023-11-26T16:25:26.93838602Z"
