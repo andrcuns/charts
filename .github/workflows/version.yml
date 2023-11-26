@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: |
           source .github/script/utils.sh
-          install-helm
           install-helmdocs
+          install-local-chart-version
       - name: Update version
         run: .github/script/bump-version.sh ${{ inputs.chart }} ${{ inputs.semver }}

@@ -12,7 +12,7 @@ function install-kubeconform() {
   KUBECONFORM_VERSION="v0.6.4"
   KUBECONFORM_SOURCE="https://github.com/yannh/kubeconform/releases/download/${KUBECONFORM_VERSION}/kubeconform-linux-amd64.tar.gz"
 
-  log "Downloading kubeconform ${KUBECONFORM_VERSION}"
+  log "Installing kubeconform ${KUBECONFORM_VERSION}"
   curl --silent --show-error --fail --location --output /tmp/kubeconform.tar.gz "${KUBECONFORM_SOURCE}"
   tar -xf /tmp/kubeconform.tar.gz kubeconform
   sudo mv kubeconform /usr/local/bin/
@@ -23,22 +23,13 @@ function install-helmdocs() {
   SEMVER_VERSION="$(echo $HELMDOCS_VERSION | grep -oP 'v\K[0-9.]+')"
   HELMDOCS_SOURCE="https://github.com/norwoodj/helm-docs/releases/download/${HELMDOCS_VERSION}/helm-docs_${SEMVER_VERSION}_Linux_x86_64.tar.gz"
 
-  log "Downloading helm-docs ${HELMDOCS_VERSION}"
+  log "Installing helm-docs ${HELMDOCS_VERSION}"
   curl --silent --show-error --fail --location --output /tmp/helmdocs.tar.gz "${HELMDOCS_SOURCE}"
   tar -xf /tmp/helmdocs.tar.gz helm-docs
   sudo mv helm-docs /usr/local/bin/
 }
 
-function install-helm() {
-  HELM_VERSION="v3.13.2"
-  HELM_SOURCE="https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz"
-
-  curl --fail --location --output /tmp/helm.tar.gz "${HELM_SOURCE}"
-
-  mkdir -p "/usr/local/helm-${HELM_VERSION}"
-  tar -xzf /tmp/helm.tar.gz -C "/usr/local/helm-${HELM_VERSION}"
-  ln -s "/usr/local/helm-${HELM_VERSION}/linux-${TARGETARCH}/helm" /usr/local/bin/helm && helm version --short
-  rm -f /tmp/helm.tar.gz
-
+function install-local-chart-version() {
+  log "Installing local-chart-version helm plugin"
   helm plugin install https://github.com/mbenabda/helm-local-chart-version
 }
