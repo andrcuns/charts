@@ -16,6 +16,9 @@ on:
       - script/**/*
       - .github/**/*
 
+env:
+  CT_TARGET_BRANCH: main
+
 jobs:
   docs:
     runs-on: ubuntu-latest
