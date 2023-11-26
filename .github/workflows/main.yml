@@ -64,15 +64,15 @@ jobs:
       - name: Check changes
         id: changes
         run: |
-          changed=$(ct list-changed)
-          if [[ -n "$changed" ]]; then
-            echo "::set-output name=changed::true"
+          changes=$(ct list-changed)
+          if [[ -n "$changes" ]]; then
+            echo "changes=true" >> "$GITHUB_OUTPUT"
           fi
       - name: Create kind cluster
-        if: steps.changes.outputs.changed == 'true'
+        if: steps.changes.outputs.changes == 'true'
         uses: helm/kind-action@v1.8.0
       - name: Install
-        if: steps.changes.outputs.changed == 'true'
+        if: steps.changes.outputs.changes == 'true'
         run: |
           rm charts/buildkit-service/ci/ci-lb-values.yaml
           ct install --config .github/config/ct-install.yaml
