@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
+set -eo
 
 source "$(dirname "$0")/utils.sh"
 
