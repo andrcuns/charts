@@ -30,7 +30,7 @@ function install-helmdocs() {
 }
 
 function install-helm() {
-  HELM_VERSION="v3.5.4"
+  HELM_VERSION="v3.13.2"
   HELM_SOURCE="https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz"
 
   curl --fail --location --output /tmp/helm.tar.gz "${HELM_SOURCE}"
