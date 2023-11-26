@@ -16,11 +16,17 @@ on:
       - script/**/*
       - .github/**/*
 
-env:
-  KUBECONFORM_VERSION: "0.4.14"
-  HELMDOCS_VERSION: "1.5.0"
-
 jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Lint docs
+        run: .github/script/helm-docs.sh
+
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -30,10 +36,8 @@ jobs:
           fetch-depth: 0
       - name: Setup chart testing
         uses: helm/chart-testing-action@v2.6.1
-      - name: Lint
+      - name: Lint charts
         run: ct lint --config .github/config/ct-lint.yaml --check-version-increment=false
-      - name: Lint docs
-        run: .github/script/helm-docs.sh
 
   validate:
     runs-on: ubuntu-latest
@@ -42,7 +46,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        kubernetes_version: ['1.22.13', '1.23.8', '1.24.2']
+        kubernetes_version: ['1.24.1', '1.25.1', '1.26.4', '1.27.1']
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -68,15 +72,15 @@ jobs:
       - name: Check changes
         id: changes
         run: |
-          changed=$(ct list-changed)
-          if [[ -n "$changed" ]]; then
-            echo "::set-output name=changed::true"
+          changes=$(ct list-changed)
+          if [[ -n "$changes" ]]; then
+            echo "changes=true" >> "$GITHUB_OUTPUT"
           fi
       - name: Create kind cluster
-        if: steps.changes.outputs.changed == 'true'
+        if: steps.changes.outputs.changes == 'true'
         uses: helm/kind-action@v1.8.0
       - name: Install
-        if: steps.changes.outputs.changed == 'true'
+        if: steps.changes.outputs.changes == 'true'
         run: |
           rm charts/buildkit-service/ci/ci-lb-values.yaml
           ct install --config .github/config/ct-install.yaml

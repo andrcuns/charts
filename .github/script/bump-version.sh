@@ -1,16 +1,15 @@
 #!/bin/bash
 
-# Bump chart version and commit changes
-# This script requires following tools to be installed:
-# * https://github.com/mbenabda/helm-local-chart-version
-# * https://github.com/norwoodj/helm-docs
+set -euo pipefail
 
-function log() {
-  echo -e "\033[1;33m$1\033[0m"
-}
+source "$(dirname "$0")/utils.sh"
 
 chart=$1
-version_segment=${2:-patch}
+version_segment=$2
+
+log "setup git"
+git config user.name github-actions
+git config user.email github-actions@github.com
 
 log "bump chart version"
 helm local-chart-version bump -c charts/$chart -s $version_segment
@@ -23,3 +22,6 @@ log
 log "create release commit"
 version=$(helm local-chart-version get -c charts/$chart)
 git commit -a -m "$chart: Update chart to version $version"
+
+log "push changes"
+git push

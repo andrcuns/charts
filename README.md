@@ -23,3 +23,7 @@ INFO[2021-09-17T21:03:22+03:00] Generating README Documentation for chart charts
 ```
 
 * Create PR and make sure all jobs pass
+
+## Release
+
+* Trigger `Bump version` workflow with desired chart and semver component parameters

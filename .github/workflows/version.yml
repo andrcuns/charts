@@ -1,0 +1,37 @@
+name: Bump version
+
+on:
+  workflow_dispatch:
+    inputs:
+      semver:
+        description: Version component to bump
+        required: true
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+      chart:
+        description: Chart name
+        required: true
+        type: choice
+        options:
+          - buildkit-service
+          - smocker
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+          ssh-key: ${{ secrets.RELEASE_SSH_KEY }}
+      - name: Install dependencies
+        run: |
+          source .github/script/utils.sh
+          install-helm
+          install-helmdocs
+      - name: Update version
+        run: .github/script/bump-version.sh ${{ inputs.chart }} ${{ inputs.semver }}
