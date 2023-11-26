@@ -32,5 +32,6 @@ jobs:
         run: |
           source .github/script/utils.sh
           install-helmdocs
+          helm plugin install https://github.com/mbenabda/helm-local-chart-version
       - name: Update version
         run: .github/script/bump-version.sh ${{ inputs.chart }} ${{ inputs.semver }}
