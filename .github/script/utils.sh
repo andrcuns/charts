@@ -5,7 +5,7 @@ function log() {
 }
 
 function changed-charts() {
-  git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/master -- charts | cut -d/ -f 1-2 | sort | uniq
+  git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | cut -d/ -f 1-2 | sort | uniq
 }
 
 function install-kubeconform() {

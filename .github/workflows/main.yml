@@ -3,14 +3,14 @@ name: Test
 on:
   pull_request:
     branches:
-      - master
+      - main
     paths:
       - charts/**/*
       - script/**/*
       - .github/**/*
   push:
     branches:
-      - master
+      - main
     paths:
       - charts/**/*
       - script/**/*

@@ -7,7 +7,7 @@ annotations:
 apiVersion: v2
 appVersion: 0.18.5
 description: Helm chart for smocker mock service deployment
-icon: https://raw.githubusercontent.com/andrcuns/buildkit-chart/master/charts/smocker/icon.png
+icon: https://raw.githubusercontent.com/andrcuns/buildkit-chart/main/charts/smocker/icon.png
 maintainers:
 - email: andrejs.cunskis@gmail.com
   name: Andrejs Cunskis
