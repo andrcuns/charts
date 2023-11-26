@@ -5,7 +5,7 @@ annotations:
     - name: support
       url: https://github.com/andrcuns/charts/issues
 apiVersion: v2
-appVersion: 0.17.1
+appVersion: 0.18.5
 description: Helm chart for smocker mock service deployment
 icon: https://raw.githubusercontent.com/andrcuns/buildkit-chart/master/charts/smocker/icon.png
 maintainers:
