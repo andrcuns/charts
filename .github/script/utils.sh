@@ -23,7 +23,7 @@ function install-helmdocs() {
   SEMVER_VERSION="$(echo $HELMDOCS_VERSION | grep -oP 'v\K[0-9.]+')"
   HELMDOCS_SOURCE="https://github.com/norwoodj/helm-docs/releases/download/${HELMDOCS_VERSION}/helm-docs_${SEMVER_VERSION}_Linux_x86_64.tar.gz"
 
-  log "Downloading helm-docs v${HELMDOCS_VERSION}"
+  log "Downloading helm-docs ${HELMDOCS_VERSION}"
   curl --silent --show-error --fail --location --output /tmp/helmdocs.tar.gz "${HELMDOCS_SOURCE}"
   tar -xf /tmp/helmdocs.tar.gz helm-docs
   sudo mv helm-docs /usr/local/bin/
