@@ -1,0 +1,38 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "platform": "github",
+  "onboarding": false,
+  "repositories": [
+    "andrcuns/charts"
+  ],
+  "enabledManagers": [
+    "regex"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": [
+        ".github/script/utils.sh"
+      ],
+      "matchStrings": [
+        "KUBECONFORM_VERSION=\"(?<currentValue>.*?)\"\\n"
+      ],
+      "depNameTemplate": "yannh/kubeconform",
+      "datasourceTemplate": "github-releases"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": [
+        ".github/script/utils.sh"
+      ],
+      "matchStrings": [
+        "HELMDOCS_VERSION=\"(?<currentValue>.*?)\"\\n"
+      ],
+      "depNameTemplate": "norwoodj/helm-docs",
+      "datasourceTemplate": "github-releases"
+    }
+  ]
+}

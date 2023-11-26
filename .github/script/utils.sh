@@ -9,18 +9,19 @@ function changed-charts() {
 }
 
 function install-kubeconform() {
-  KUBECONFORM_VERSION="0.6.4"
-  KUBECONFORM_SOURCE="https://github.com/yannh/kubeconform/releases/download/v${KUBECONFORM_VERSION}/kubeconform-linux-amd64.tar.gz"
+  KUBECONFORM_VERSION="v0.6.4"
+  KUBECONFORM_SOURCE="https://github.com/yannh/kubeconform/releases/download/${KUBECONFORM_VERSION}/kubeconform-linux-amd64.tar.gz"
 
-  log "Downloading kubeconform v${KUBECONFORM_VERSION}"
+  log "Downloading kubeconform ${KUBECONFORM_VERSION}"
   curl --silent --show-error --fail --location --output /tmp/kubeconform.tar.gz "${KUBECONFORM_SOURCE}"
   tar -xf /tmp/kubeconform.tar.gz kubeconform
   sudo mv kubeconform /usr/local/bin/
 }
 
 function install-helmdocs() {
-  HELMDOCS_VERSION="1.11.3"
-  HELMDOCS_SOURCE="https://github.com/norwoodj/helm-docs/releases/download/v${HELMDOCS_VERSION}/helm-docs_${HELMDOCS_VERSION}_Linux_x86_64.tar.gz"
+  HELMDOCS_VERSION="v1.11.3"
+  SEMVER_VERSION="$(echo $HELMDOCS_VERSION | grep -oP 'v\K[0-9.]+')"
+  HELMDOCS_SOURCE="https://github.com/norwoodj/helm-docs/releases/download/${HELMDOCS_VERSION}/helm-docs_${SEMVER_VERSION}_Linux_x86_64.tar.gz"
 
   log "Downloading helm-docs v${HELMDOCS_VERSION}"
   curl --silent --show-error --fail --location --output /tmp/helmdocs.tar.gz "${HELMDOCS_SOURCE}"
