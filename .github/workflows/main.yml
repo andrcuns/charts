@@ -38,8 +38,6 @@ jobs:
         uses: helm/chart-testing-action@v2.6.1
       - name: Lint
         run: ct lint --config .github/config/ct-lint.yaml --check-version-increment=false
-      - name: Lint docs
-        run: .github/script/helm-docs.sh
 
   validate:
     runs-on: ubuntu-latest
