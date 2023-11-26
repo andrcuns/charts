@@ -9,6 +9,7 @@ function changed-charts() {
 }
 
 function install-kubeconform() {
+  KUBECONFORM_VERSION="0.6.4"
   KUBECONFORM_SOURCE="https://github.com/yannh/kubeconform/releases/download/v${KUBECONFORM_VERSION}/kubeconform-linux-amd64.tar.gz"
 
   log "Downloading kubeconform v${KUBECONFORM_VERSION}"
@@ -18,6 +19,7 @@ function install-kubeconform() {
 }
 
 function install-helmdocs() {
+  HELMDOCS_VERSION="1.11.3"
   HELMDOCS_SOURCE="https://github.com/norwoodj/helm-docs/releases/download/v${HELMDOCS_VERSION}/helm-docs_${HELMDOCS_VERSION}_Linux_x86_64.tar.gz"
 
   log "Downloading helm-docs v${HELMDOCS_VERSION}"
