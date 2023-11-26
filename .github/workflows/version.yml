@@ -34,7 +34,4 @@ jobs:
           install-helm
           install-helmdocs
       - name: Update version
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          .github/script/bump-version.sh ${{ inputs.chart }} ${{ inputs.semver }}
+        run: .github/script/bump-version.sh ${{ inputs.chart }} ${{ inputs.semver }}
