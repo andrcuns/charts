@@ -28,8 +28,6 @@ jobs:
         with:
           fetch-depth: 0
           ssh-key: ${{ secrets.RELEASE_SSH_KEY }}
-      - name: Print helm version
-        run: helm version --short
       - name: Install dependencies
         run: |
           source .github/script/utils.sh

@@ -28,17 +28,3 @@ function install-helmdocs() {
   tar -xf /tmp/helmdocs.tar.gz helm-docs
   sudo mv helm-docs /usr/local/bin/
 }
-
-function install-helm() {
-  HELM_VERSION="v3.13.2"
-  HELM_SOURCE="https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz"
-
-  curl --fail --location --output /tmp/helm.tar.gz "${HELM_SOURCE}"
-
-  mkdir -p "/usr/local/helm-${HELM_VERSION}"
-  tar -xzf /tmp/helm.tar.gz -C "/usr/local/helm-${HELM_VERSION}"
-  ln -s "/usr/local/helm-${HELM_VERSION}/linux-${TARGETARCH}/helm" /usr/local/bin/helm && helm version --short
-  rm -f /tmp/helm.tar.gz
-
-  helm plugin install https://github.com/mbenabda/helm-local-chart-version
-}
