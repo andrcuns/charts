@@ -15,6 +15,7 @@ rootless: false
 debugLog: false
 
 pdb:
+  # -- Minimum available pods
   minAvailable: 1
 # -- Pod annotations
 podAnnotations: {}
