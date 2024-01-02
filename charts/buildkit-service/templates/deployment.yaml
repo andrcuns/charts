@@ -27,7 +27,7 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ include "buildkit.imageTag" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if or .Values.rootless .Values.tls.enabled }}
+          {{- if or .Values.rootless .Values.tls.enabled .Values.config.enabled }}
           volumeMounts:
           {{- if .Values.config.enabled }}
             - name: config
@@ -93,7 +93,7 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      {{- if or .Values.rootless .Values.tls.enabled }}
+      {{- if or .Values.rootless .Values.tls.enabled .Values.config.enabled }}
       volumes:
       {{- if .Values.config.enabled }}
         - name: config
