@@ -65,3 +65,10 @@ config:
     [registry."docker.io"]
       mirrors = ["local.mirror.registry.url"]
       insecure = true
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
