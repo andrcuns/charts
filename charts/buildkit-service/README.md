@@ -49,4 +49,6 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | tls.certCA | string | `nil` | Base64 encoded ca.pem |
 | tls.certKey | string | `nil` | Base64 encoded key.pem |
 | tls.enabled | bool | `false` | Enable mTLS, refer to https://github.com/moby/buildkit/tree/master/examples/kubernetes#deployment--service |
+| config.enabled | bool | `false` | Enable buildkitd.toml configmap |
+| config.data | string | `nil` | Add buildkitd.toml data |
 | tolerations | list | `[]` | Tolerations |
