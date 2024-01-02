@@ -29,6 +29,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if or .Values.rootless .Values.tls.enabled }}
           volumeMounts:
+          {{- if .Values.config.enabled }}
+            - name: config
+              mountPath: /etc/buildkit
+          {{- end }}
           {{- if .Values.tls.enabled }}
             - name: certs
               readOnly: true
@@ -91,6 +95,11 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- if or .Values.rootless .Values.tls.enabled }}
       volumes:
+      {{- if .Values.config.enabled }}
+        - name: config
+          configMap:
+            name: buildkitd-config
+      {{- end }}
       {{- if .Values.rootless }}
       - name: buildkitd
         emptyDir: {}

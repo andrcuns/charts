@@ -57,3 +57,11 @@ tls:
   certKey:
   # -- Base64 encoded ca.pem
   certCA:
+
+config:
+  enabled: false
+  data: |
+    debug = true
+    [registry."docker.io"]
+      mirrors = ["local.mirror.registry.url"]
+      insecure = true
