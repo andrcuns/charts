@@ -1,4 +1,4 @@
-{{- if .Values.config.enabled }}
+{{- if .Values.buildkitdToml }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -7,5 +7,5 @@ metadata:
     {{- include "buildkit.labels" . | nindent 4 }}
 data:
   buildkitd.toml: |
-    {{- .Values.config.data | nindent 4 }}
+    {{- .Values.buildkitdToml | nindent 4 }}
 {{- end }}

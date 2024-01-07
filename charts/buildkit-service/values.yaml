@@ -58,17 +58,17 @@ tls:
   # -- Base64 encoded ca.pem
   certCA:
 
-config:
-  enabled: false
-  data: |
-    debug = true
-    [registry."docker.io"]
-      mirrors = ["local.mirror.registry.url"]
-      insecure = true
+# -- Custom configuration buildkitd.toml
+buildkitdToml: ""
 
 autoscaling:
+  # -- Enable horizontal pod auto-scaler
   enabled: false
+  # -- Minimum number of replicas
   minReplicas: 1
+  # -- Maximum number of replicas
   maxReplicas: 5
+  # -- Target CPU utilization percentage
   targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  # -- Target memory utilization percentage
+  targetMemoryUtilizationPercentage: 80

@@ -31,6 +31,12 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity |
+| autoscaling.enabled | bool | `false` | Enable horizontal pod auto-scaler |
+| autoscaling.maxReplicas | int | `5` | Maximum number of replicas |
+| autoscaling.minReplicas | int | `1` | Minimum number of replicas |
+| autoscaling.targetCPUUtilizationPercentage | int | `80` | Target CPU utilization percentage |
+| autoscaling.targetMemoryUtilizationPercentage | int | `80` | Target memory utilization percentage |
+| buildkitdToml | string | `""` | Custom configuration buildkitd.toml |
 | debugLog | bool | `false` | Enable debug logging |
 | image.pullPolicy | string | `"IfNotPresent"` | Pull policy |
 | image.repository | string | `"moby/buildkit"` | Image name |
@@ -49,6 +55,4 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | tls.certCA | string | `nil` | Base64 encoded ca.pem |
 | tls.certKey | string | `nil` | Base64 encoded key.pem |
 | tls.enabled | bool | `false` | Enable mTLS, refer to https://github.com/moby/buildkit/tree/master/examples/kubernetes#deployment--service |
-| config.enabled | bool | `false` | Enable buildkitd.toml configmap |
-| config.data | string | `nil` | Add buildkitd.toml data |
 | tolerations | list | `[]` | Tolerations |
