@@ -1,0 +1,11 @@
+{{- if .Values.buildkitdToml }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: buildkitd-config
+  labels:
+    {{- include "buildkit.labels" . | nindent 4 }}
+data:
+  buildkitd.toml: |
+    {{- .Values.buildkitdToml | nindent 4 }}
+{{- end }}

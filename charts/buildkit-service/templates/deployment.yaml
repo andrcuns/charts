@@ -27,8 +27,12 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ include "buildkit.imageTag" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if or .Values.rootless .Values.tls.enabled }}
+          {{- if or .Values.rootless .Values.tls.enabled .Values.buildkitdToml }}
           volumeMounts:
+          {{- if .Values.buildkitdToml }}
+            - name: config
+              mountPath: /etc/buildkit
+          {{- end }}
           {{- if .Values.tls.enabled }}
             - name: certs
               readOnly: true
@@ -89,8 +93,13 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      {{- if or .Values.rootless .Values.tls.enabled }}
+      {{- if or .Values.rootless .Values.tls.enabled .Values.buildkitdToml }}
       volumes:
+      {{- if .Values.buildkitdToml }}
+        - name: config
+          configMap:
+            name: buildkitd-config
+      {{- end }}
       {{- if .Values.rootless }}
       - name: buildkitd
         emptyDir: {}
