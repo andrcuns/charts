@@ -44,7 +44,7 @@ jobs:
             type=raw,value=latest
             type=raw,value=${{ steps.version.outputs.VERSION }}
       - name: Build and push
-        uses: docker/build-push-action@v5.4.0
+        uses: docker/build-push-action@v6.0.0
         with:
           context: charts/smocker
           push: ${{ github.ref == 'refs/heads/main' }}
