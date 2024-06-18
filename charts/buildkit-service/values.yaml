@@ -72,3 +72,7 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # -- Target memory utilization percentage
   targetMemoryUtilizationPercentage: 80
+
+# -- Lifecycle hooks and termination
+lifecycle: {}
+terminationGracePeriodSeconds: 30

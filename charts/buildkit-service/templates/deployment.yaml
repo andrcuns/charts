@@ -93,6 +93,10 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- with .Values.lifecycle }
+          lifecycle:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
       {{- if or .Values.rootless .Values.tls.enabled .Values.buildkitdToml }}
       volumes:
       {{- if .Values.buildkitdToml }}
@@ -122,3 +126,4 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
