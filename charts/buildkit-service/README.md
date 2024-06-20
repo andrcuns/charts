@@ -41,6 +41,7 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | image.pullPolicy | string | `"IfNotPresent"` | Pull policy |
 | image.repository | string | `"moby/buildkit"` | Image name |
 | image.tag | string | `""` | Image tag |
+| lifecycle | object | `{}` | Lifecycle hooks and termination |
 | nodeSelector | object | `{}` | Node selector |
 | pdb.minAvailable | int | `1` | Minimum available pods |
 | podAnnotations | object | `{}` | Pod annotations |
@@ -51,6 +52,7 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | service.loadbalancerIp | string | `""` | Static ip address for load balancer |
 | service.port | int | `1234` | Service port |
 | service.type | string | `"ClusterIP"` | Service type |
+| terminationGracePeriodSeconds | int | `30` |  |
 | tls.cert | string | `nil` | Base64 encoded cert.pem |
 | tls.certCA | string | `nil` | Base64 encoded ca.pem |
 | tls.certKey | string | `nil` | Base64 encoded key.pem |
