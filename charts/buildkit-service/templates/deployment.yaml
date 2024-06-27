@@ -100,9 +100,9 @@ spec:
       {{- if or .Values.rootless .Values.tls.enabled .Values.buildkitdToml }}
       volumes:
       {{- if .Values.buildkitdToml }}
-        - name: config
-          configMap:
-            name: buildkitd-config
+      - name: config
+        configMap:
+          name: buildkitd-config
       {{- end }}
       {{- if .Values.rootless }}
       - name: buildkitd
