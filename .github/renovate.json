@@ -48,10 +48,13 @@
   ],
   "packageRules": [
     {
-      "matchFiles": [
+      "matchFileNames": [
         "charts/buildkit-service/Chart.yaml"
       ],
-      "labels": ["dependencies", "buildkit-service"]
+      "labels": [
+        "dependencies",
+        "buildkit-service"
+      ]
     }
   ]
 }
