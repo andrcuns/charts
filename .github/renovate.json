@@ -33,6 +33,28 @@
       ],
       "depNameTemplate": "norwoodj/helm-docs",
       "datasourceTemplate": "github-releases"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "charts/buildkit-service/Chart.yaml"
+      ],
+      "matchStrings": [
+        "appVersion: (?<currentValue>.*?)\\n"
+      ],
+      "depNameTemplate": "moby/buildkit",
+      "datasourceTemplate": "docker"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchFileNames": [
+        "charts/buildkit-service/Chart.yaml"
+      ],
+      "labels": [
+        "dependencies",
+        "buildkit-service"
+      ]
     }
   ]
 }
