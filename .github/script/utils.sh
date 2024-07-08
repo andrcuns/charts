@@ -19,7 +19,7 @@ function install-kubeconform() {
 }
 
 function install-helmdocs() {
-  HELMDOCS_VERSION="1.14.0"
+  HELMDOCS_VERSION="1.14.2"
   SEMVER_VERSION="$(echo $HELMDOCS_VERSION | grep -oP 'v\K[0-9.]+')"
   HELMDOCS_SOURCE="https://github.com/norwoodj/helm-docs/releases/download/${HELMDOCS_VERSION}/helm-docs_${SEMVER_VERSION}_Linux_x86_64.tar.gz"
 
