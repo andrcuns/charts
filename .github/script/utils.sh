@@ -9,7 +9,7 @@ function changed-charts() {
 }
 
 function install-kubeconform() {
-  KUBECONFORM_VERSION="v0.6.6"
+  KUBECONFORM_VERSION="v0.6.7"
   KUBECONFORM_SOURCE="https://github.com/yannh/kubeconform/releases/download/${KUBECONFORM_VERSION}/kubeconform-linux-amd64.tar.gz"
 
   log "Installing kubeconform ${KUBECONFORM_VERSION}"
