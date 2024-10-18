@@ -31,7 +31,7 @@ spec:
           volumeMounts:
           {{- if .Values.buildkitdToml }}
             - name: config
-              mountPath: /etc/buildkit
+              mountPath: {{ if .Values.rootless }}/home/user/.config/buildkit{{ else }}/etc/buildkit{{ end }}
           {{- end }}
           {{- if .Values.tls.enabled }}
             - name: certs
