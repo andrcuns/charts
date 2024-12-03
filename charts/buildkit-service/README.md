@@ -45,6 +45,7 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | nodeSelector | object | `{}` | Node selector |
 | pdb.minAvailable | int | `1` | Minimum available pods |
 | podAnnotations | object | `{}` | Pod annotations |
+| preStop | bool | `false` | Enable the preStop script for graceful shutdown, https://github.com/seatgeek/buildkit-prestop-script |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` | Resource definitions |
 | rootless | bool | `false` | Run rootless mode, https://github.com/moby/buildkit/blob/master/docs/rootless.md |
