@@ -11,6 +11,9 @@ image:
 # -- Run rootless mode, https://github.com/moby/buildkit/blob/master/docs/rootless.md
 rootless: false
 
+# -- Enable the preStop script for graceful shutdown, https://github.com/seatgeek/buildkit-prestop-script
+preStop: false
+
 # -- Enable debug logging
 debugLog: false
 

@@ -27,7 +27,7 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ include "buildkit.imageTag" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if or .Values.rootless .Values.tls.enabled .Values.buildkitdToml }}
+          {{- if or .Values.rootless .Values.tls.enabled .Values.buildkitdToml .Values.preStop }}
           volumeMounts:
           {{- if .Values.buildkitdToml }}
             - name: config
@@ -42,6 +42,17 @@ spec:
             - mountPath: /home/user/.local/share/buildkit
               name: buildkitd
           {{- end }}
+          {{- if .Values.preStop }}
+            - name: prestop-script-volume
+              mountPath: /usr/local/bin/buildkit-prestop.sh
+              subPath: buildkit-prestop.sh
+          {{- end }}
+          {{- end }}
+          {{- if .Values.preStop }}
+          lifecycle:
+            preStop:
+              exec:
+                command: [ "/bin/sh", "/usr/local/bin/buildkit-prestop.sh" ]
           {{- end }}
           args:
             - --addr
@@ -112,6 +123,12 @@ spec:
       - name: certs
         secret:
           secretName: {{ include "buildkit.fullname" . }}
+      {{- end }}
+      {{- if .Values.preStop }}
+      - name: prestop-script-volume
+        configMap:
+          name: {{ include "buildkit.fullname" . }}-files
+          defaultMode: 0777
       {{- end }}
       {{- end }}
       {{- with .Values.nodeSelector }}
