@@ -39,11 +39,11 @@ spec:
               mountPath: /certs
           {{- end }}
           {{- if .Values.rootless }}
-            - mountPath: /home/user/.local/share/buildkit
-              name: buildkitd
+            - name: buildkitd
+              mountPath: /home/user/.local/share/buildkit
           {{- end }}
           {{- if .Values.preStop }}
-            - name: prestop-script-volume
+            - name: files
               mountPath: /usr/local/bin/buildkit-prestop.sh
               subPath: buildkit-prestop.sh
           {{- end }}
@@ -108,7 +108,7 @@ spec:
           lifecycle:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-      {{- if or .Values.rootless .Values.tls.enabled .Values.buildkitdToml }}
+      {{- if or .Values.rootless .Values.tls.enabled .Values.buildkitdToml .Values.preStop }}
       volumes:
       {{- if .Values.buildkitdToml }}
       - name: config
@@ -125,7 +125,7 @@ spec:
           secretName: {{ include "buildkit.fullname" . }}
       {{- end }}
       {{- if .Values.preStop }}
-      - name: prestop-script-volume
+      - name: files
         configMap:
           name: {{ include "buildkit.fullname" . }}-files
           defaultMode: 0777
