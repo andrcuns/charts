@@ -9,6 +9,7 @@ on:
 
 env:
   CT_TARGET_BRANCH: main
+  MISE_AUTO_INSTALL: "false"
 
 jobs:
   lint:

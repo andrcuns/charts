@@ -19,6 +19,9 @@ on:
           - buildkit-service
           - smocker
 
+env:
+  MISE_AUTO_INSTALL: "false"
+
 jobs:
   release:
     runs-on: ubuntu-latest
