@@ -97,10 +97,10 @@ jobs:
           rm charts/buildkit-service/ci/ci-lb-values.yaml
           ct install --config .github/config/ct-install.yaml
 
-  fix-docs:
+  update-docs:
     runs-on: ubuntu-latest
-    needs: [lint]
-    if: ${{ always() && github.event_name == 'pull_request' && contains(needs.lint.result, 'failure') }}
+    needs: [lint-docs]
+    if: ${{ always() && github.event_name == 'pull_request' && contains(needs.lint-docs.result, 'failure') }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -1,4 +1,4 @@
-#!/user/bin/env bash
+#!/usr/bin/env bash
 #MISE description="Bump chart version"
 #USAGE flag "--chart <chart_name>" help="Chart name" {
 #USAGE choices "buildkit-service" "smocker"

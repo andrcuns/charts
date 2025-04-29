@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#MISE description="Lint README file"
 
 set -e
 
