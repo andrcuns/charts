@@ -1,9 +1,15 @@
-#!/user/bin/env bash
+#!/usr/bin/env bash
 #MISE description="Fix chart documentation"
 
 set -e
 
 source "${MISE_PROJECT_ROOT}/.mise-tasks/utils.sh"
+
+if [ -z "${GITHUB_ACTIONS}" ] && [ -z "${CI}" ]; then
+  log "Error: This script is intended to run only in a CI environment"
+  log "Aborting to prevent accidental execution in local development"
+  exit 1
+fi
 
 log "setup git"
 git config user.name github-actions

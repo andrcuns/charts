@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#MISE description="Run kubeconform to validate chart templates"
 
 set -e
 
