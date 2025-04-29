@@ -1,0 +1,36 @@
+#!/user/bin/env bash
+#MISE description="Fix chart documentation"
+
+set -e
+
+source "${MISE_PROJECT_ROOT}/.mise-tasks/utils.sh"
+
+log "setup git"
+git config user.name github-actions
+git config user.email github-actions@github.com
+
+# Get PR branch information
+PR_BRANCH=$(echo ${GITHUB_HEAD_REF})
+if [ -z "$PR_BRANCH" ]; then
+  log "Not in a PR context, using current branch"
+  PR_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+else
+  log "Working with PR branch: $PR_BRANCH"
+  # Make sure we're on the PR branch
+  git fetch origin
+  git checkout -B "$PR_BRANCH" "origin/$PR_BRANCH"
+fi
+
+log "update docs"
+helm-docs -c charts
+
+# Check if there are changes to commit
+if ! git diff --quiet; then
+  git add .
+  git commit -m "Update chart documentation"
+
+  log "push changes"
+  git push origin "$PR_BRANCH"
+else
+  log "No changes to commit"
+fi

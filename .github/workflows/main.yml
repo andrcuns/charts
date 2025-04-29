@@ -18,17 +18,22 @@ on:
 
 env:
   CT_TARGET_BRANCH: main
+  MISE_AUTO_INSTALL: "false"
 
 jobs:
-  docs:
+  lint-docs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Install helm-docs
+        uses: jdx/mise-action@v2
+        with:
+          install_args: "helm-docs"
       - name: Lint docs
-        run: .github/script/helm-docs.sh
+        run: mise lint-docs
 
   lint:
     runs-on: ubuntu-latest
@@ -55,8 +60,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Install kubeconform
+        uses: jdx/mise-action@v2
+        with:
+          install_args: "kubeconform"
       - name: Run kubeconform
-        run: .github/script/kubeconform.sh
+        run: mise kubeconform
         env:
           KUBERNETES_VERSION: ${{ matrix.kubernetes_version }}
 
@@ -87,3 +96,20 @@ jobs:
         run: |
           rm charts/buildkit-service/ci/ci-lb-values.yaml
           ct install --config .github/config/ct-install.yaml
+
+  fix-docs:
+    runs-on: ubuntu-latest
+    needs: [lint]
+    if: ${{ always() && github.event_name == 'pull_request' && contains(needs.lint.result, 'failure') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ssh-key: ${{ secrets.RELEASE_SSH_KEY }}
+      - name: Install helm-docs
+        uses: jdx/mise-action@v2
+        with:
+          install_args: "helm-docs"
+      - name: Fix docs
+        run: mise update-docs

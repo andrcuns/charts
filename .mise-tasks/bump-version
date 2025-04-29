@@ -1,11 +1,18 @@
-#!/bin/bash
+#!/user/bin/env bash
+#MISE description="Bump chart version"
+#USAGE flag "--chart <chart_name>" help="Chart name" {
+#USAGE choices "buildkit-service" "smocker"
+#USAGE }
+#USAGE flag "--version-segment <version_segment>" help="Version segment to bump" {
+#USAGE choices "patch" "minor" "major"
+#USAGE }
 
 set -e
 
-source "$(dirname "$0")/utils.sh"
+source "${MISE_PROJECT_ROOT}/.mise-tasks/utils.sh"
 
-chart=$1
-version_segment=$2
+chart=${usage_chart}
+version_segment=${usage_version_segment}
 
 log "setup git"
 git config user.name github-actions

@@ -28,10 +28,9 @@ jobs:
         with:
           fetch-depth: 0
           ssh-key: ${{ secrets.RELEASE_SSH_KEY }}
-      - name: Install dependencies
-        run: |
-          source .github/script/utils.sh
-          install-helmdocs
-          install-local-chart-version
+      - name: Install helm-docs
+        uses: jdx/mise-action@v2
+        with:
+          install_args: "helm-docs"
       - name: Update version
-        run: .github/script/bump-version.sh ${{ inputs.chart }} ${{ inputs.semver }}
+        run: mise bump-version --chart ${{ inputs.chart }} --version-segment ${{ inputs.semver }}

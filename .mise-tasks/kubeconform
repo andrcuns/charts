@@ -2,7 +2,7 @@
 
 set -e
 
-source "$(dirname "$0")/utils.sh"
+source "${MISE_PROJECT_ROOT}/.mise-tasks/utils.sh"
 
 charts=($(changed-charts))
 
@@ -10,8 +10,6 @@ if [ ${#charts[@]} -eq 0 ]; then
   log "No chart changes detected!"
   exit
 fi
-
-install-kubeconform
 
 for chart_dir in "${charts[@]}"; do
   for yaml in $chart_dir/ci/ci-*.yaml; do
