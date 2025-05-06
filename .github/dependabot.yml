@@ -4,11 +4,7 @@ updates:
   directory: "/"
   schedule:
     interval: "daily"
-  reviewers:
-    - andrcuns
 - package-ecosystem: docker
   directory: "/charts/smocker"
   schedule:
     interval: "daily"
-  reviewers:
-    - andrcuns
