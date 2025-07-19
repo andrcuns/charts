@@ -27,26 +27,23 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ include "buildkit.imageTag" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if or .Values.rootless .Values.tls.enabled .Values.buildkitdToml .Values.preStop }}
           volumeMounts:
+          # BuildKit state volume is always mounted
+          - name: buildkit-state
+            mountPath: {{ if .Values.rootless }}/home/user/.local/share/buildkit{{ else }}/var/lib/buildkit{{ end }}
           {{- if .Values.buildkitdToml }}
-            - name: config
-              mountPath: {{ if .Values.rootless }}/home/user/.config/buildkit{{ else }}/etc/buildkit{{ end }}
+          - name: config
+            mountPath: {{ if .Values.rootless }}/home/user/.config/buildkit{{ else }}/etc/buildkit{{ end }}
           {{- end }}
           {{- if .Values.tls.enabled }}
-            - name: certs
-              readOnly: true
-              mountPath: /certs
-          {{- end }}
-          {{- if .Values.rootless }}
-            - name: buildkitd
-              mountPath: /home/user/.local/share/buildkit
+          - name: certs
+            readOnly: true
+            mountPath: /certs
           {{- end }}
           {{- if .Values.preStop }}
-            - name: files
-              mountPath: /usr/local/bin/buildkit-prestop.sh
-              subPath: buildkit-prestop.sh
-          {{- end }}
+          - name: files
+            mountPath: /usr/local/bin/buildkit-prestop.sh
+            subPath: buildkit-prestop.sh
           {{- end }}
           {{- if .Values.preStop }}
           lifecycle:
@@ -108,16 +105,26 @@ spec:
           lifecycle:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-      {{- if or .Values.rootless .Values.tls.enabled .Values.buildkitdToml .Values.preStop }}
       volumes:
+      # BuildKit state volume is always present
+      - name: buildkit-state
+        {{- if eq .Values.buildkitVolume.type "pvc" }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.buildkitVolume.pvc.existingClaim | default (include "buildkit.fullname" .) }}
+        {{- else }}
+        emptyDir:
+          {{- with .Values.buildkitVolume.emptyDir.medium }}
+          medium: {{ . }}
+          {{- end }}
+          {{- with .Values.buildkitVolume.emptyDir.sizeLimit }}
+          sizeLimit: {{ . }}
+          {{- end }}
+        {{- end }}
+      {{- if or .Values.tls.enabled .Values.buildkitdToml .Values.preStop }}
       {{- if .Values.buildkitdToml }}
       - name: config
         configMap:
           name: buildkitd-config
-      {{- end }}
-      {{- if .Values.rootless }}
-      - name: buildkitd
-        emptyDir: {}
       {{- end }}
       {{- if .Values.tls.enabled }}
       - name: certs

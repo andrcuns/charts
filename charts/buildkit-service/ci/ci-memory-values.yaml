@@ -1,0 +1,5 @@
+buildkitVolume:
+  type: emptyDir
+  emptyDir:
+    medium: "Memory"
+    sizeLimit: "2Gi"

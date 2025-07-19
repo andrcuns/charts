@@ -1,0 +1,4 @@
+buildkitVolume:
+  type: pvc
+  pvc:
+    existingClaim: "existing-buildkit-pvc"

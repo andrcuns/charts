@@ -1,0 +1,5 @@
+buildkitVolume:
+  type: pvc
+  pvc:
+    size: "1Gi"
+    storageClassName: "standard"

@@ -64,6 +64,27 @@ tls:
 # -- Custom configuration buildkitd.toml
 buildkitdToml: ""
 
+buildkitVolume:
+  # -- Volume type: 'emptyDir' or 'pvc'
+  type: emptyDir
+  # -- EmptyDir volume configuration
+  emptyDir:
+    # -- Storage medium (e.g., "Memory" for tmpfs)
+    medium: ""
+    # -- Size limit for the volume
+    sizeLimit: ""
+  # -- PersistentVolumeClaim configuration
+  pvc:
+    # -- Use existing PVC name
+    existingClaim: ""
+    # -- Storage class name
+    storageClassName: ""
+    # -- Storage size
+    size: "10Gi"
+    # -- Access modes
+    accessModes:
+      - ReadWriteOnce
+
 autoscaling:
   # -- Enable horizontal pod auto-scaler
   enabled: false
