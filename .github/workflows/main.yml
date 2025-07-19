@@ -94,7 +94,8 @@ jobs:
       - name: Install
         if: steps.changes.outputs.changes == 'true'
         run: |
-          rm charts/buildkit-service/ci/ci-lb-values.yaml
+          # remove values files that require prior setup
+          rm -f charts/buildkit-service/ci/ci-lb-values.yaml charts/buildkit-service/ci/ci-existing-pvc-values.yaml
           ct install --config .github/config/ct-install.yaml
 
   update-docs:

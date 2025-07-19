@@ -1,0 +1,19 @@
+{{- if and (eq .Values.buildkitVolume.type "pvc") (not .Values.buildkitVolume.pvc.existingClaim) }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "buildkit.fullname" . }}
+  labels:
+    {{- include "buildkit.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    {{- range .Values.buildkitVolume.pvc.accessModes }}
+    - {{ . }}
+    {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.buildkitVolume.pvc.size }}
+  {{- with .Values.buildkitVolume.pvc.storageClassName }}
+  storageClassName: {{ . }}
+  {{- end }}
+{{- end }}
