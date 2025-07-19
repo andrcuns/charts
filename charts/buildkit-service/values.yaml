@@ -67,13 +67,11 @@ buildkitdToml: ""
 buildkitVolume:
   # -- Volume type: 'emptyDir' or 'pvc'
   type: emptyDir
-  # -- EmptyDir volume configuration
   emptyDir:
     # -- Storage medium (e.g., "Memory" for tmpfs)
     medium: ""
     # -- Size limit for the volume
     sizeLimit: ""
-  # -- PersistentVolumeClaim configuration
   pvc:
     # -- Use existing PVC name
     existingClaim: ""

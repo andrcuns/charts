@@ -36,10 +36,8 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | autoscaling.minReplicas | int | `1` | Minimum number of replicas |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` | Target CPU utilization percentage |
 | autoscaling.targetMemoryUtilizationPercentage | int | `80` | Target memory utilization percentage |
-| buildkitVolume.emptyDir | object | `{"medium":"","sizeLimit":""}` | EmptyDir volume configuration |
 | buildkitVolume.emptyDir.medium | string | `""` | Storage medium (e.g., "Memory" for tmpfs) |
 | buildkitVolume.emptyDir.sizeLimit | string | `""` | Size limit for the volume |
-| buildkitVolume.pvc | object | `{"accessModes":["ReadWriteOnce"],"existingClaim":"","size":"10Gi","storageClassName":""}` | PersistentVolumeClaim configuration |
 | buildkitVolume.pvc.accessModes | list | `["ReadWriteOnce"]` | Access modes |
 | buildkitVolume.pvc.existingClaim | string | `""` | Use existing PVC name |
 | buildkitVolume.pvc.size | string | `"10Gi"` | Storage size |
