@@ -32,7 +32,7 @@ jobs:
           fetch-depth: 0
           ssh-key: ${{ secrets.RELEASE_SSH_KEY }}
       - name: Install helm-docs
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@v3
         with:
           install_args: "helm-docs"
       - name: Update version

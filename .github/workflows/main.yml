@@ -29,7 +29,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Install helm-docs
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@v3
         with:
           install_args: "helm-docs"
       - name: Lint docs
@@ -61,7 +61,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Install kubeconform
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@v3
         with:
           install_args: "kubeconform"
       - name: Run kubeconform
@@ -109,7 +109,7 @@ jobs:
           fetch-depth: 0
           ssh-key: ${{ secrets.RELEASE_SSH_KEY }}
       - name: Install helm-docs
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@v3
         with:
           install_args: "helm-docs"
       - name: Fix docs
