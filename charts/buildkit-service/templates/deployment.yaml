@@ -70,6 +70,9 @@ spec:
           {{- if .Values.debugLog }}
             - --debug
           {{- end }}
+          {{- range .Values.daemonArgs }}
+            - {{ . }}
+          {{- end }}
           ports:
             - name: tcp
               containerPort: 1234

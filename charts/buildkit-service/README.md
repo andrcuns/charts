@@ -45,6 +45,7 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | buildkitVolume.type | string | `"emptyDir"` | Volume type: 'emptyDir' or 'pvc' |
 | buildkitdToml | string | `""` | Custom configuration buildkitd.toml |
 | debugLog | bool | `false` | Enable debug logging |
+| daemonArgs | list | `[]` | Buildkitd command line parameters |
 | image.pullPolicy | string | `"IfNotPresent"` | Pull policy |
 | image.repository | string | `"moby/buildkit"` | Image name |
 | image.tag | string | `""` | Image tag |
