@@ -17,6 +17,9 @@ preStop: false
 # -- Enable debug logging
 debugLog: false
 
+# -- Buildkitd command line parameters
+daemonArgs: []
+
 pdb:
   # -- Minimum available pods
   minAvailable: 1
