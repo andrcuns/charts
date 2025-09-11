@@ -63,11 +63,11 @@ spec:
           {{- end }}
           {{- if .Values.tls.enabled }}
             - --tlscacert
-            - /certs/ca.pem
+            - /certs/ca.crt
             - --tlscert
-            - /certs/cert.pem
+            - /certs/tls.crt
             - --tlskey
-            - /certs/key.pem
+            - /certs/tls.key
           {{- end }}
           {{- if .Values.debugLog }}
             - --debug
