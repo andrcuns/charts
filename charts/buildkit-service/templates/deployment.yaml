@@ -134,7 +134,7 @@ spec:
       {{- if .Values.tls.enabled }}
       - name: certs
         secret:
-          secretName: {{ include "buildkit.fullname" . }}
+          secretName: {{ .Values.tls.existingSecret | default (include "buildkit.fullname" .) }}
       {{- end }}
       {{- if .Values.preStop }}
       - name: files
