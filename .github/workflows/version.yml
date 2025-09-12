@@ -35,5 +35,7 @@ jobs:
         uses: jdx/mise-action@v3
         with:
           install_args: "helm helm-docs"
+      - name: Install local-chart-version plugin
+        run: helm plugin install 'https://github.com/mbenabda/helm-local-chart-version' || true
       - name: Update version
         run: mise bump-version --chart ${{ inputs.chart }} --version-segment ${{ inputs.semver }}
