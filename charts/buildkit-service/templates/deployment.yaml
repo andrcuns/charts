@@ -63,11 +63,11 @@ spec:
           {{- end }}
           {{- if .Values.tls.enabled }}
             - --tlscacert
-            - /certs/ca.pem
+            - /certs/ca.crt
             - --tlscert
-            - /certs/cert.pem
+            - /certs/tls.crt
             - --tlskey
-            - /certs/key.pem
+            - /certs/tls.key
           {{- end }}
           {{- if .Values.debugLog }}
             - --debug
@@ -134,7 +134,7 @@ spec:
       {{- if .Values.tls.enabled }}
       - name: certs
         secret:
-          secretName: {{ include "buildkit.fullname" . }}
+          secretName: {{ .Values.tls.existingSecret | default (include "buildkit.fullname" .) }}
       {{- end }}
       {{- if .Values.preStop }}
       - name: files
