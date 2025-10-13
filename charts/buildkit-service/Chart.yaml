@@ -13,4 +13,4 @@ maintainers:
   name: Andrejs Cunskis
 name: buildkit-service
 type: application
-version: 0.12.0
+version: 0.13.0
