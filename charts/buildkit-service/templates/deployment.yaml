@@ -47,6 +47,10 @@ spec:
             mountPath: /usr/local/bin/buildkit-prestop.sh
             subPath: buildkit-prestop.sh
           {{- end }}
+          {{- with .Values.env }}
+          env:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           {{- if .Values.preStop }}
           lifecycle:
             preStop:

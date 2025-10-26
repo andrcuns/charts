@@ -20,6 +20,13 @@ debugLog: false
 # -- Buildkitd command line parameters
 daemonArgs: []
 
+# -- Environment variables for the buildkit container
+env: []
+  # - name: HTTP_PROXY
+  #   value: "http://proxy.example.com:8080"
+  # - name: BUILDKIT_STEP_LOG_MAX_SIZE
+  #   value: "10485760"
+
 pdb:
   # -- Minimum available pods
   minAvailable: 1
