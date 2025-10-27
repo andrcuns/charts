@@ -46,6 +46,7 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | buildkitdToml | string | `""` | Custom configuration buildkitd.toml |
 | daemonArgs | list | `[]` | Buildkitd command line parameters |
 | debugLog | bool | `false` | Enable debug logging |
+| env | list | `[]` | Environment variables for the buildkit container |
 | image.pullPolicy | string | `"IfNotPresent"` | Pull policy |
 | image.repository | string | `"moby/buildkit"` | Image name |
 | image.tag | string | `""` | Image tag |
