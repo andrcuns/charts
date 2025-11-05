@@ -43,7 +43,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup chart testing
-        uses: helm/chart-testing-action@v2.7.0
+        uses: helm/chart-testing-action@v2.8.0
       - name: Lint charts
         run: ct lint --config .github/config/ct-lint.yaml --check-version-increment=false
 
@@ -80,7 +80,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup chart testing
-        uses: helm/chart-testing-action@v2.7.0
+        uses: helm/chart-testing-action@v2.8.0
       - name: Check changes
         id: changes
         run: |
