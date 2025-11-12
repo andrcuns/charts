@@ -44,6 +44,8 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | buildkitVolume.pvc.storageClassName | string | `""` | Storage class name |
 | buildkitVolume.type | string | `"emptyDir"` | Volume type: 'emptyDir' or 'pvc' |
 | buildkitdToml | string | `""` | Custom configuration buildkitd.toml |
+| caCerts.certs | object | `{}` | base64 encoded CA certs to include in /etc/buildkit/certs |
+| caCerts.enabled | bool | `false` | include additional CA certs | 
 | daemonArgs | list | `[]` | Buildkitd command line parameters |
 | debugLog | bool | `false` | Enable debug logging |
 | env | list | `[]` | Environment variables for the buildkit container |
