@@ -74,8 +74,9 @@ tls:
   existingSecret:
 
 caCerts:
-  # Add additional CA certificates
+  # -- Add additional CA certificates
   enabled: false
+  # -- base64 encoded CA certs to include in /etc/buildkit/certs
   certs: {}
 
 # -- Custom configuration buildkitd.toml
