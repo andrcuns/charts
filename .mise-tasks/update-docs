@@ -52,7 +52,7 @@ else
         log ""
         log "Alternatively, you can:"
         log "- Close this PR"
-        log "- Run 'mise run update-docs' locally in your fork"
+        log "- Run 'mise run lint-docs' locally in your fork"
         log "- Push the changes to your branch"
         log "- Re-open or update the PR"
         log ""
