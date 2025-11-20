@@ -17,14 +17,60 @@ git config user.email github-actions@github.com
 
 # Get PR branch information
 PR_BRANCH=$(echo ${GITHUB_HEAD_REF})
+IS_FORK=false
+
 if [ -z "$PR_BRANCH" ]; then
   log "Not in a PR context, using current branch"
   PR_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 else
   log "Working with PR branch: $PR_BRANCH"
-  # Make sure we're on the PR branch
-  git fetch origin
-  git checkout -B "$PR_BRANCH" "origin/$PR_BRANCH"
+  
+  # Check if this is a forked PR
+  REPO_FULL_NAME="${GITHUB_REPOSITORY}"
+  REPO_OWNER=$(echo "$REPO_FULL_NAME" | cut -d'/' -f1)
+  
+  # Get the head repository owner from the event
+  if [ -f "$GITHUB_EVENT_PATH" ]; then
+    PR_HEAD_REPO=$(jq -r '.pull_request.head.repo.owner.login // empty' "$GITHUB_EVENT_PATH")
+    
+    if [ -n "$PR_HEAD_REPO" ] && [ "$PR_HEAD_REPO" != "$REPO_OWNER" ]; then
+      IS_FORK=true
+      log "Detected PR from fork: $PR_HEAD_REPO/$PR_BRANCH"
+      
+      # Check if maintainer can modify
+      MAINTAINER_CAN_MODIFY=$(jq -r '.pull_request.maintainer_can_modify // false' "$GITHUB_EVENT_PATH")
+      if [ "$MAINTAINER_CAN_MODIFY" != "true" ]; then
+        log "================================================"
+        log "ERROR: Unable to update documentation automatically"
+        log "================================================"
+        log ""
+        log "This PR is from a fork and 'Allow edits from maintainers' is NOT enabled."
+        log ""
+        log "To fix this issue, the PR author needs to:"
+        log "1. Go to their PR on GitHub"
+        log "2. Check the box 'Allow edits by maintainers' in the sidebar"
+        log ""
+        log "Alternatively, you can:"
+        log "- Close this PR"
+        log "- Run 'mise run lint-docs' locally in your fork"
+        log "- Push the changes to your branch"
+        log "- Re-open or update the PR"
+        log ""
+        log "================================================"
+        exit 1
+      else
+        log "Maintainer can modify: proceeding with update"
+      fi
+    fi
+  fi
+  
+  # For forked PRs, the branch is already checked out by GitHub Actions
+  # We just need to make sure we're on the right branch
+  CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+  if [ "$CURRENT_BRANCH" != "$PR_BRANCH" ]; then
+    log "Checking out branch: $PR_BRANCH"
+    git checkout "$PR_BRANCH"
+  fi
 fi
 
 log "update docs"
@@ -36,7 +82,36 @@ if ! git diff --quiet; then
   git commit -m "Update chart documentation"
 
   log "push changes"
-  git push origin "$PR_BRANCH"
+  
+  # Attempt to push with error handling
+  if ! git push origin "HEAD:${PR_BRANCH}" 2>&1; then
+    if [ "$IS_FORK" = true ]; then
+      log "================================================"
+      log "ERROR: Failed to push documentation updates"
+      log "================================================"
+      log ""
+      log "This PR is from a fork. The push failed, which likely means:"
+      log "1. 'Allow edits by maintainers' is not enabled, OR"
+      log "2. The branch is protected in the fork"
+      log ""
+      log "To fix this issue, the PR author needs to:"
+      log "1. Go to their PR: https://github.com/${GITHUB_REPOSITORY}/pull/${GITHUB_EVENT_NUMBER:-'<PR_NUMBER>'}"
+      log "2. Check the box 'Allow edits by maintainers' in the sidebar"
+      log "3. Ensure the branch is not protected in their fork"
+      log ""
+      log "Alternatively, you can:"
+      log "- Run 'mise run lint-docs' locally in your fork"
+      log "- Push the changes to your branch: git push origin $PR_BRANCH"
+      log ""
+      log "================================================"
+      exit 1
+    else
+      log "ERROR: Failed to push changes to branch $PR_BRANCH"
+      exit 1
+    fi
+  fi
+  
+  log "Successfully pushed documentation updates"
 else
   log "No changes to commit"
 fi
