@@ -100,7 +100,7 @@ if ! git diff --quiet; then
       log "3. Ensure the branch is not protected in their fork"
       log ""
       log "Alternatively, you can:"
-      log "- Run 'mise run update-docs' locally in your fork"
+      log "- Run 'mise run lint-docs' locally in your fork"
       log "- Push the changes to your branch: git push origin $PR_BRANCH"
       log ""
       log "================================================"
