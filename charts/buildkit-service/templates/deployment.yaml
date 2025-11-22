@@ -42,6 +42,11 @@ spec:
             readOnly: true
             mountPath: /certs
           {{- end }}
+          {{- if .Values.caCerts.enabled }}
+          - name: ca-certs
+            readOnly: true
+            mountPath: /etc/buildkit/certs
+          {{- end }}
           {{- if .Values.preStop }}
           - name: files
             mountPath: /usr/local/bin/buildkit-prestop.sh
@@ -129,11 +134,16 @@ spec:
           sizeLimit: {{ . }}
           {{- end }}
         {{- end }}
-      {{- if or .Values.tls.enabled .Values.buildkitdToml .Values.preStop }}
+      {{- if or .Values.tls.enabled .Values.caCerts.enabled .Values.buildkitdToml .Values.preStop }}
       {{- if .Values.buildkitdToml }}
       - name: config
         configMap:
           name: buildkitd-config
+      {{- end }}
+      {{- if .Values.caCerts.enabled }}
+      - name: ca-certs
+        configMap:
+          name: ca-certs
       {{- end }}
       {{- if .Values.tls.enabled }}
       - name: certs

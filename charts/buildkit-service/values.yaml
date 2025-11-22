@@ -73,6 +73,12 @@ tls:
   # -- Name of an existing Secret in this namespace containing the certificate to be used for the server half of mTLS. Expected to contain tls.crt, tls.key ,ca.crt.
   existingSecret:
 
+caCerts:
+  # -- Add additional CA certificates
+  enabled: false
+  # -- base64 encoded CA certs to include in /etc/buildkit/certs
+  certs: {}
+
 # -- Custom configuration buildkitd.toml
 buildkitdToml: ""
 
