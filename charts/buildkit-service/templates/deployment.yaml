@@ -16,6 +16,7 @@ spec:
       {{- if or .Values.rootless .Values.podAnnotations }}
       annotations:
         {{- if .Values.rootless }}
+        # Deprecated since v1.30
         container.apparmor.security.beta.kubernetes.io/{{ .Chart.Name }}: unconfined
         {{- end }}
         {{- with .Values.podAnnotations -}}
@@ -106,6 +107,8 @@ spec:
             periodSeconds: 30
           securityContext:
           {{- if .Values.rootless }}
+            appArmorProfile: # Needs Kubernetes >= 1.30
+              type: Unconfined
             seccompProfile: # Needs Kubernetes >= 1.19
               type: Unconfined
             runAsUser: 1000
