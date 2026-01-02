@@ -15,10 +15,6 @@ spec:
     metadata:
       {{- if or .Values.rootless .Values.podAnnotations }}
       annotations:
-        {{- if .Values.rootless }}
-        # Deprecated since v1.30
-        container.apparmor.security.beta.kubernetes.io/{{ .Chart.Name }}: unconfined
-        {{- end }}
         {{- with .Values.podAnnotations -}}
         {{ toYaml . | nindent 8 }}
         {{- end }}
