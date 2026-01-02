@@ -16,6 +16,10 @@ This chart bootstraps buildkit service deployment on a [Kubernetes](http://kuber
 helm repo add andrcuns https://andrcuns.github.io/charts
 ```
 
+## Requirements
+
+- Kubernetes >= 1.30.x 
+
 ## Installing the Chart
 
 Install this chart using:
