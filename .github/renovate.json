@@ -6,7 +6,8 @@
     "andrcuns/charts"
   ],
   "enabledManagers": [
-    "custom.regex"
+    "custom.regex",
+    "mise"
   ],
   "labels": [
     "dependencies"
