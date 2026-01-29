@@ -113,6 +113,17 @@ autoscaling:
   # -- Target memory utilization percentage
   targetMemoryUtilizationPercentage: 80
 
+# -- Init containers to run before the main buildkit container
+# Useful for network configuration, volume preparation, etc.
+initContainers: []
+  # - name: fix-mtu
+  #   image: busybox
+  #   command: ["sh", "-c", "ip link set dev eth0 mtu 1400 || true"]
+  #   securityContext:
+  #     capabilities:
+  #       add: ["NET_ADMIN"]
+  #     runAsUser: 0
+
 # -- Lifecycle hooks and termination
 lifecycle: {}
 terminationGracePeriodSeconds: 30
