@@ -56,6 +56,7 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | image.pullPolicy | string | `"IfNotPresent"` | Pull policy |
 | image.repository | string | `"moby/buildkit"` | Image name |
 | image.tag | string | `""` | Image tag |
+| initContainers | list | `[]` | Init containers to run before the main buildkit container Useful for network configuration, volume preparation, etc. |
 | lifecycle | object | `{}` | Lifecycle hooks and termination |
 | nodeSelector | object | `{}` | Node selector |
 | pdb.minAvailable | int | `1` | Minimum available pods |
