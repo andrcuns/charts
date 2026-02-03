@@ -13,8 +13,11 @@ spec:
       {{- include "buildkit.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- if or .Values.rootless .Values.podAnnotations }}
+      {{- if or (and .Values.rootless (semverCompare "<1.30.0" .Capabilities.KubeVersion.Version)) .Values.podAnnotations }}
       annotations:
+        {{- if and .Values.rootless (semverCompare "<1.30.0" .Capabilities.KubeVersion.Version) }}
+        container.apparmor.security.beta.kubernetes.io/{{ .Chart.Name }}: unconfined
+        {{- end }}
         {{- with .Values.podAnnotations -}}
         {{ toYaml . | nindent 8 }}
         {{- end }}
@@ -107,9 +110,11 @@ spec:
             periodSeconds: 30
           securityContext:
           {{- if .Values.rootless }}
-            appArmorProfile: # Needs Kubernetes >= 1.30
+            {{- if semverCompare ">=1.30.0" .Capabilities.KubeVersion.Version }}
+            appArmorProfile:
               type: Unconfined
-            seccompProfile: # Needs Kubernetes >= 1.19
+            {{- end }}
+            seccompProfile:
               type: Unconfined
             runAsUser: 1000
             runAsGroup: 1000
