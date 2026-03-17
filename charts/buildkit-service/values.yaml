@@ -101,6 +101,17 @@ buildkitVolume:
     accessModes:
       - ReadWriteOnce
 
+# Additional volumes
+extraVolumes: []
+  # - name: docker-config
+  #   emptyDir: {}
+
+# Additional volume mounts
+extraVolumeMounts: []
+  # - name: docker-config
+  #   mountPath: /root/.docker/
+  #   readOnly: false
+
 autoscaling:
   # -- Enable horizontal pod auto-scaler
   enabled: false
