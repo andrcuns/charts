@@ -101,6 +101,17 @@ buildkitVolume:
     accessModes:
       - ReadWriteOnce
 
+# -- Additional volumes to add to the deployment and pod template. Useful to manage image or emptyDir volumes for cloud provider credentials.
+extraVolumes: []
+  # - name: docker-config
+  #   emptyDir: {}
+
+# -- Additional volume mounts to add to containers. Useful to manage image or emptyDir volumes for cloud provider credentials.
+extraVolumeMounts: []
+  # - name: docker-config
+  #   mountPath: /root/.docker/
+  #   readOnly: false
+
 autoscaling:
   # -- Enable horizontal pod auto-scaler
   enabled: false
