@@ -127,3 +127,6 @@ initContainers: []
 # -- Lifecycle hooks and termination
 lifecycle: {}
 terminationGracePeriodSeconds: 30
+
+# -- Additional selector labels to add to the deployment and pod template. Useful for integrating with tools like buildx that require specific labels (e.g. `app`).
+extraSelectorLabels: {}
