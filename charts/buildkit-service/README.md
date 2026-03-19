@@ -49,6 +49,7 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | daemonArgs | list | `[]` | Buildkitd command line parameters |
 | debugLog | bool | `false` | Enable debug logging |
 | env | list | `[]` | Environment variables for the buildkit container |
+| extraSelectorLabels | object | `{}` | Additional selector labels to add to the deployment and pod template. Useful for integrating with tools like buildx that require specific labels (e.g. `app`). |
 | image.pullPolicy | string | `"IfNotPresent"` | Pull policy |
 | image.repository | string | `"moby/buildkit"` | Image name |
 | image.tag | string | `""` | Image tag |
