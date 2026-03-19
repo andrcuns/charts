@@ -1,11 +1,24 @@
 #!/usr/bin/env bash
 #MISE description="Run kubeconform to validate chart templates"
+#USAGE flag "--kubernetes-version <kubernetes_version>" help="Kubernetes version to validate against"
+#USAGE flag "--chart <chart_name>" help="Chart to validate (overrides changed charts detection)" {
+#USAGE choices "buildkit-service" "smocker"
+#USAGE }
+#USAGE flag "--debug" help="Print rendered template before validation"
 
 set -e
 
 source "${MISE_PROJECT_ROOT}/.mise-tasks/utils.sh"
 
-charts=($(changed-charts))
+k8s_version="${usage_kubernetes_version:-${KUBERNETES_VERSION}}"
+k8s_version_opt=$([[ -n "${k8s_version}" ]] && echo "-kubernetes-version ${k8s_version}" || echo "")
+kube_version_opt=$([[ -n "${k8s_version}" ]] && echo "--kube-version ${k8s_version}" || echo "")
+
+if [[ -n "${usage_chart}" ]]; then
+  charts=("charts/${usage_chart}")
+else
+  charts=($(changed-charts))
+fi
 
 if [ ${#charts[@]} -eq 0 ]; then
   log "No chart changes detected!"
@@ -25,6 +38,8 @@ for chart_dir in "${charts[@]}"; do
     log "$delimiter"
 
     helm dependency update $chart_dir
-    helm template $chart_dir $values_opt | kubeconform -strict -verbose -kubernetes-version "${KUBERNETES_VERSION}"
+    chart=$(helm template $chart_dir $values_opt ${kube_version_opt})
+    [[ -n "${usage_debug}" ]] && echo "$chart"
+    echo "$chart" | kubeconform -strict -verbose ${k8s_version_opt}
   done
 done

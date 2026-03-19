@@ -65,9 +65,7 @@ jobs:
         with:
           install_args: "kubeconform"
       - name: Run kubeconform
-        run: mise kubeconform
-        env:
-          KUBERNETES_VERSION: ${{ matrix.kubernetes_version }}
+        run: mise kubeconform --kubernetes-version ${{ matrix.kubernetes_version }}
 
   install:
     runs-on: ubuntu-latest
