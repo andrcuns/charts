@@ -12,6 +12,7 @@ source "${MISE_PROJECT_ROOT}/.mise-tasks/utils.sh"
 
 k8s_version="${usage_kubernetes_version:-${KUBERNETES_VERSION}}"
 k8s_version_opt=$([[ -n "${k8s_version}" ]] && echo "-kubernetes-version ${k8s_version}" || echo "")
+kube_version_opt=$([[ -n "${k8s_version}" ]] && echo "--kube-version ${k8s_version}" || echo "")
 
 if [[ -n "${usage_chart}" ]]; then
   charts=("charts/${usage_chart}")
@@ -37,7 +38,7 @@ for chart_dir in "${charts[@]}"; do
     log "$delimiter"
 
     helm dependency update $chart_dir
-    chart=$(helm template $chart_dir $values_opt)
+    chart=$(helm template $chart_dir $values_opt ${kube_version_opt})
     [[ -n "${usage_debug}" ]] && echo "$chart"
     echo "$chart" | kubeconform -strict -verbose ${k8s_version_opt}
   done
