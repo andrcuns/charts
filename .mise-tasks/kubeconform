@@ -4,6 +4,7 @@
 #USAGE flag "--chart <chart_name>" help="Chart to validate (overrides changed charts detection)" {
 #USAGE choices "buildkit-service" "smocker"
 #USAGE }
+#USAGE flag "--debug" help="Print rendered template before validation"
 
 set -e
 
@@ -36,6 +37,8 @@ for chart_dir in "${charts[@]}"; do
     log "$delimiter"
 
     helm dependency update $chart_dir
-    helm template $chart_dir $values_opt | kubeconform -strict -verbose ${k8s_version_opt}
+    chart=$(helm template $chart_dir $values_opt)
+    [[ -n "${usage_debug}" ]] && echo "$chart"
+    echo "$chart" | kubeconform -strict -verbose ${k8s_version_opt}
   done
 done
