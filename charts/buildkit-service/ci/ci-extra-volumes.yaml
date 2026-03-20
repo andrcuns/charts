@@ -1,0 +1,8 @@
+extraVolumes:
+  - name: docker-config
+    emptyDir: {}
+
+extraVolumeMounts:
+  - name: docker-config
+    mountPath: /root/.docker/
+    readOnly: false
