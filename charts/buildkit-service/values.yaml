@@ -106,7 +106,7 @@ extraVolumes: []
   # - name: docker-config
   #   emptyDir: {}
 
-# Additional volume mounts
+# -- Additional volume mounts to add to containers. Useful to manage image or emptyDir volumes for cloud provider credentials.
 extraVolumeMounts: []
   # - name: docker-config
   #   mountPath: /root/.docker/
