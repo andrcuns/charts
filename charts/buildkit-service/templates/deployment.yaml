@@ -56,6 +56,9 @@ spec:
             mountPath: /usr/local/bin/buildkit-prestop.sh
             subPath: buildkit-prestop.sh
           {{- end }}
+          {{- with .Values.extraVolumeMounts }}
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
           {{- with .Values.env }}
           env:
             {{- toYaml . | nindent 12 }}
@@ -164,6 +167,9 @@ spec:
           name: {{ include "buildkit.fullname" . }}-files
           defaultMode: 0777
       {{- end }}
+      {{- end }}
+      {{- with .Values.extraVolumes }}
+        {{- toYaml . | nindent 6 }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
