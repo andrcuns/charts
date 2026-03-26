@@ -135,6 +135,9 @@ initContainers: []
   #       add: ["NET_ADMIN"]
   #     runAsUser: 0
 
+# -- Service account name for the pod
+serviceAccountName: "default"
+
 # -- Lifecycle hooks and termination
 lifecycle: {}
 terminationGracePeriodSeconds: 30
