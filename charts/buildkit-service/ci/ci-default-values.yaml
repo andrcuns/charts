@@ -2,3 +2,4 @@ rootless: false
 tls:
   enabled: false
 preStop: true
+serviceAccountName: "default"
