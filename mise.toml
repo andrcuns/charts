@@ -1,5 +1,5 @@
 [tools]
-helm = { version = "4.1.3", postinstall = "mise exec helm -- helm plugin install 'https://github.com/mbenabda/helm-local-chart-version' || true" }
-pre-commit = { version = "4.2.0", postinstall = "mise exec pre-commit -- pre-commit install --install-hooks || true" }
+helm = { version = "4.1.3", postinstall = "mise exec -- helm plugin install 'https://github.com/mbenabda/helm-local-chart-version' || true" }
+pre-commit = { version = "4.6.0", postinstall = "mise exec -- pre-commit install --install-hooks || true" }
 helm-docs = "1.14.2"
 kubeconform = "0.6.7"
