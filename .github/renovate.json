@@ -11,28 +11,6 @@
     {
       "customType": "regex",
       "fileMatch": [
-        ".github/script/utils.sh"
-      ],
-      "matchStrings": [
-        "KUBECONFORM_VERSION=\"(?<currentValue>.*?)\"\\n"
-      ],
-      "depNameTemplate": "yannh/kubeconform",
-      "datasourceTemplate": "github-releases"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": [
-        ".github/script/utils.sh"
-      ],
-      "matchStrings": [
-        "HELMDOCS_VERSION=\"(?<currentValue>.*?)\"\\n"
-      ],
-      "depNameTemplate": "norwoodj/helm-docs",
-      "datasourceTemplate": "github-releases"
-    },
-    {
-      "customType": "regex",
-      "fileMatch": [
         "charts/buildkit-service/Chart.yaml"
       ],
       "matchStrings": [
