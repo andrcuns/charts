@@ -102,16 +102,21 @@ spec:
               - buildctl
               - debug
               - workers
-            initialDelaySeconds: 5
-            periodSeconds: 30
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+            failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
+            successThreshold: {{ .Values.readinessProbe.successThreshold }}
           livenessProbe:
             exec:
               command:
               - buildctl
               - debug
               - workers
-            initialDelaySeconds: 5
-            periodSeconds: 30
+            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+            failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
           securityContext:
           {{- if .Values.rootless }}
             {{- if semverCompare ">=1.30.0" .Capabilities.KubeVersion.Version }}
