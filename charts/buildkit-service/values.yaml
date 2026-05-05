@@ -43,6 +43,21 @@ service:
   # -- Service annotations
   annotations: {}
 
+# -- Liveness probe configuration
+livenessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 30
+  timeoutSeconds: 1
+  failureThreshold: 3
+
+# -- Readiness probe configuration
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 30
+  timeoutSeconds: 1
+  failureThreshold: 3
+  successThreshold: 1
+
 # -- Resource definitions
 resources: {}
   # limits:
