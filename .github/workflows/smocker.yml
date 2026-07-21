@@ -32,7 +32,7 @@ jobs:
       - name: Set smocker version
         id: version
         run: |
-          VERSION=$(cat charts/smocker/Dockerfile | grep -E '^FROM thiht/smocker:' | cut -d ':' -f 2)
+          VERSION=$(cat charts/smocker/Dockerfile | grep -E '^FROM ghcr.io/smocker-dev/smocker:' | cut -d ':' -f 2)
           echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
       - name: Docker tags
         id: tags
