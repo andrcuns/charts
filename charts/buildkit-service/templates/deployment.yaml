@@ -125,6 +125,12 @@ spec:
             {{- end }}
             seccompProfile:
               type: Unconfined
+            seLinuxOptions:
+              type: spc_t
+              level: s0
+            {{- with .Values.securityContext }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
             runAsUser: 1000
             runAsGroup: 1000
           {{- else }}
