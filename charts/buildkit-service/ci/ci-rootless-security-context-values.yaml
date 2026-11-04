@@ -1,0 +1,5 @@
+rootless: true
+securityContext:
+  seLinuxOptions:
+    type: spc_t
+    level: s0

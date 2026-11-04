@@ -11,6 +11,12 @@ image:
 # -- Run rootless mode, https://github.com/moby/buildkit/blob/master/docs/rootless.md
 rootless: false
 
+# -- Container security context options
+securityContext: {}
+  # seLinuxOptions:
+  #   type: spc_t
+  #   level: s0
+
 # -- Enable the preStop script for graceful shutdown, https://github.com/seatgeek/buildkit-prestop-script
 preStop: false
 

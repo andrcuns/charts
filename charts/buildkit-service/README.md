@@ -66,6 +66,7 @@ The command deploys buildkit-service on the Kubernetes cluster in the default co
 | replicaCount | int | `1` |  |
 | resources | object | `{}` | Resource definitions |
 | rootless | bool | `false` | Run rootless mode, https://github.com/moby/buildkit/blob/master/docs/rootless.md |
+| securityContext | object | `{}` | Container security context options |
 | service.annotations | object | `{}` | Service annotations |
 | service.loadbalancerIp | string | `""` | Static ip address for load balancer |
 | service.port | int | `1234` | Service port |
