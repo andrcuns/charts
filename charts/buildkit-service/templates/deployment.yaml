@@ -118,6 +118,9 @@ spec:
             timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
             failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
           securityContext:
+            {{- with .Values.securityContext }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           {{- if .Values.rootless }}
             {{- if semverCompare ">=1.30.0" .Capabilities.KubeVersion.Version }}
             appArmorProfile:
